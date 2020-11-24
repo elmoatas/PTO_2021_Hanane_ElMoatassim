@@ -6,7 +6,7 @@ namespace oefening_pyramide
     {
         static void Main(string[] args)
         {
-            int Aantal_lagen=0;
+            int Aantal_lagen = 0;
             int aantal_blokken_perlaag;
             int totaal_aantal_blokken = 0;
             string keuze;
@@ -27,13 +27,12 @@ geef je keuze: ");
                 }
                 Console.WriteLine($"in totaal zijn er {totaal_aantal_blokken} blokken nodig voor een piramide met {Aantal_lagen} lagen.");
             }
-            else if(keuze == "b") 
+            else if (keuze == "b")
             {
                 Console.WriteLine("hoeveel blokken zijn er?");
                 totaal_aantal_blokken = Convert.ToInt32(Console.ReadLine());
                 int blokken_over = totaal_aantal_blokken;
-                int aantal_blokken_rest=0;
-             
+                int aantal_blokken_rest = 0;
                 while (totaal_aantal_blokken > 0)
                 {
                     Aantal_lagen++;

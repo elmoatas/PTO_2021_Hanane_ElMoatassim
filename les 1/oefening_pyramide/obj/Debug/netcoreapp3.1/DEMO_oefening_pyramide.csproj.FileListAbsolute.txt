@@ -1,0 +1,13 @@
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\bin\Debug\netcoreapp3.1\DEMO_oefening_pyramide.exe
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\bin\Debug\netcoreapp3.1\DEMO_oefening_pyramide.deps.json
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\bin\Debug\netcoreapp3.1\DEMO_oefening_pyramide.runtimeconfig.json
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\bin\Debug\netcoreapp3.1\DEMO_oefening_pyramide.runtimeconfig.dev.json
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\bin\Debug\netcoreapp3.1\DEMO_oefening_pyramide.dll
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\bin\Debug\netcoreapp3.1\DEMO_oefening_pyramide.pdb
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\obj\Debug\netcoreapp3.1\DEMO_oefening_pyramide.csprojAssemblyReference.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\obj\Debug\netcoreapp3.1\DEMO_oefening_pyramide.AssemblyInfoInputs.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\obj\Debug\netcoreapp3.1\DEMO_oefening_pyramide.AssemblyInfo.cs
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\obj\Debug\netcoreapp3.1\DEMO_oefening_pyramide.csproj.CoreCompileInputs.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\obj\Debug\netcoreapp3.1\DEMO_oefening_pyramide.dll
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\obj\Debug\netcoreapp3.1\DEMO_oefening_pyramide.pdb
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\les 1\oefening_pyramide\obj\Debug\netcoreapp3.1\DEMO_oefening_pyramide.genruntimeconfig.cache

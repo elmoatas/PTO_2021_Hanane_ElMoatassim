@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oefening_pyramide", "oefening_pyramide\oefening_pyramide.csproj", "{96A9531B-CF3B-4C4A-95B8-A38A3E585221}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEMO_oefening_pyramide", "oefening_pyramide\DEMO_oefening_pyramide.csproj", "{96A9531B-CF3B-4C4A-95B8-A38A3E585221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApplicatie", "ToDoApplicatie\ToDoApplicatie.csproj", "{A08D2809-7D19-41AB-97A7-C89B37D9159E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{96A9531B-CF3B-4C4A-95B8-A38A3E585221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96A9531B-CF3B-4C4A-95B8-A38A3E585221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96A9531B-CF3B-4C4A-95B8-A38A3E585221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A08D2809-7D19-41AB-97A7-C89B37D9159E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A08D2809-7D19-41AB-97A7-C89B37D9159E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A08D2809-7D19-41AB-97A7-C89B37D9159E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A08D2809-7D19-41AB-97A7-C89B37D9159E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
