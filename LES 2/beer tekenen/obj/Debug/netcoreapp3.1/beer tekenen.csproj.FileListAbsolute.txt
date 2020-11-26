@@ -1,0 +1,19 @@
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\bin\Debug\netcoreapp3.1\beer tekenen.exe
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\bin\Debug\netcoreapp3.1\beer tekenen.deps.json
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\bin\Debug\netcoreapp3.1\beer tekenen.runtimeconfig.json
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\bin\Debug\netcoreapp3.1\beer tekenen.runtimeconfig.dev.json
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\bin\Debug\netcoreapp3.1\beer tekenen.dll
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\bin\Debug\netcoreapp3.1\beer tekenen.pdb
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen.csprojAssemblyReference.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen_MarkupCompile.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen_MarkupCompile.lref
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen.g.resources
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen.AssemblyInfoInputs.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen.AssemblyInfo.cs
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen.csproj.CoreCompileInputs.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen.dll
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen.pdb
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\beer tekenen\obj\Debug\netcoreapp3.1\beer tekenen.genruntimeconfig.cache
