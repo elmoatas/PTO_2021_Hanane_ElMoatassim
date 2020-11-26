@@ -1,26 +1,43 @@
-﻿<Window x:Class="ToDoApplicatie.MainWindow"
+﻿<Window x:Name="ToDo_List" x:Class="ToDoApplicatie.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoApplicatie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TO DO list" Height="450" Width="550" Background="#FFB4A2">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
-            <Button Name="AddButton" Content="Toevoegen" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" Click="addButton_Click" />
-            <Button Name="deleteButton" Content="Delete" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" Click="deleteButton_Click"/>
-            <Button Name="loadButton" Content="load" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch"/>
-            <Button Name="saveButton" Content="save" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch"/>
-            <Button Name="upButton" Content="up" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" />
-            <Button Name="downButton" Content="down" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        
+        <Button Name="AddButton" Content="➕"  Margin="10" Grid.Row="0" Grid.Column="2"  Click="AddButton_Click" Background="#B5838D" />
+        
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Grid.Row="2" Grid.Column="2">
+            <Button Name="deleteButton" Content="🗑" Margin="5" Click="deleteButton_Click" Background="#B5838D" />
+            <Button Name="upButton" Content="🔼" Margin="5" Click="upButton_Click" Background="#B5838D" />
+            <Button Name="downButton" Content="🔽" Margin="5" Background="#B5838D" />
+             <Button Name="loadButton" Margin="5"   Content="📃" Background="#B5838D" />
+            <Button Name="saveButton" Margin="5"   Content="💾" Background="#B5838D"/>
         </StackPanel>
-        <TextBox Name="inputToDoTextbox" Grid.Column="5" Margin="10,10,10,400" VerticalAlignment="Stretch" KeyUp="inputToDoTextbox_KeyUp"/>
-        <Label Name="toDoLabel" Content="ToDo items:" HorizontalAlignment="Left" Grid.Column="1" Margin="10,34,0,-34"/>
-        <ListBox Name="toDoListbox" Margin="10,55,10,21" Grid.Column="1"/>
+
+        <TextBox Name="inputToDoTextbox" Margin="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" KeyUp="inputToDoTextbox_KeyUp" KeyDown="inputToDoTextbox_KeyDown" "
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFCDB2" />
+        <ListBox Name="toDoListbox" Margin="10" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Grid.RowSpan="3" Background="#FFCDB2" SelectionChanged="toDoListbox_SelectionChanged" />
+        
+        <StackPanel Orientation="Horizontal" Margin="10"  Grid.Row="1" Grid.Column="2">
+            <Button  HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#FF9B1A1A" />
+            <Button  HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFE8C62C" />
+            <Button  HorizontalAlignment="Right" VerticalAlignment="Stretch" Background="#FF35D32E" />
+         </StackPanel>
+
     </Grid>
 </Window>
