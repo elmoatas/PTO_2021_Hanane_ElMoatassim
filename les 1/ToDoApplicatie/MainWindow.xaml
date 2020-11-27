@@ -22,16 +22,16 @@
         <Button Name="AddButton" Content="➕"  Margin="10" Grid.Row="0" Grid.Column="2"  Click="AddButton_Click" Background="#B5838D" />
         
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Grid.Row="2" Grid.Column="2">
-            <Button Name="deleteButton" Content="🗑" Margin="5" Click="deleteButton_Click" Background="#B5838D" />
-            <Button Name="upButton" Content="🔼" Margin="5" Click="upButton_Click" Background="#B5838D" />
-            <Button Name="downButton" Content="🔽" Margin="5" Background="#B5838D" />
+            <Button Name="deleteButton" Content="🗑" Margin="5" Click="DeleteButton_Click" Background="#B5838D" />
+            <Button Name="upButton" Content="🔼" Margin="5" Click="UpButton_Click" Background="#B5838D" />
+            <Button Name="downButton" Content="🔽" Margin="5" Background="#B5838D" Click="downButton_Click" />
              <Button Name="loadButton" Margin="5"   Content="📃" Background="#B5838D" />
             <Button Name="saveButton" Margin="5"   Content="💾" Background="#B5838D"/>
         </StackPanel>
 
-        <TextBox Name="inputToDoTextbox" Margin="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" KeyUp="inputToDoTextbox_KeyUp" KeyDown="inputToDoTextbox_KeyDown" "
-                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFCDB2" />
-        <ListBox Name="toDoListbox" Margin="10" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Grid.RowSpan="3" Background="#FFCDB2" SelectionChanged="toDoListbox_SelectionChanged" />
+        <TextBox Name="inputToDoTextbox" Margin="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" KeyUp="InputToDoTextbox_KeyUp" KeyDown="InputToDoTextbox_KeyDown" 
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFCDB2" MouseDown="inputToDoTextbox_MouseDown" />
+        <ListBox Name="toDoListbox" Margin="10" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Grid.RowSpan="3" Background="#FFCDB2" SelectionChanged="ToDoListbox_SelectionChanged" />
         
         <StackPanel Orientation="Horizontal" Margin="10"  Grid.Row="1" Grid.Column="2">
             <Button  HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#FF9B1A1A" />

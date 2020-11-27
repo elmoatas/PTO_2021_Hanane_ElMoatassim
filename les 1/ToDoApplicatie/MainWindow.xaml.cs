@@ -29,30 +29,26 @@ namespace ToDoApplicatie
             ListBoxItem todo = new ListBoxItem();
             if (!toDoListbox.Items.Contains(inputToDoTextbox.Text) && inputToDoTextbox.Text != "")
             {
-
                 toDoListbox.Items.Add(inputToDoTextbox.Text);
                 inputToDoTextbox.Text = "";
                 AddButton.IsEnabled = true;
             }
             else
             {
-
                 inputToDoTextbox.Text = "";
                 AddButton.IsEnabled = false;
             }
         }
 
-        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (toDoListbox.SelectedItem != null)
             {
                 toDoListbox.Items.Remove(toDoListbox.SelectedItem);
-
             }
-
         }
 
-        private void inputToDoTextbox_KeyUp(object sender, KeyEventArgs e)
+        private void InputToDoTextbox_KeyUp(object sender, KeyEventArgs e)
         {
             //via stackoverflow:You can handle the keydown event of your TextBox control
             if (e.Key == Key.Enter)
@@ -61,24 +57,55 @@ namespace ToDoApplicatie
             }
         }
 
-
-        private void upButton_Click(object sender, RoutedEventArgs e)
+        private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            toDoListbox.SelectedIndex = toDoListbox.SelectedIndex - 1;
+            int newIndex = toDoListbox.SelectedIndex - 1;
+            if (newIndex < 0)
+            {
+                upButton.IsEnabled = false;
+            }
+            else
+            {
+                object selectedItem = toDoListbox.SelectedItem;
+                toDoListbox.Items.Remove(selectedItem);
+                toDoListbox.Items.Insert(newIndex, selectedItem);
+                toDoListbox.SelectedIndex = newIndex;
+            }
         }
 
-        private void inputToDoTextbox_KeyDown(object sender, KeyEventArgs e)
+        private void downButton_Click(object sender, RoutedEventArgs e)
+        {
+            int newIndex = toDoListbox.SelectedIndex + 1;
+            if (newIndex >= toDoListbox.Items.Count)
+            {
+                downButton.IsEnabled = false;
+            }
+            else
+            {
+                object selectedItem = toDoListbox.SelectedItem;
+                toDoListbox.Items.Remove(selectedItem);
+                toDoListbox.Items.Insert(newIndex, selectedItem);
+                toDoListbox.SelectedIndex = newIndex;
+            }
+        }
+
+        private void InputToDoTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             AddButton.IsEnabled = true;
-            ChangeVisibility(Visibility.Hidden);
+            
         }
 
-        private void toDoListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ToDoListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ChangeVisibility(Visibility.Visible);
+            downButton.IsEnabled = true;
+            upButton.IsEnabled = true;
         }
 
-   
+        private void inputToDoTextbox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ChangeVisibility(Visibility.Hidden);
+        }
     }
 }
 
