@@ -24,20 +24,20 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Grid.Row="2" Grid.Column="2">
             <Button Name="deleteButton" Content="🗑" Margin="5" Click="DeleteButton_Click" Background="#B5838D" />
             <Button Name="upButton" Content="🔼" Margin="5" Click="UpButton_Click" Background="#B5838D" />
-            <Button Name="downButton" Content="🔽" Margin="5" Background="#B5838D" Click="downButton_Click" />
-             <Button Name="loadButton" Margin="5"   Content="📃" Background="#B5838D" />
+            <Button Name="downButton" Content="🔽" Margin="5" Background="#B5838D" Click="DownButton_Click" />
+            <Button Name="loadButton" Margin="5"   Content="📃" Background="#B5838D" />
             <Button Name="saveButton" Margin="5"   Content="💾" Background="#B5838D"/>
         </StackPanel>
 
         <TextBox Name="inputToDoTextbox" Margin="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" KeyUp="InputToDoTextbox_KeyUp" KeyDown="InputToDoTextbox_KeyDown" 
-                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFCDB2" MouseDown="inputToDoTextbox_MouseDown" />
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFCDB2" />
         <ListBox Name="toDoListbox" Margin="10" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Grid.RowSpan="3" Background="#FFCDB2" SelectionChanged="ToDoListbox_SelectionChanged" />
         
-        <StackPanel Orientation="Horizontal" Margin="10"  Grid.Row="1" Grid.Column="2">
-            <Button  HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#FF9B1A1A" />
-            <Button  HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFE8C62C" />
-            <Button  HorizontalAlignment="Right" VerticalAlignment="Stretch" Background="#FF35D32E" />
-         </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Grid.Row="1" Grid.Column="2">
+            <Button x:Name="RedButton" HorizontalAlignment="Left" Width="20"  VerticalAlignment="Stretch" Background="#FF9B1A1A" Click="RedButton_Click" />
+            <Button x:Name="YellowButton" HorizontalAlignment="Center" Width="20" VerticalAlignment="Stretch" Background="#FFE8C62C" Click="YellowButton_Click" />
+            <Button x:Name="GreenButton" Background="#FF35D32E" Width="20" Click="GreenButton_Click" />
+        </StackPanel>
 
     </Grid>
 </Window>

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ToDoApplicatie
 {
@@ -15,6 +16,7 @@ namespace ToDoApplicatie
             ChangeVisibility(Visibility.Hidden);
             AddButton.IsEnabled = false;
         }
+
         private void ChangeVisibility(Visibility a)
         {
             loadButton.Visibility = a;
@@ -23,6 +25,7 @@ namespace ToDoApplicatie
             upButton.Visibility = a;
             downButton.Visibility = a;
         }
+
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             //Toevoegen van todo in listbox
@@ -73,7 +76,7 @@ namespace ToDoApplicatie
             }
         }
 
-        private void downButton_Click(object sender, RoutedEventArgs e)
+        private void DownButton_Click(object sender, RoutedEventArgs e)
         {
             int newIndex = toDoListbox.SelectedIndex + 1;
             if (newIndex >= toDoListbox.Items.Count)
@@ -92,7 +95,7 @@ namespace ToDoApplicatie
         private void InputToDoTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             AddButton.IsEnabled = true;
-            
+            ChangeVisibility(Visibility.Hidden);
         }
 
         private void ToDoListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -101,10 +104,39 @@ namespace ToDoApplicatie
             downButton.IsEnabled = true;
             upButton.IsEnabled = true;
         }
-
-        private void inputToDoTextbox_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ColorPicker(string buttonColor)
         {
-            ChangeVisibility(Visibility.Hidden);
+            ListBoxItem selected = new ListBoxItem();
+
+            if (buttonColor == "red")
+            {
+                selected.Foreground = Brushes.Red;
+            }
+            if (buttonColor == "yellow")
+            {
+                selected.Foreground = Brushes.Yellow;
+            }
+            if (buttonColor == "green")
+            {
+                selected.Foreground = Brushes.Green;
+            }
+
+        }
+
+        private void RedButton_Click(object sender, RoutedEventArgs e)
+        {
+            ListBoxItem selected = (ListBoxItem)toDoListbox.SelectedItem;
+            selected.Foreground = Brushes.Red;
+        }
+
+        private void GreenButton_Click(object sender, RoutedEventArgs e)
+        {
+            ColorPicker("green");
+        }
+
+        private void YellowButton_Click(object sender, RoutedEventArgs e)
+        {
+            ColorPicker("yellow");
         }
     }
 }
