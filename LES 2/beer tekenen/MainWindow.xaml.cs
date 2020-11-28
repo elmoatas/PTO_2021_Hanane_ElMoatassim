@@ -1,7 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace beer_tekenen
 {
@@ -10,85 +12,88 @@ namespace beer_tekenen
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
-            DrawBear();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Start();
+            timer.Tick += DispatcherTimer_Tick;
         }
-        private void DrawBear()
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            double x = rnd.Next(0, 800);
+            double y = rnd.Next(0, 450);
+            DrawBear(x, y);
+        }
+        private void DrawBear(double x, double y)
         {
             //left ear
-            drawEar(12, 0);
+            drawEar(x - 60, y - 80);
             // right ear
-            drawEar(120, 0);
+            drawEar(x + 60, y - 80);
             //face
-            face();
+            face(x, y);
             //left eye
-            eyes(0, 80);
+            eyes(x - 30, y - 25);
             // right eye
-            eyes(120, 80);
+            eyes(x + 30, y - 25);
+            //MOUTH
+            Mouth(x, y + 40);
+            //NOSE
+            Nose(x, y + 40);
         }
+        private void AddCircle(double x, double y, double width, double height, Brush fillColor, Brush strokeColor)
+        {
+            Ellipse circle = new Ellipse();
+            circle.Height = height;
+            circle.Width = width;
+            circle.Fill = fillColor;
+            circle.Stroke = strokeColor;
+            circle.StrokeThickness = 1.0;
+            Canvas.SetLeft(circle, x - width / 2); // position based on center
+            Canvas.SetTop(circle, y - height / 2); // position based on center
+            DrawCanvas.Children.Add(circle);
+        }
+
         private void drawEar(double x, double y)
         {
-            Ellipse ear = new Ellipse();
-            ear.Height = 80;
-            ear.Width = 80;
-            ear.Fill = Brushes.LightSkyBlue;
-            ear.Stroke = Brushes.CadetBlue;
-            ear.StrokeThickness = 1.0;
-
-            Ellipse innerEar = new Ellipse();
-            innerEar.Height = 40;
-            innerEar.Width = 40;
-            innerEar.Fill = Brushes.LightPink;
-            innerEar.Stroke = Brushes.DeepPink;
-            innerEar.StrokeThickness = 1.0;
-
-            DrawCanvas.Children.Add(ear);
-            DrawCanvas.Children.Add(innerEar);
-
-            Canvas.SetLeft(ear, x);
-            Canvas.SetTop(ear, y);
-
-            Canvas.SetLeft(innerEar, x + 20);
-            Canvas.SetTop(innerEar, y + 20);
-
+            //OUTER EAr
+            AddCircle(x, y, 80, 80, Brushes.LightSkyBlue, Brushes.CadetBlue);
+            //INNER EAR
+            AddCircle(x, y, 40, 40, Brushes.LightPink, Brushes.CadetBlue);
         }
-        private void face()
+
+        private void face(double x, double y)
         {
-            Ellipse face = new Ellipse();
-            face.Height = 180;
-            face.Width = 180;
-            face.Fill = Brushes.LightSkyBlue;
-            face.Stroke = Brushes.CadetBlue;
-            face.StrokeThickness = 1.0;
-
-            DrawCanvas.Children.Add(face);
+            //Face
+            AddCircle(x, y, 220, 200, Brushes.LightSkyBlue, Brushes.CadetBlue);
         }
+
         private void eyes(double x, double y)
         {
-            Ellipse eyes = new Ellipse();
-            eyes.Height = 20;
-            eyes.Width = 20;
-            eyes.Fill = Brushes.White;
-            eyes.Stroke = Brushes.CadetBlue;
-            eyes.StrokeThickness = 1.0;
-
-            Ellipse innerEyes = new Ellipse();
-            innerEyes.Height = 10;
-            innerEyes.Width = 10;
-            innerEyes.Fill = Brushes.Black;
-
-            DrawCanvas.Children.Add(eyes);
-            DrawCanvas.Children.Add(innerEyes);
-            Canvas.SetLeft(eyes, x);
-            Canvas.SetTop(eyes, y);
-
-            Canvas.SetLeft(innerEyes, x + 5);
-            Canvas.SetTop(innerEyes, y + 5);
+            //OUTER EYE
+            AddCircle(x, y, 40, 40, Brushes.White, Brushes.CadetBlue);
+            //INNER EYE
+            AddCircle(x, y, 20, 20, Brushes.Black, Brushes.Black);
         }
 
-        
+        private void Mouth(double x, double y)
+        {
+            //MOUTH
+            AddCircle(x, y, 130, 100, Brushes.LightPink, Brushes.CadetBlue);
+
+        }
+
+        private void Nose(double x, double y)
+        {
+            //OUTER NOSE
+            AddCircle(x, y, 60, 40, Brushes.CornflowerBlue, Brushes.CadetBlue);
+        }
 
     }
 
