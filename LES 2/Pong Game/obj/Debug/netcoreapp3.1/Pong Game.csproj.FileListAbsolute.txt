@@ -1,0 +1,19 @@
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\bin\Debug\netcoreapp3.1\Pong Game.exe
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\bin\Debug\netcoreapp3.1\Pong Game.deps.json
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\bin\Debug\netcoreapp3.1\Pong Game.runtimeconfig.json
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\bin\Debug\netcoreapp3.1\Pong Game.runtimeconfig.dev.json
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\bin\Debug\netcoreapp3.1\Pong Game.dll
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\bin\Debug\netcoreapp3.1\Pong Game.pdb
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game.csprojAssemblyReference.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game_MarkupCompile.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game_MarkupCompile.lref
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game.g.resources
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game.AssemblyInfoInputs.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game.AssemblyInfo.cs
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game.csproj.CoreCompileInputs.cache
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game.dll
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game.pdb
+C:\Users\hanan\OneDrive\Bureaublad\PTO_2021_Hanane_ElMoatassim\LES 2\Pong Game\obj\Debug\netcoreapp3.1\Pong Game.genruntimeconfig.cache
