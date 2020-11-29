@@ -16,9 +16,8 @@ namespace beer_tekenen
         public MainWindow()
         {
             InitializeComponent();
-
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Start();
             timer.Tick += DispatcherTimer_Tick;
         }
