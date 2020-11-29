@@ -24,6 +24,8 @@ namespace ToDoApplicatie
             saveButton.Visibility = a;
             upButton.Visibility = a;
             downButton.Visibility = a;
+            fulldownButton.Visibility = a;
+            fullUpButton.Visibility = a;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -53,7 +55,6 @@ namespace ToDoApplicatie
 
         private void InputToDoTextbox_KeyUp(object sender, KeyEventArgs e)
         {
-            //via stackoverflow:You can handle the keydown event of your TextBox control
             if (e.Key == Key.Enter)
             {
                 AddButton_Click(sender, e);
@@ -103,6 +104,8 @@ namespace ToDoApplicatie
             ChangeVisibility(Visibility.Visible);
             downButton.IsEnabled = true;
             upButton.IsEnabled = true;
+            fulldownButton.IsEnabled = true;
+            fullUpButton.IsEnabled = true;
         }
         private void ColorPicker(string buttonColor)
         {
@@ -126,7 +129,7 @@ namespace ToDoApplicatie
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {
             ListBoxItem selected = (ListBoxItem)toDoListbox.SelectedItem;
-            selected.Foreground = Brushes.Red;
+            selected.background = Brushes.Red;
         }
 
         private void GreenButton_Click(object sender, RoutedEventArgs e)
@@ -137,6 +140,28 @@ namespace ToDoApplicatie
         private void YellowButton_Click(object sender, RoutedEventArgs e)
         {
             ColorPicker("yellow");
+        }
+
+        private void fullUpButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            object selectedItem = toDoListbox.SelectedItem;
+            toDoListbox.Items.Remove(selectedItem);
+            toDoListbox.Items.Insert(0, selectedItem);
+            toDoListbox.SelectedIndex = 0;
+            upButton.IsEnabled = false;
+            fullUpButton.IsEnabled = false;
+        }
+
+        private void fulldownButton_Click(object sender, RoutedEventArgs e)
+        {
+            int newIndex = toDoListbox.Items.Count - 1;
+            object selectedItem = toDoListbox.SelectedItem;
+            toDoListbox.Items.Remove(selectedItem);
+            toDoListbox.Items.Insert(newIndex, selectedItem);
+            toDoListbox.SelectedIndex = newIndex;
+            downButton.IsEnabled = false;
+            fulldownButton.IsEnabled = false;
         }
     }
 }
