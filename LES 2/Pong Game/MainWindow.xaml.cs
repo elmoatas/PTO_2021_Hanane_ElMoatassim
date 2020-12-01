@@ -13,36 +13,47 @@ namespace Pong_Game
     /// </summary>
     public partial class MainWindow : Window
     {
-        public int speedx = 4;           //snelheid van de bal
-        public int speedy = 4;
-        int position_ball_x = 0;                      //Plaatsbepaling van de bal
+
+        public int speed_x = 2;           //snelheid van de bal
+        public int speed_y = 2;
+        int position_ball_x = 0;        //Plaatsbepaling van de bal
         int position_ball_y = 0;
-
-
-
+        Ellipse circle = new Ellipse();
+        public object ClientSize { get; private set; }
 
         public MainWindow()
         {
             InitializeComponent();
             Draw_Rectangle(20, 250);                        //Speler1
             Draw_Rectangle(750, 250);                       //Speler2
+            Draw_Ball(0, 0);
             DispatcherTimer timer = new DispatcherTimer();  //timer aanmaken 
-            timer.Interval = TimeSpan.FromMilliseconds(20);
+            timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Start();
             timer.Tick += Timer_Tick;
 
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            position_ball_x += speedx;
-            position_ball_y += speedy;
-
-
-            Draw_Ball(position_ball_x, position_ball_y);
+            // heen en weer laten gaan 
+            //Draw_Canvas.Children.Clear();
+            //Balpositie naar rechts
+            if (position_ball_x < 0 || position_ball_x + 20 > 800) speed_x *= -1;   // Bounce
+            if (position_ball_y < 0 || position_ball_y + 20 > 450) speed_y *= -1;   // Bounce
+            position_ball_x += speed_x;
+            position_ball_y += speed_y;
+            MoveBall(position_ball_x, position_ball_y);
         }
+
+        private void MoveBall(int position_ball_x, int position_ball_y)
+        {
+            Canvas.SetLeft(circle, position_ball_x);
+            Canvas.SetTop(circle, position_ball_y);
+        }
+
         private void Draw_Ball(double x, double y)
         {
-            Ellipse circle = new Ellipse();
+
             circle.Height = 20;
             circle.Width = 20;
             circle.Fill = Brushes.White;
