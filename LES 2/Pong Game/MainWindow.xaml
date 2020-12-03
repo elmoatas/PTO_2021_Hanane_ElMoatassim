@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="PingPong" Height="500" Width="800" Background="#FF1C2C02">
     <Grid>
-        <Canvas x:Name="Draw_Canvas" Height="500" Width="800"/>
+        <Canvas x:Name="Draw_Canvas" Height="500" Width="800" />
     </Grid>
 </Window>
