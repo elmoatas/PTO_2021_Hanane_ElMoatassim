@@ -18,12 +18,15 @@ namespace Pong_Game
         Rectangle player2 = new Rectangle();
         Ellipse circle = new Ellipse();
         DispatcherTimer timer = new DispatcherTimer();
-        public int speed_x = 1;             //snelheid van de bal
-        public int speed_y = 1;
-        double position_ball_x = 0;         //Plaatsbepaling van de bal
+        int speed_x = 1;                   //snelheid van de bal
+        int speed_y = 1;
+        double position_ball_x = 0;        //Plaatsbepaling van de bal
         double position_ball_y = 0;
-        double positionPlayer1y = 0;      //positie bepalen van rechthoekje
+        double positionPlayer1y = 0;       //positie bepalen van rechthoekje
         double positionPlayer2y = 0;
+        int scorePlayer1= 0;             //score player1 en 2 
+        int scorePlayer2= 0;
+        bool collisionP1;
 
 
         public MainWindow()
@@ -37,12 +40,29 @@ namespace Pong_Game
             MoveBall();
             MovePlayer1();                //PLAYER 1 laten bewegen met up en down keys
             MovePlayer2();                //player 2 laten bewegen met a en q keys
-                                          //nog toevoegen: 
-                                          //- als het botst tegen de rectangle dan gaat *-1 
         }
-        private void BallControl()
+        private bool CollussionPlayer1()
         {
+            if (Canvas.GetTop(circle) <= (Canvas.GetTop(player1) + player1.ActualHeight) &&
+                Canvas.GetTop(circle) >= Canvas.GetTop(player1) &&
+                Canvas.GetLeft(circle) <= (Canvas.GetLeft(player1) + player1.ActualWidth))
+            {
+                collisionP1 = true;
+                return true;
 
+            }
+            else return false;
+        }
+        private bool CollussionPlayer2()
+        {
+            if (Canvas.GetTop(circle) <= (Canvas.GetTop(player2) + player2.ActualHeight) &&
+                Canvas.GetTop(circle) >= Canvas.GetTop(player2) &&
+                Canvas.GetLeft(circle) >= Canvas.GetLeft(player2))
+            {
+                collisionP1 = false;
+                return true;
+            }
+            else return false;
         }
         private void StartGame()
         {
@@ -55,24 +75,36 @@ namespace Pong_Game
             //timer.IsEnabled? timer.Stop() : timer.Start();  WERK NIET 
             if (timer.IsEnabled) timer.Stop();
             else timer.Start();
+        }
+        private void GiveScoreAndPrint()
+        {
+            //collisionP1 = true ? scorePlayer1 += 1 : scorePlayer2 += 1; ternary operatoren lukken niet 
+            if (collisionP1)
+            {
+                scorePlayer1 += 1;
+            }
+            else scorePlayer2 += 1;
+            ScorePlayer1Label.Content = scorePlayer1;
+            ScorePlayer2Label.Content = scorePlayer2;
 
         }
         private void MoveBall()
         {
-            if (position_ball_y <= (positionPlayer1y) && position_ball_y >= positionPlayer1y) //|| (position_ball_x <= (positionPlayer2y + player_2.ActualHeight) && position_ball_x >= positionPlayer2y)) //||
+           
+            if (CollussionPlayer1() || CollussionPlayer2())
             {
-                speed_x *= -1;             // Bounce wnr bal tussen 0 en width,        wanneer bal groter is dan bottom van racket, wanneer bal kleiner dan top van racket 
-
+                speed_x *= -1;
             }
-            if (position_ball_y < 0 || position_ball_y + 20 > Canvas.ActualHeight) // || position_ball_y >= (position_player1_y + player1.ActualHeight) || position_ball_y <= position_player1_y
+            if (Canvas.GetTop(circle) < 0 || Canvas.GetTop(circle) + circle.ActualHeight > Canvas.ActualHeight)
             {
                 speed_y *= -1;             // Bounce wnr bal tussen 0 en height 
             }
-            if (position_ball_x == 0 || position_ball_x + 20 == Canvas.ActualWidth)
+            if (Canvas.GetLeft(circle) == 0 || (Canvas.GetLeft(circle) + circle.ActualWidth) == Canvas.ActualWidth)
             {
                 position_ball_x = Canvas.ActualWidth / 2;      // als de bal botst tegen muur moet hij terug naar het midden en stopt de timer tot je weer op start drukt 
                 position_ball_y = Canvas.ActualHeight / 2;
                 PauzeGame();
+                GiveScoreAndPrint();
             }
             position_ball_x += speed_x;
             position_ball_y += speed_y;

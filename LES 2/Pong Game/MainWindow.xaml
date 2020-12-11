@@ -9,6 +9,8 @@
     <Grid>
         <Canvas x:Name="Canvas" Height="450" Width="800" />
         <Button x:Name="start_Button" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Start" Click="start_Button_Click" Background="#FFE6DD23" />
-        <Button x:Name="Pause_Button" VerticalAlignment="Top" HorizontalAlignment="left" Content="II" Click="Pause_Button_Click"  Background="#FFE6DD23" />
+        <Button x:Name="Pause_Button" VerticalAlignment="Top" HorizontalAlignment="Left" Content="II" Click="Pause_Button_Click"  Background="#FFE6DD23" Margin="357,0,0,0" Height="20" Width="24" />
+        <Label x:Name="ScorePlayer1Label" Content="score P1" HorizontalAlignment="Left" Height="30" Margin="296,0,0,0" VerticalAlignment="Top" Width="44"/>
+        <Label x:Name="ScorePlayer2Label" Content="score P2" HorizontalAlignment="Left" Height="24" Margin="419,3,0,0" VerticalAlignment="Top" Width="114"/>
     </Grid>
 </Window>
