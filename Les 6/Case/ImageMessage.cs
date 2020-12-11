@@ -1,19 +1,21 @@
 ﻿using System;
+using System.Windows.Controls;
 
 namespace Case
 {
-    class Bericht
+    class ImageMessage
     {
         // Private members / class attributes / class variables
-        private string sender;
+        string sender;
         private string content;
         private DateTime date;
         private string receiver;
-       
+        private Image image;
+
         // Constructor 
-        public Bericht()//string sender, string content, DateTime date, string receiver)
+        public ImageMessage()//string sender, string content, DateTime date, string receiver, Image image)
         {
-            
+
         }
         // Properties / getters & setters
         public string Sender
@@ -32,15 +34,23 @@ namespace Case
         {
             get { return receiver; }
         }
+        public Image Im
+        {
+            get { return image; }
+        }
         // Methodes (public & private)
         public string Display()
         {
-            string display="";
+            string display = "";
             return display;
         }
         public void Send()
         {
 
+        }
+        public Image LoadImage()
+        {
+            return image;
         }
     }
 }

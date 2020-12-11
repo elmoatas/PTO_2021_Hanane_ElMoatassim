@@ -1,0 +1,7 @@
+﻿namespace Case
+{
+   class contact
+    {
+
+    }
+}
