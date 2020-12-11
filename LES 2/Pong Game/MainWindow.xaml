@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="PingPong" Height="500" Width="800" Background="#FF1C2C02">
     <Grid>
-        <Canvas x:Name="Draw_Canvas" Height="450" Width="800" />
-        <Button x:Name="start_Button" Content="Start" Height="50" Width="70" Click="start_Button_Click" Background="#FFE6DD23" />
+        <Canvas x:Name="Canvas" Height="450" Width="800" />
+        <Button x:Name="start_Button" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Start" Click="start_Button_Click" Background="#FFE6DD23" />
+        <Button x:Name="Pause_Button" VerticalAlignment="Top" HorizontalAlignment="left" Content="II" Click="Pause_Button_Click"  Background="#FFE6DD23" />
     </Grid>
 </Window>
