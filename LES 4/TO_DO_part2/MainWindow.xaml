@@ -28,7 +28,7 @@
             <Button Name="downButton" Content="🔽" Margin="5" Click="DownButton_Click" />
             <Button Name="fulldownButton" Content="⏬" Margin="5" Click="fulldownButton_Click" />
         </StackPanel>
-        <StackPanel  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="5" Grid.Row="1" Grid.Column="1">
+        <StackPanel  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="15" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
             <Label Name="Item" Content="Item" Margin="5" HorizontalContentAlignment="Right"/>
             <Label Name="DuedateLabel" Content="Duedate" Margin="5" HorizontalContentAlignment="Right"/>
             <Label Name="ColorLabel" Content="Color" Margin="5" HorizontalContentAlignment="Right"/>
@@ -37,14 +37,14 @@
             <Label Name="FinishedLabel" Content="Finished at" Margin="5" HorizontalContentAlignment="Right" />
             <Label Name="ExtraInfoLabel" Content="Extra info" Margin="5" HorizontalContentAlignment="Right" />
         </StackPanel>
-        <StackPanel  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="10" Grid.Row="1" Grid.Column="2">
+        <StackPanel  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="15" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
             <TextBox x:Name="ItemTextbox" Margin="5" Height="25" />
             <DatePicker x:Name="DuedateDatePicker" Margin="5" Height="25" />
             <ComboBox x:Name="ColorCombobox" Margin="5" />
             <Label x:Name="PrintStatusLabel" Content="-" Margin="5"/>
             <Label Name="PrintStartedLabel" Content="-" Margin="5" />
             <Label Name="PrintFinishedLabel" Content="-" Margin="5"/>
-            <TextBox Name="ExtraInfoTextbox"  Margin="10" Height="50" />
+            <TextBox Name="ExtraInfoTextbox"  Margin="10" Height="70" />
             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" >
                 <Button x:Name="StartTaskButton" Content="Start task" Margin="5"/>
                 <Button x:Name="FinishTaskButton" Content="Finish task" Margin="5"/>
