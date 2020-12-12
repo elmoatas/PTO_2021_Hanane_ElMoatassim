@@ -19,8 +19,8 @@
             </Grid.RowDefinitions>
         
         <Button Name="AddButton" Content="➕"  Margin="10" Grid.Row="0" Grid.Column="2"  Click="AddButton_Click" Background="#B5838D" />
-        
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Grid.Row="2" Grid.Column="2">
+
+        <StackPanel  x:Name="specialButtonsStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Grid.Row="2" Grid.Column="2">
             <Button Name="deleteButton" Content="🗑" Margin="5" Click="DeleteButton_Click" Background="#B5838D" />
             <Button Name="fullUpButton" Content="⏫" Margin="5"  Background="#B5838D" Click="fullUpButton_Click" />
             <Button Name="upButton" Content="🔼" Margin="5" Click="UpButton_Click" Background="#B5838D" />
@@ -30,7 +30,7 @@
             <Button Name="saveButton" Margin="5"   Content="💾" Background="#B5838D"/>
         </StackPanel>
 
-        <TextBox Name="inputToDoTextbox" Margin="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" KeyUp="InputToDoTextbox_KeyUp" KeyDown="InputToDoTextbox_KeyDown" 
+        <TextBox Name="inputToDoTextbox" Margin="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" KeyUp="InputToDoTextbox_KeyUp"  
                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFCDB2" FontSize="18" />
         <ListBox Name="toDoListbox" Margin="10" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Grid.RowSpan="3" Background="#FFCDB2" SelectionChanged="ToDoListbox_SelectionChanged" />
         

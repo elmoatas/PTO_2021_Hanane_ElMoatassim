@@ -10,39 +10,47 @@ namespace ToDoApplicatie
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
-            ChangeVisibility(Visibility.Hidden);
-            AddButton.IsEnabled = false;
+            ChangeVisibilityAndEnableButtons();
+        }
+        private void ChangeVisibilityAndEnableButtons()
+        {
+            if (toDoListbox.SelectedIndex != -1)
+            {
+                specialButtonsStack.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                specialButtonsStack.Visibility = Visibility.Hidden;
+            }
+            downButton.IsEnabled = toDoListbox.SelectedIndex + 1 < toDoListbox.Items.Count;
+            upButton.IsEnabled = toDoListbox.SelectedIndex > 0;
+            fulldownButton.IsEnabled = toDoListbox.SelectedIndex + 1 < toDoListbox.Items.Count;
+            fullUpButton.IsEnabled = toDoListbox.SelectedIndex > 0;
+            AddButton.IsEnabled = inputToDoTextbox.Text != "";
         }
 
-        private void ChangeVisibility(Visibility a)
+        private void AddItemToList()
         {
-            loadButton.Visibility = a;
-            deleteButton.Visibility = a;
-            saveButton.Visibility = a;
-            upButton.Visibility = a;
-            downButton.Visibility = a;
-            fulldownButton.Visibility = a;
-            fullUpButton.Visibility = a;
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            //Toevoegen van todo in listbox
-            ListBoxItem todo = new ListBoxItem();
             if (!toDoListbox.Items.Contains(inputToDoTextbox.Text) && inputToDoTextbox.Text != "")
             {
                 toDoListbox.Items.Add(inputToDoTextbox.Text);
                 inputToDoTextbox.Text = "";
-                AddButton.IsEnabled = true;
             }
             else
             {
                 inputToDoTextbox.Text = "";
-                AddButton.IsEnabled = false;
             }
+
+        }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Toevoegen van todo in listbox
+            AddItemToList();
+            ChangeVisibilityAndEnableButtons();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -57,55 +65,55 @@ namespace ToDoApplicatie
         {
             if (e.Key == Key.Enter)
             {
-                AddButton_Click(sender, e);
+                AddItemToList();
             }
+            ChangeVisibilityAndEnableButtons();
         }
-
+        private void GoUpOrGoDown(int upOrDown)
+        {
+            int newIndex = toDoListbox.SelectedIndex + upOrDown;
+            object selectedItem = toDoListbox.SelectedItem;
+            toDoListbox.Items.Remove(selectedItem);
+            toDoListbox.Items.Insert(newIndex, selectedItem);
+            toDoListbox.SelectedIndex = newIndex;
+        }
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            int newIndex = toDoListbox.SelectedIndex - 1;
-            if (newIndex < 0)
+            if (toDoListbox.SelectedIndex >= 0)
             {
-                upButton.IsEnabled = false;
+                GoUpOrGoDown(-1);
             }
-            else
-            {
-                object selectedItem = toDoListbox.SelectedItem;
-                toDoListbox.Items.Remove(selectedItem);
-                toDoListbox.Items.Insert(newIndex, selectedItem);
-                toDoListbox.SelectedIndex = newIndex;
-            }
+            ChangeVisibilityAndEnableButtons();
         }
 
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            int newIndex = toDoListbox.SelectedIndex + 1;
-            if (newIndex >= toDoListbox.Items.Count)
+            if (toDoListbox.SelectedIndex + 1 <= toDoListbox.Items.Count)
             {
-                downButton.IsEnabled = false;
+                GoUpOrGoDown(1);
             }
-            else
-            {
-                object selectedItem = toDoListbox.SelectedItem;
-                toDoListbox.Items.Remove(selectedItem);
-                toDoListbox.Items.Insert(newIndex, selectedItem);
-                toDoListbox.SelectedIndex = newIndex;
-            }
+            ChangeVisibilityAndEnableButtons();
         }
-
-        private void InputToDoTextbox_KeyDown(object sender, KeyEventArgs e)
+        private void FullUpDown(int placementOfItem)
         {
-            AddButton.IsEnabled = true;
-            ChangeVisibility(Visibility.Hidden);
+            object selectedItem = toDoListbox.SelectedItem;
+            toDoListbox.Items.Remove(selectedItem);
+            toDoListbox.Items.Insert(placementOfItem, selectedItem);
+            toDoListbox.SelectedIndex = placementOfItem;
+            upButton.IsEnabled = false;
+            fullUpButton.IsEnabled = false;
         }
-
+        private void fullUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            FullUpDown(0);
+        }
+        private void fulldownButton_Click(object sender, RoutedEventArgs e)
+        {
+            FullUpDown(toDoListbox.Items.Count - 1);
+        }
         private void ToDoListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ChangeVisibility(Visibility.Visible);
-            downButton.IsEnabled = true;
-            upButton.IsEnabled = true;
-            fulldownButton.IsEnabled = true;
-            fullUpButton.IsEnabled = true;
+            ChangeVisibilityAndEnableButtons();
         }
         private void ColorPicker(string buttonColor)
         {
@@ -128,41 +136,21 @@ namespace ToDoApplicatie
 
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {
-            ListBoxItem selected = (ListBoxItem)toDoListbox.SelectedItem;
-            selected.background = Brushes.Red;
+            // ListBoxItem selected = (ListBoxItem)toDoListbox.SelectedItem;
+            //selected.Background = Brushes.Red;
         }
 
         private void GreenButton_Click(object sender, RoutedEventArgs e)
         {
-            ColorPicker("green");
+            //ColorPicker("green");
         }
 
         private void YellowButton_Click(object sender, RoutedEventArgs e)
         {
-            ColorPicker("yellow");
+            //ColorPicker("yellow");
         }
 
-        private void fullUpButton_Click(object sender, RoutedEventArgs e)
-        {
 
-            object selectedItem = toDoListbox.SelectedItem;
-            toDoListbox.Items.Remove(selectedItem);
-            toDoListbox.Items.Insert(0, selectedItem);
-            toDoListbox.SelectedIndex = 0;
-            upButton.IsEnabled = false;
-            fullUpButton.IsEnabled = false;
-        }
-
-        private void fulldownButton_Click(object sender, RoutedEventArgs e)
-        {
-            int newIndex = toDoListbox.Items.Count - 1;
-            object selectedItem = toDoListbox.SelectedItem;
-            toDoListbox.Items.Remove(selectedItem);
-            toDoListbox.Items.Insert(newIndex, selectedItem);
-            toDoListbox.SelectedIndex = newIndex;
-            downButton.IsEnabled = false;
-            fulldownButton.IsEnabled = false;
-        }
     }
 }
 
