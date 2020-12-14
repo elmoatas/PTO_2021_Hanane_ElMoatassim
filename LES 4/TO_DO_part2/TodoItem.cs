@@ -12,6 +12,17 @@ namespace TO_DO_part2
         private DateTime finishDate;
         private string info;
         //constructor
+        public TodoItem( string name, Brush color)
+        {
+            this.name = name;
+            this.color = color;
+        }
+
+        public TodoItem()
+        {
+
+        }
+
         //properties
         //methodes
         public string GetName()

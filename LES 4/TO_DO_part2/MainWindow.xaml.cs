@@ -37,9 +37,14 @@ namespace TO_DO_part2
 
         private void AddItemToList()
         {
+           //hier item toevoegen aan classe  
+            
             if (!toDoListbox.Items.Contains(inputToDoTextbox.Text) && inputToDoTextbox.Text != "")
             {
+                TodoItem item = new TodoItem();
+                List<TodoItem> items = new List<TodoItem>();
                 toDoListbox.Items.Add(inputToDoTextbox.Text);
+
                 inputToDoTextbox.Text = "";
             }
             else
