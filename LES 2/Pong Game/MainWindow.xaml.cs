@@ -24,8 +24,8 @@ namespace Pong_Game
         double position_ball_y = 0;
         double positionPlayer1y = 0;       //positie bepalen van rechthoekje
         double positionPlayer2y = 0;
-        int scorePlayer1= 0;             //score player1 en 2 
-        int scorePlayer2= 0;
+        int scorePlayer1 = 0;             //score player1 en 2 
+        int scorePlayer2 = 0;
         bool collisionP1;
 
 
@@ -33,13 +33,14 @@ namespace Pong_Game
         {
             InitializeComponent();
             Draw_Rectangle();               //Speler1 en speler 2 tekenen 
-            Draw_Ball();                    //Bal tekenen         
+            Draw_Ball();                    //Bal tekenen      
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
             MoveBall();
             MovePlayer1();                //PLAYER 1 laten bewegen met up en down keys
             MovePlayer2();                //player 2 laten bewegen met a en q keys
+            Timer();
         }
         private bool CollussionPlayer1()
         {
@@ -49,7 +50,6 @@ namespace Pong_Game
             {
                 collisionP1 = true;
                 return true;
-
             }
             else return false;
         }
@@ -64,7 +64,7 @@ namespace Pong_Game
             }
             else return false;
         }
-        private void StartGame()
+        private void Timer()
         {
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Start();
@@ -72,25 +72,34 @@ namespace Pong_Game
         }
         private void PauzeGame()
         {
-            //timer.IsEnabled? timer.Stop() : timer.Start();  WERK NIET 
-            if (timer.IsEnabled) timer.Stop();
-            else timer.Start();
+            if (timer.IsEnabled)
+            {
+                timer.Stop();
+            }
+            else
+            {
+                timer.Start();
+            }
         }
         private void GiveScoreAndPrint()
         {
-            //collisionP1 = true ? scorePlayer1 += 1 : scorePlayer2 += 1; ternary operatoren lukken niet 
+
+            //collisionP1 == true ? scorePlayer1++ : scorePlayer2++; //ternary operatoren lukken niet 
             if (collisionP1)
             {
                 scorePlayer1 += 1;
             }
-            else scorePlayer2 += 1;
+            else
+            {
+                scorePlayer2 += 1;
+            }
             ScorePlayer1Label.Content = scorePlayer1;
             ScorePlayer2Label.Content = scorePlayer2;
 
         }
         private void MoveBall()
         {
-           
+
             if (CollussionPlayer1() || CollussionPlayer2())
             {
                 speed_x *= -1;
@@ -164,7 +173,7 @@ namespace Pong_Game
 
         private void start_Button_Click(object sender, RoutedEventArgs e)
         {
-            StartGame();
+            Timer();
         }
 
         private void Pause_Button_Click(object sender, RoutedEventArgs e)
