@@ -4,9 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Text_editor"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Texteditor" Height="450" Width="800">
     <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Button x:Name="pathButton" Margin="5" DockPanel.Dock="Right" Click="pathButton_Click">Choose path</Button>
+                <Label x:Name="pathLabel" Margin="5">Path</Label>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Button x:Name="addButton" DockPanel.Dock="Right" Margin="5" Click="addButton_Click">Add</Button>
+                <TextBox x:Name="fileNameTexBox" Margin="5"/>
+            </DockPanel>
+            <ListBox x:Name="filesListBox" Margin="5" SelectionChanged="filesListBox_SelectionChanged"/>
+        </DockPanel>
+    
+      
 
+       
     </Grid>
 </Window>

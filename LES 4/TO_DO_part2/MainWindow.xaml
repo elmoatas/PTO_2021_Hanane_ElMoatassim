@@ -46,10 +46,10 @@
             <Label Name="PrintFinishedLabel" Content="-" Margin="5"/>
             <TextBox Name="ExtraInfoTextbox"  Margin="10" Height="70" />
             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" >
-                <Button x:Name="StartTaskButton" Content="Start task" Margin="5"/>
-                <Button x:Name="FinishTaskButton" Content="Finish task" Margin="5"/>
-                <Button x:Name="DeleteTaskButton" Content="Delete" Margin="5" />
-                <Button x:Name="SaveTaskButton" Content="Save" Margin="5" />
+                <Button x:Name="StartTaskButton" Content="Start task" Margin="5" Click="StartTaskButton_Click"/>
+                <Button x:Name="FinishTaskButton" Content="Finish task" Margin="5" Click="FinishTaskButton_Click"/>
+                <Button x:Name="DeleteTaskButton" Content="Delete" Margin="5" Click="DeleteTaskButton_Click" />
+                <Button x:Name="SaveTaskButton" Content="Save" Margin="5" Click="SaveTaskButton_Click" />
             </StackPanel>
         </StackPanel>
 

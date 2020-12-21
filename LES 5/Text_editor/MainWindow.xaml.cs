@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+using System.Windows.Forms;
+using Forms = System.Windows.Forms;
 namespace Text_editor
 {
     /// <summary>
@@ -20,10 +9,35 @@ namespace Text_editor
     /// </summary>
     public partial class MainWindow : Window
     {
+        string selectedPath;
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
+        private void OpenTheFile()
+        {
+            FolderBrowserDialog folderBrowseDialog = new FolderBrowserDialog();
+
+            folderBrowseDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            DialogResult dialogResult = folderBrowseDialog.ShowDialog();
+
+            if (dialogResult == Forms.DialogResult.OK)
+            {
+                selectedPath = folderBrowseDialog.SelectedPath;
+                pathLabel.Content = selectedPath;
+            }
+        }
+
+        private void pathButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenTheFile();
+        }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

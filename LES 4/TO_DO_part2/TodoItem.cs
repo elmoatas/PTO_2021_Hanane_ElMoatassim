@@ -7,15 +7,15 @@ namespace TO_DO_part2
     {
         private string name;
         private Brush color;
-        private DateTime duedate;
+        private DateTime dueDate;
         private DateTime startDate;
         private DateTime finishDate;
         private string info;
         //constructor
-        public TodoItem( string name, Brush color)
+        public TodoItem(string name)
         {
             this.name = name;
-            this.color = color;
+
         }
 
         public TodoItem()
@@ -25,37 +25,41 @@ namespace TO_DO_part2
 
         //properties
         //methodes
-        public string GetName()
+        public string GetName
         {
-            string name = "";
+            get { return name; }
+            set { name = value; }
+        }
+        public override string ToString()
+        {
             return name;
         }
         public void SetName(string name)
         {
-
+            this.name = name;
         }
-        public Brush GetColor()
+        public Brush GetColor
         {
-            Brush color = Brushes.Transparent;
-            return color ;
+
+            get { return color; }
         }
         public void SetColor(Brush color)
         {
 
         }
-        public DateTime GetStartDate() 
+        public DateTime GetStartDate
         {
-            DateTime dueTime = DateTime.Now;
-            return dueTime;
+
+            get { return dueDate; }
         }
-        public DateTime GetFinishDate() 
+        public DateTime GetFinishDate()
         {
             DateTime finishTime = DateTime.Now;
             return finishTime;
         }
         public DateTime GetDueDate()
         {
-            DateTime dueTime= DateTime.Now;
+            DateTime dueTime = DateTime.Now;
             return dueTime;
         }
         public void SetDueDate(DateTime dueDate)
@@ -66,15 +70,15 @@ namespace TO_DO_part2
         {
 
         }
-        public void Stop ()
+        public void Stop()
         {
-        
+
         }
         public string GetState()
         {
-            string state="";
+            string state = "";
             return state;
         }
-    
+
     }
 }

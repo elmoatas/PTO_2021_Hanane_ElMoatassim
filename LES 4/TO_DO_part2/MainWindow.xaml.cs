@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TO_DO_part2
 {
@@ -20,14 +10,16 @@ namespace TO_DO_part2
     /// </summary>
     public partial class MainWindow : Window
     {
+        BindingList<TodoItem> toDoList = new BindingList<TodoItem>();
+
         public MainWindow()
         {
             InitializeComponent();
             EnableButtons();
+            toDoListbox.ItemsSource = toDoList;
         }
         private void EnableButtons()
         {
-        
             downButton.IsEnabled = toDoListbox.SelectedIndex + 1 < toDoListbox.Items.Count;
             upButton.IsEnabled = toDoListbox.SelectedIndex > 0;
             fulldownButton.IsEnabled = toDoListbox.SelectedIndex + 1 < toDoListbox.Items.Count;
@@ -37,20 +29,31 @@ namespace TO_DO_part2
 
         private void AddItemToList()
         {
-           //hier item toevoegen aan classe  
-            
-            if (!toDoListbox.Items.Contains(inputToDoTextbox.Text) && inputToDoTextbox.Text != "")
+            string inputToDo = inputToDoTextbox.Text;
+            bool contains = toDoListbox.Items.Contains(inputToDo);
+            // bool contains = toDoList.Contains();// check if the list already contains the todo
+            if (inputToDoTextbox.Text != "") //contains && 
             {
-                TodoItem item = new TodoItem();
-                List<TodoItem> items = new List<TodoItem>();
-                toDoListbox.Items.Add(inputToDoTextbox.Text);
-
+                TodoItem newItem = new TodoItem();
+                toDoList.Add(newItem);
+                newItem.GetName = inputToDoTextbox.Text;
                 inputToDoTextbox.Text = "";
             }
             else
             {
-                inputToDoTextbox.Text = "";
+                inputToDoTextbox.Text = "nee";
             }
+
+            /* if (!toDoListbox.Items.Contains(inputToDoTextbox.Text) && inputToDoTextbox.Text != "")
+             {
+                 newItem.GetName = inputToDoTextbox.Text;
+                 toDoList.Add(newItem);
+                 inputToDoTextbox.Text = "";
+             }
+             else
+             {
+                 inputToDoTextbox.Text = "";
+             }*/
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
@@ -110,8 +113,39 @@ namespace TO_DO_part2
         }
         private void ToDoListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EnableButtons();
-        }   
+            if (toDoListbox.SelectedItem != null)
+            {
+                EnableButtons();
 
+                TodoItem selectedToDo = (TodoItem)toDoListbox.SelectedItem;
+                FillInfo(selectedToDo);
+            }
+        }
+        private void FillInfo(TodoItem selectedToDo)
+        {
+            ItemTextbox.Text = selectedToDo.GetName;
+
+            toDoListbox.ItemsSource = toDoList;
+        }
+
+        private void StartTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FinishTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
