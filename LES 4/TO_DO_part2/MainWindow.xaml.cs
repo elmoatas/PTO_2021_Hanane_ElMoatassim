@@ -16,7 +16,8 @@ namespace TO_DO_part2
         {
             InitializeComponent();
             EnableButtons();
-            toDoListbox.ItemsSource = toDoList;
+
+            // toDoListbox.ItemsSource = toDoList;
         }
         private void EnableButtons()
         {
@@ -26,38 +27,32 @@ namespace TO_DO_part2
             fullUpButton.IsEnabled = toDoListbox.SelectedIndex > 0;
             AddButton.IsEnabled = inputToDoTextbox.Text != "";
         }
-
+        private bool CheckTheInputTextbox()
+        {
+            bool check = true;
+            if (inputToDoTextbox.Text == "" || toDoListbox.Items.Contains(inputToDoTextbox.Text))
+            {
+                check = false; // pasop als je spatie invult voegt hijdeze wel nog toE !
+            }
+            return check;
+        }
         private void AddItemToList()
         {
-            string inputToDo = inputToDoTextbox.Text;
-            bool contains = toDoListbox.Items.Contains(inputToDo);
-            // bool contains = toDoList.Contains();// check if the list already contains the todo
-            if (inputToDoTextbox.Text != "") //contains && 
+            if (CheckTheInputTextbox())
             {
                 TodoItem newItem = new TodoItem();
                 toDoList.Add(newItem);
-                newItem.GetName = inputToDoTextbox.Text;
+                newItem.Name = inputToDoTextbox.Text;
+                toDoListbox.Items.Add(newItem.Name);
                 inputToDoTextbox.Text = "";
             }
             else
             {
-                inputToDoTextbox.Text = "nee";
+                inputToDoTextbox.Text = "";
             }
-
-            /* if (!toDoListbox.Items.Contains(inputToDoTextbox.Text) && inputToDoTextbox.Text != "")
-             {
-                 newItem.GetName = inputToDoTextbox.Text;
-                 toDoList.Add(newItem);
-                 inputToDoTextbox.Text = "";
-             }
-             else
-             {
-                 inputToDoTextbox.Text = "";
-             }*/
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            //Toevoegen van todo in listbox
             AddItemToList();
             EnableButtons();
         }
@@ -116,16 +111,17 @@ namespace TO_DO_part2
             if (toDoListbox.SelectedItem != null)
             {
                 EnableButtons();
-
                 TodoItem selectedToDo = (TodoItem)toDoListbox.SelectedItem;
                 FillInfo(selectedToDo);
             }
         }
         private void FillInfo(TodoItem selectedToDo)
         {
-            ItemTextbox.Text = selectedToDo.GetName;
+            ItemTextbox.Text = selectedToDo.Name;
+            //selectedToDo.DueDate = DuedateDatePicker.SelectedDate;
+            //ExtraInfoTextbox.Text = selectedToDo.GetSetInformation;
+            //toDoListbox.ItemsSource = toDoList;
 
-            toDoListbox.ItemsSource = toDoList;
         }
 
         private void StartTaskButton_Click(object sender, RoutedEventArgs e)
@@ -145,6 +141,7 @@ namespace TO_DO_part2
 
         private void SaveTaskButton_Click(object sender, RoutedEventArgs e)
         {
+            TodoItem selectedToDo = (TodoItem)toDoListbox.SelectedItem;
 
         }
     }

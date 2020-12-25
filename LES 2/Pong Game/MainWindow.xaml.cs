@@ -40,7 +40,6 @@ namespace Pong_Game
             MoveBall();
             MovePlayer1();                //PLAYER 1 laten bewegen met up en down keys
             MovePlayer2();                //player 2 laten bewegen met a en q keys
-            Timer();
         }
         private bool CollussionPlayer1()
         {
