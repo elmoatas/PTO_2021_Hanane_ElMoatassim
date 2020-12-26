@@ -22,13 +22,13 @@
                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontSize="18" />
         <Button Name="AddButton" Content="➕" HorizontalAlignment="Right" Margin="10" Grid.Row="0" Grid.Column="0"  Click="AddButton_Click"  />
         <ListBox Name="toDoListbox" Margin="10" Grid.Row="1" Grid.Column="0" SelectionChanged="ToDoListbox_SelectionChanged" />
-        <StackPanel Orientation="Horizontal" x:Name="specialButtonsStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Grid.Row="2" Grid.Column="0">
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Grid.Row="2" Grid.Column="0">
             <Button Name="fullUpButton" Content="⏫" Margin="5" Click="fullUpButton_Click" />
             <Button Name="upButton" Content="🔼" Margin="5" Click="UpButton_Click" />
             <Button Name="downButton" Content="🔽" Margin="5" Click="DownButton_Click" />
             <Button Name="fulldownButton" Content="⏬" Margin="5" Click="fulldownButton_Click" />
         </StackPanel>
-        <StackPanel  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="15" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+        <StackPanel x:Name="speciallabelStack1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="15" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
             <Label Name="Item" Content="Item" Margin="5" HorizontalContentAlignment="Right"/>
             <Label Name="DuedateLabel" Content="Duedate" Margin="5" HorizontalContentAlignment="Right"/>
             <Label Name="ColorLabel" Content="Color" Margin="5" HorizontalContentAlignment="Right"/>
@@ -37,8 +37,8 @@
             <Label Name="FinishedLabel" Content="Finished at" Margin="5" HorizontalContentAlignment="Right" />
             <Label Name="ExtraInfoLabel" Content="Extra info" Margin="5" HorizontalContentAlignment="Right" />
         </StackPanel>
-        <StackPanel  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="15" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
-            <TextBox x:Name="ItemTextbox" Margin="5" Height="25" />
+        <StackPanel  x:Name="speciallabelStack2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="15" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
+            <TextBox x:Name="ItemNameTextbox" Margin="5" Height="25" />
             <DatePicker x:Name="DuedateDatePicker" Margin="5" Height="25" />
             <ComboBox x:Name="ColorCombobox" Margin="5" />
             <Label x:Name="PrintStatusLabel" Content="-" Margin="5"/>

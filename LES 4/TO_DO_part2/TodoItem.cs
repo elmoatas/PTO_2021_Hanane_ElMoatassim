@@ -9,48 +9,98 @@ namespace TO_DO_part2
         private string name;
         private Brush color;
         private DateTime dueDate;
-        private DateTime startDate;
-        private DateTime finishDate;
+        private string startDate;
+        private string finishDate;
         private string info;
 
         //constructor
-    
         public TodoItem()
         {
+
+        }
+        public TodoItem(string name)
+        {
+            this.name = name;
         }
 
         //properties
-        public string Name { get; set; }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
 
-        public Brush Color { get; set; }
+        public Brush Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
 
-        public DateTime DueDate { get; set; }
-        public string Information { get; set; }
+        public DateTime DueDate
+        {
+            get { return dueDate; }
+            set { dueDate = value; }
+        }
+        public string Information
+        {
+            get { return info; }
+            set { info = value; }
+        }
 
-        public DateTime StartDate
+        public string StartDate
         {
             get { return startDate; }
         }
-        public DateTime FinishDate
+        public string FinishDate
         {
             get { return finishDate; }
         }
 
         //methodes
-
-        public void Start()
+        public void Start(bool buttonPressed)
         {
+            if (buttonPressed)
+            {
+                startDate = DateTime.UtcNow.ToString();
+            }
+            else
+            {
+                startDate = "-";
+            }
 
         }
-        public void Stop()
+        public void Stop(bool buttonPressed)
         {
-
+            if (buttonPressed)
+            {
+                finishDate = DateTime.UtcNow.ToString();
+            }
+            else
+            {
+                startDate = "-";
+            }
         }
         public string GetState()
         {
             string state = "";
+            if (startDate == null)
+            {
+                state = "new - to do";
+
+            }
+            else if (finishDate != null)
+            {
+                state = "done";
+            }
+            else if (finishDate == null && StartDate != null)
+            {
+                state = " in progress";
+            }
             return state;
         }
-
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

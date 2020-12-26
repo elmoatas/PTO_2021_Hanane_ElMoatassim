@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -10,22 +10,33 @@ namespace TO_DO_part2
     /// </summary>
     public partial class MainWindow : Window
     {
-        BindingList<TodoItem> toDoList = new BindingList<TodoItem>();
-
+        List<TodoItem> toDoList = new List<TodoItem>();
+        bool startButtonPressed = false;
+        bool finishedButtonPressed = false;
         public MainWindow()
         {
             InitializeComponent();
-            EnableButtons();
-
-            // toDoListbox.ItemsSource = toDoList;
+            UpdatUI();
+            PrintFinishedLabel.Content = "-";
+            PrintStartedLabel.Content = "-";
         }
-        private void EnableButtons()
+        private void UpdatUI()
         {
             downButton.IsEnabled = toDoListbox.SelectedIndex + 1 < toDoListbox.Items.Count;
             upButton.IsEnabled = toDoListbox.SelectedIndex > 0;
             fulldownButton.IsEnabled = toDoListbox.SelectedIndex + 1 < toDoListbox.Items.Count;
             fullUpButton.IsEnabled = toDoListbox.SelectedIndex > 0;
             AddButton.IsEnabled = inputToDoTextbox.Text != "";
+            if (toDoListbox.SelectedIndex != -1)
+            {
+                speciallabelStack1.Visibility = Visibility.Visible;
+                speciallabelStack2.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                speciallabelStack1.Visibility = Visibility.Hidden;
+                speciallabelStack2.Visibility = Visibility.Hidden;
+            }
         }
         private bool CheckTheInputTextbox()
         {
@@ -40,10 +51,8 @@ namespace TO_DO_part2
         {
             if (CheckTheInputTextbox())
             {
-                TodoItem newItem = new TodoItem();
-                toDoList.Add(newItem);
-                newItem.Name = inputToDoTextbox.Text;
-                toDoListbox.Items.Add(newItem.Name);
+                TodoItem newItem = new TodoItem(inputToDoTextbox.Text);
+                toDoListbox.Items.Add(newItem);
                 inputToDoTextbox.Text = "";
             }
             else
@@ -54,7 +63,7 @@ namespace TO_DO_part2
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             AddItemToList();
-            EnableButtons();
+            UpdatUI();
         }
         private void InputToDoTextbox_KeyUp(object sender, KeyEventArgs e)
         {
@@ -62,7 +71,7 @@ namespace TO_DO_part2
             {
                 AddItemToList();
             }
-            EnableButtons();
+            UpdatUI();
         }
         private void GoUpOrGoDown(int upOrDown)
         {
@@ -78,7 +87,7 @@ namespace TO_DO_part2
             {
                 GoUpOrGoDown(-1);
             }
-            EnableButtons();
+            UpdatUI();
         }
 
         private void DownButton_Click(object sender, RoutedEventArgs e)
@@ -87,7 +96,7 @@ namespace TO_DO_part2
             {
                 GoUpOrGoDown(1);
             }
-            EnableButtons();
+            UpdatUI();
         }
         private void FullUpDown(int placementOfItem)
         {
@@ -95,8 +104,6 @@ namespace TO_DO_part2
             toDoListbox.Items.Remove(selectedItem);
             toDoListbox.Items.Insert(placementOfItem, selectedItem);
             toDoListbox.SelectedIndex = placementOfItem;
-            upButton.IsEnabled = false;
-            fullUpButton.IsEnabled = false;
         }
         private void fullUpButton_Click(object sender, RoutedEventArgs e)
         {
@@ -110,28 +117,47 @@ namespace TO_DO_part2
         {
             if (toDoListbox.SelectedItem != null)
             {
-                EnableButtons();
-                TodoItem selectedToDo = (TodoItem)toDoListbox.SelectedItem;
-                FillInfo(selectedToDo);
+                UpdatUI();
+                TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+                FillInInfo(selected);
             }
         }
-        private void FillInfo(TodoItem selectedToDo)
+        private void FillInInfo(TodoItem selected)
         {
-            ItemTextbox.Text = selectedToDo.Name;
-            //selectedToDo.DueDate = DuedateDatePicker.SelectedDate;
-            //ExtraInfoTextbox.Text = selectedToDo.GetSetInformation;
-            //toDoListbox.ItemsSource = toDoList;
-
+            //TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            ItemNameTextbox.Text = selected.Name;
+            DuedateDatePicker.SelectedDate = selected.DueDate;
+            //"ColorCombobox"
+            PrintStatusLabel.Content = selected.GetState();
+            PrintStartedLabel.Content = selected.StartDate;
+            PrintFinishedLabel.Content = selected.FinishDate;
+            ExtraInfoTextbox.Text = selected.Information;
+        }
+        private void SaveInformation(TodoItem selected)
+        {
+            //TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            selected.Name = ItemNameTextbox.Text;
+            selected.DueDate = DuedateDatePicker.SelectedDate.Value;
+            //selected.Color
+            selected.Information = ExtraInfoTextbox.Text;
         }
 
         private void StartTaskButton_Click(object sender, RoutedEventArgs e)
         {
-
+            startButtonPressed = true;
+            TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            selected.Start(startButtonPressed);
+            //PrintStartedLabel.Content = selected.StartDate.ToString();
+            FillInInfo(selected);
         }
 
         private void FinishTaskButton_Click(object sender, RoutedEventArgs e)
         {
-
+            finishedButtonPressed = true;
+            TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            selected.Stop(finishedButtonPressed);
+            //PrintFinishedLabel.Content = selected.FinishDate;
+            FillInInfo(selected);
         }
 
         private void DeleteTaskButton_Click(object sender, RoutedEventArgs e)
@@ -141,8 +167,8 @@ namespace TO_DO_part2
 
         private void SaveTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            TodoItem selectedToDo = (TodoItem)toDoListbox.SelectedItem;
-
+            TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            SaveInformation(selected);
         }
     }
 }
