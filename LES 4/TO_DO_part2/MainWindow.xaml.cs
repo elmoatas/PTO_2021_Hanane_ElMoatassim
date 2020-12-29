@@ -12,6 +12,7 @@ namespace TO_DO_part2
     {
         bool startButtonPressed = false;
         bool finishedButtonPressed = false;
+      
         public MainWindow()
         {
             InitializeComponent();
@@ -49,8 +50,10 @@ namespace TO_DO_part2
         {
             if (CheckTheInputTextbox())
             {
+                ListBoxItem todos = new ListBoxItem();
                 TodoItem newItem = new TodoItem(inputToDoTextbox.Text);
-                toDoListbox.Items.Add(newItem);
+                todos.Content = newItem;
+                toDoListbox.Items.Add(todos);
                 inputToDoTextbox.Text = "";
             }
             else
@@ -116,9 +119,10 @@ namespace TO_DO_part2
             if (toDoListbox.SelectedItem != null)
             {
                 UpdatUI();
-                TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+                //TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+                TodoItem selected = (TodoItem)((ListBoxItem)toDoListbox.SelectedItem).Content;
                 FillInInfo(selected);
-                ((ListBoxItem)toDoListbox.SelectedItem).Background = (SolidColorBrush)Brushes.Black;
+                
             }
         }
         private void FillInInfo(TodoItem selected)
@@ -139,12 +143,14 @@ namespace TO_DO_part2
             selected.GetColor(ColorCombobox.SelectedIndex);
             selected.IndexComboBoxItem = ColorCombobox.SelectedIndex;
             selected.Information = ExtraInfoTextbox.Text;
+            ((ListBoxItem)toDoListbox.SelectedItem).Background = (SolidColorBrush)selected.Color;
         }
 
         private void StartTaskButton_Click(object sender, RoutedEventArgs e)
         {
             startButtonPressed = true;
-            TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            // TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            TodoItem selected = (TodoItem)((ListBoxItem)toDoListbox.SelectedItem).Content;
             selected.Start(startButtonPressed);
             FillInInfo(selected);
             FinishTaskButton.IsEnabled = true;
@@ -153,20 +159,23 @@ namespace TO_DO_part2
         private void FinishTaskButton_Click(object sender, RoutedEventArgs e)
         {
             finishedButtonPressed = true;
-            TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            // TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            TodoItem selected = (TodoItem)((ListBoxItem)toDoListbox.SelectedItem).Content;
             selected.Stop(finishedButtonPressed);
             FillInInfo(selected);
         }
 
         private void DeleteTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            //TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            TodoItem selected = (TodoItem)((ListBoxItem)toDoListbox.SelectedItem).Content;
             toDoListbox.Items.Remove(selected);
         }
 
         private void SaveTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            //TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            TodoItem selected = (TodoItem)((ListBoxItem)toDoListbox.SelectedItem).Content;
             SaveInformation(selected);
         }
     }
