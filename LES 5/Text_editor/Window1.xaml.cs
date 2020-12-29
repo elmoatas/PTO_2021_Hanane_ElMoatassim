@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Text_editor
 {
@@ -17,26 +9,38 @@ namespace Text_editor
     /// </summary>
     public partial class Window1 : Window
     {
-        private string inputText;
-        public string InputText { get => inputText; set => inputText = value; }
-       
-        public Window1(string inputText)
+        private string path;
+        public string Path1 { get => path; set => path = value; }
+        public Window1(string path)
         {
             InitializeComponent();
-            this.inputText = inputText;
-            ShowText();
-        }
-        private void ShowText()
-        {
-            inputTextBox.Text = inputText;
+            StreamReader(path);
+            this.path = path;
         }
 
-        private void NoteTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void StreamReader(string path)
         {
-            if (e.Key == Key.Enter)
+            StreamReader inputStream = File.OpenText(path);
+            string line = inputStream.ReadLine();
+            while (line != null)
             {
-                inputTextBox.Text += Environment.NewLine; 
+                inputTextBox.AppendText(line);
+                inputTextBox.AppendText(Environment.NewLine);
+                line = inputStream.ReadLine();
             }
+            inputStream.Close();
+        }
+
+        private void Write(string path)
+        {
+            StreamWriter outputStream = File.CreateText(path);
+            outputStream.WriteLine(inputTextBox.Text);
+            outputStream.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Write(Path1);
         }
     }
 }

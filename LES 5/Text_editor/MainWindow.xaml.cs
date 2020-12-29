@@ -14,6 +14,7 @@ namespace Text_editor
     {
         string selectedPath;
         string path;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -21,10 +22,8 @@ namespace Text_editor
 
         private void StreamWriter(string path)
         {
-
-
             StreamWriter streamWriter = new StreamWriter(path);
-            streamWriter.WriteLine("Hello World2!");
+            streamWriter.WriteLine();
             streamWriter.Close();
         }
 
@@ -78,32 +77,16 @@ namespace Text_editor
         private void filesListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             path = filesListBox.SelectedItem.ToString();
-            OpenNewWindow(StreamReader(path));
+            OpenNewWindow(path);
+
         }
 
         //new window
-        private void OpenNewWindow(string inputText)
+        private void OpenNewWindow(string pathName)
         {
-            Window1 windowTwo = new Window1(inputText);
-            windowTwo.Show();
+            Window1 windowTwo = new Window1(pathName);
+            windowTwo.Show();      
         }
-
-        private string StreamReader(string path)
-        {
-            // open streamreader
-            StreamReader streamReader = new StreamReader(path);
-
-            // bestand lijn per lijn inlezen
-            string line = streamReader.ReadLine();
-            while (line != null)
-            {
-                line = streamReader.ReadLine();
-            }
-            return line;
-
-            // sluit streamreader
-            //streamReader.Close();
-
-        }
+      
     }
 }
