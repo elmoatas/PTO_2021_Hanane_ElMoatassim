@@ -11,11 +11,11 @@
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
                 <Button x:Name="pathButton" Margin="5" DockPanel.Dock="Right" Click="pathButton_Click">Choose path</Button>
-                <Label x:Name="pathLabel" Margin="5">Path</Label>
+                <Label x:Name="pathLabel" Margin="5" Content=""/>
             </DockPanel>
             <DockPanel DockPanel.Dock="Bottom">
                 <Button x:Name="addButton" DockPanel.Dock="Right" Margin="5" Click="addButton_Click">Add</Button>
-                <TextBox x:Name="fileNameTexBox" Margin="5"/>
+                <TextBox x:Name="fileNameTextBox" Margin="5"/>
             </DockPanel>
             <ListBox x:Name="filesListBox" Margin="5" SelectionChanged="filesListBox_SelectionChanged"/>
         </DockPanel>
