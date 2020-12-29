@@ -136,7 +136,7 @@ namespace ToDoApplicatie
 
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {
-            // ListBoxItem selected = (ListBoxItem)toDoListbox.SelectedItem;
+            //ListBoxItem selected = (ListBoxItem)toDoListbox.SelectedItem;
             //selected.Background = Brushes.Red;
         }
 
