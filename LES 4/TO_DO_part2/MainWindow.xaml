@@ -39,8 +39,12 @@
         </StackPanel>
         <StackPanel  x:Name="speciallabelStack2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="15" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
             <TextBox x:Name="ItemNameTextbox" Margin="5" Height="25" />
-            <DatePicker x:Name="DuedateDatePicker" Margin="5" Height="25" />
-            <ComboBox x:Name="ColorCombobox" Margin="5" />
+            <DatePicker x:Name="DuedateDatePicker" Margin="5" Height="25" DisplayDate="2020-12-26" />
+            <ComboBox x:Name="ColorCombobox" Margin="5" >
+                <ComboBoxItem x:Name="RedComboBoxItem" Content="Red" Background="#FFD35E5E"/>
+                <ComboBoxItem x:Name="YellowComboBoxItem" Content="Yellow" Background="#FFE7DB78"/>
+                <ComboBoxItem x:Name="greenComboBoxItem" Content="Green" Background="#FF69BC5C"/>
+            </ComboBox>
             <Label x:Name="PrintStatusLabel" Content="-" Margin="5"/>
             <Label Name="PrintStartedLabel" Content="-" Margin="5" />
             <Label Name="PrintFinishedLabel" Content="-" Margin="5"/>

@@ -8,6 +8,7 @@ namespace TO_DO_part2
         //private members
         private string name;
         private Brush color;
+        private int SelectedComboBoxItemColor;
         private DateTime dueDate;
         private string startDate;
         private string finishDate;
@@ -46,7 +47,11 @@ namespace TO_DO_part2
             get { return info; }
             set { info = value; }
         }
-
+        public int IndexComboBoxItem
+        {
+            get { return SelectedComboBoxItemColor; }
+            set { SelectedComboBoxItemColor = value; }
+        }
         public string StartDate
         {
             get { return startDate; }
@@ -65,7 +70,7 @@ namespace TO_DO_part2
             }
             else
             {
-                startDate = "-";
+                startDate = "---";
             }
 
         }
@@ -77,7 +82,7 @@ namespace TO_DO_part2
             }
             else
             {
-                startDate = "-";
+                startDate = "---";
             }
         }
         public string GetState()
@@ -97,6 +102,16 @@ namespace TO_DO_part2
                 state = " in progress";
             }
             return state;
+        }
+        public Brush GetColor(int index)
+        {
+            switch (index)
+            {
+                case 0: color = Brushes.Red; break;
+                case 1: color = Brushes.Yellow; ; break;
+                case 2: color = Brushes.Green; break;
+            }
+            return color;
         }
         public override string ToString()
         {

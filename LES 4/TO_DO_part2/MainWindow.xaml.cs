@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace TO_DO_part2
 {
@@ -10,15 +10,13 @@ namespace TO_DO_part2
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<TodoItem> toDoList = new List<TodoItem>();
         bool startButtonPressed = false;
         bool finishedButtonPressed = false;
         public MainWindow()
         {
             InitializeComponent();
             UpdatUI();
-            PrintFinishedLabel.Content = "-";
-            PrintStartedLabel.Content = "-";
+            FinishTaskButton.IsEnabled = false;
         }
         private void UpdatUI()
         {
@@ -120,14 +118,15 @@ namespace TO_DO_part2
                 UpdatUI();
                 TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
                 FillInInfo(selected);
+                ((ListBoxItem)toDoListbox.SelectedItem).Background = (SolidColorBrush)Brushes.Black;
             }
         }
         private void FillInInfo(TodoItem selected)
         {
-            //TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
             ItemNameTextbox.Text = selected.Name;
             DuedateDatePicker.SelectedDate = selected.DueDate;
             //"ColorCombobox"
+            ColorCombobox.SelectedIndex = selected.IndexComboBoxItem;
             PrintStatusLabel.Content = selected.GetState();
             PrintStartedLabel.Content = selected.StartDate;
             PrintFinishedLabel.Content = selected.FinishDate;
@@ -135,10 +134,10 @@ namespace TO_DO_part2
         }
         private void SaveInformation(TodoItem selected)
         {
-            //TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
             selected.Name = ItemNameTextbox.Text;
             selected.DueDate = DuedateDatePicker.SelectedDate.Value;
-            //selected.Color
+            selected.GetColor(ColorCombobox.SelectedIndex);
+            selected.IndexComboBoxItem = ColorCombobox.SelectedIndex;
             selected.Information = ExtraInfoTextbox.Text;
         }
 
@@ -147,8 +146,8 @@ namespace TO_DO_part2
             startButtonPressed = true;
             TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
             selected.Start(startButtonPressed);
-            //PrintStartedLabel.Content = selected.StartDate.ToString();
             FillInInfo(selected);
+            FinishTaskButton.IsEnabled = true;
         }
 
         private void FinishTaskButton_Click(object sender, RoutedEventArgs e)
@@ -156,13 +155,13 @@ namespace TO_DO_part2
             finishedButtonPressed = true;
             TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
             selected.Stop(finishedButtonPressed);
-            //PrintFinishedLabel.Content = selected.FinishDate;
             FillInInfo(selected);
         }
 
         private void DeleteTaskButton_Click(object sender, RoutedEventArgs e)
         {
-
+            TodoItem selected = (TodoItem)toDoListbox.SelectedItem;
+            toDoListbox.Items.Remove(selected);
         }
 
         private void SaveTaskButton_Click(object sender, RoutedEventArgs e)
