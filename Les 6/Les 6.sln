@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Case", "Case\Case.csproj", "{8BA0539A-F90E-4928-A546-090BFB8FE23A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Case", "Case\Case.csproj", "{8BA0539A-F90E-4928-A546-090BFB8FE23A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spaarrekening", "Spaarrekening\Spaarrekening.csproj", "{52BCAE3F-F757-4B3A-A082-8F1286B7A584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spaarrekening", "Spaarrekening\Spaarrekening.csproj", "{52BCAE3F-F757-4B3A-A082-8F1286B7A584}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticketverkoop", "Ticketverkoop\Ticketverkoop.csproj", "{5E9F3711-8899-40A5-BB02-F22A531C9A46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{52BCAE3F-F757-4B3A-A082-8F1286B7A584}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52BCAE3F-F757-4B3A-A082-8F1286B7A584}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52BCAE3F-F757-4B3A-A082-8F1286B7A584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E9F3711-8899-40A5-BB02-F22A531C9A46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9F3711-8899-40A5-BB02-F22A531C9A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9F3711-8899-40A5-BB02-F22A531C9A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9F3711-8899-40A5-BB02-F22A531C9A46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
