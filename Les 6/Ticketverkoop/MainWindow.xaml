@@ -5,39 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ticketverkoop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="318.2">
+        Title="🚆TicketVerkoop" Height="450" Width="350" Background="#FFF0ECF1">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" VerticalAlignment="Stretch" >
-            <GroupBox Header="Traject"  Margin="10" VerticalAlignment="Stretch" >
-                <DockPanel>
-                    <Label x:Name="FromLabel" DockPanel.Dock="Top" Content="From"  HorizontalAlignment="Stretch"/>
-                    <TextBox x:Name="FromTextBox" DockPanel.Dock="Top"  KeyDown="FromTextBox_KeyDown" HorizontalAlignment="Stretch"/>
-                    <Label x:Name="ToLabel" DockPanel.Dock="Top" Content="To" HorizontalAlignment="Stretch"/>
-                    <TextBox x:Name="ToTextBox" DockPanel.Dock="Top" HorizontalAlignment="Stretch" KeyDown="ToTextBox_KeyDown" />
-                    <ListBox x:Name="DestinationListBox" DockPanel.Dock="top" SelectionChanged="DestinationListBox_SelectionChanged" />
-                </DockPanel>
+        <Label Content="🚆 Trein Ticket Boeken 🚆" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <DockPanel Grid.Row="1" >
+            <GroupBox Header="Traject" Margin="10" Background="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="FromLabel" Content="From" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <ComboBox x:Name="FromComboBox" Grid.Row="0" Grid.Column="1"  VerticalAlignment="Center" SelectionChanged="FromComboBox_SelectionChanged" />
+                    <Label x:Name="ToLabel" Content="To" Grid.Row="1" Grid.Column="0"  VerticalAlignment="Center" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="ToComboBox"  Grid.Row="1" Grid.Column="1"  VerticalAlignment="Center" SelectionChanged="ToComboBox_SelectionChanged" />
+                    <Button x:Name="SwitchDestinationButton" Content="🔃" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
             </GroupBox>
         </DockPanel>
-        <DockPanel Grid.Row="1" LastChildFill="True">
-            <GroupBox Header="Datum" Grid.Row="0" Margin="10" >
-                <DockPanel>
-                    <DockPanel DockPanel.Dock="Left" HorizontalAlignment="Stretch" LastChildFill="True">
-                        <RadioButton Content="Enkel Reis" HorizontalAlignment="Stretch" Width="Auto"/>
-                        <DatePicker x:Name="FromDatepicker"/>
-                        <Label x:Name="PassengersLabel" Content="Aantal Reizigers"/>
+        <DockPanel Grid.Row="2">
+            <GroupBox Header="Extra Informatie" Margin="10">
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton x:Name="OneWayRadiobutton" GroupName="Tripchoice" Content="Enkel Reis" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Checked="OneWayRadiobutton_Checked" />
+                    <RadioButton x:Name="RoundWayRadioButton" GroupName="Tripchoice" Content="Heen en terug Reis" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Checked="RoundWayRadioButton_Checked"/>
+                    <DatePicker x:Name="FromDatepicker"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5" />
+                    <DatePicker x:Name="ToDatepicker"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5"/>
+                    <DockPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" >
+                        <Label x:Name="AdultPassengerLabel" Content="Volwassen ticket" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="120"/>
+                        <Button x:Name="AdultNumberUpButton" Content="🔼" Margin="5" Click="AdultNumberUpButton_Click" />
+                        <Label x:Name="AdultNumberLabel" Content="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Button x:Name="AdultNumberdownButton" Content="🔽" Margin="5" Click="AdultNumberdownButton_Click"/>
                     </DockPanel>
-                    <DockPanel  DockPanel.Dock="Right" HorizontalAlignment="Stretch">
-                        <RadioButton Content="Heen en terug Reis" HorizontalAlignment="Stretch" Width="Auto"/>
-                        <DatePicker x:Name="ToDatepicker"/>
-                        <TextBox x:Name="PassengersTextBox"/>
+
+                    <DockPanel Grid.Row="3" Grid.ColumnSpan="2"  HorizontalAlignment="Left" >
+                        <Label x:Name="KidPassengersLabel" Content="Kinder/baby ticket" Grid.Row="3"   Margin="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="120"/>
+                        <Button x:Name="KidNumberUpButton" Content="🔼" Margin="5,5,5,4.6" Click="KidNumberUpButton_Click"/>
+                        <Label x:Name="KidNumberLabel" Content="0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                        <Button x:Name="KidNumberdownButton" Margin="5" Content="🔽"  Click="KidNumberdownButton_Click" />
                     </DockPanel>
-                </DockPanel>
+                </Grid>
             </GroupBox>
+        </DockPanel>
+        <DockPanel Grid.Row="3" Margin="10" VerticalAlignment="Stretch">
+            <Button x:Name="CalculatePriceButton" Content="Bereken de prijs" Width="120" Margin="5" Click="CalculatePriceButton_Click"/>
+            <Button x:Name="PrintTicket" Content="Print Ticket" Margin="5" Width="120"/>
         </DockPanel>
     </Grid>
 </Window>

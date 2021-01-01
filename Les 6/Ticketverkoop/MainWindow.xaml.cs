@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace Ticketverkoop
 {
@@ -9,85 +9,128 @@ namespace Ticketverkoop
     /// </summary>
     public partial class MainWindow : Window
     {
-        double totalPrice;
-        double priceTicket;
-        string destinationA;
-        string destinationB;
-        private List<string> DestinationsList = new List<string>();
-
-
-
+        double totalPrice = 0;
+         int NumberOfAdultPassengers = 1;
+        int NumberOfKidPassengers = 0;
+        TicketInformation ticket = new TicketInformation();
 
         public MainWindow()
         {
             InitializeComponent();
-            AddDestinationsToList();
+            UpdateUI();
+
         }
-        private void AddDestinationsToList()
+        private void UpdateUI()
         {
-            DestinationsList.Add("AALST");
-            DestinationsList.Add("BRUSSEL");
-            DestinationsList.Add("LEUVEN");
-            DestinationsList.Add("GENT");
+            OneWayRadiobutton.IsChecked = true;
+            AddDestinationToCombobox();
+            HideRoundTripDatePicker();
         }
-        private void CalculatePriceOfTraject()
+
+ 
+        private void AddDestinationToCombobox()
         {
-            // AAL-BRU = 5 euro
-            // AAL-LEUV = 8 euro
-            // AAL-Gent = 5 euro
-            // BRU -LEUV = 4 euro
-            // BRU - GENT = 10 euro
-            // GENT - LEUV = 12 euro
-            //heen en terug = *2
-        }
-        private void CheckIfPosible()
-        {
-            if (FromTextBox.Text == ToTextBox.Text)
+            FromComboBox.ItemsSource = ticket.DestinationList;
+            ToComboBox.ItemsSource = ticket.DestinationList;
+
+            if (FromComboBox.SelectedItem != null)
             {
-                ToTextBox.Background = Brushes.Red;
-                FromTextBox.Background = Brushes.Red;
-            }
-        }
-        private void hideListbox()
-        {
-            DestinationListBox.Visibility = Visibility.Hidden;
-        }
-
-        private void DestinationListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            //FromTextBox.Text = DestinationListBox.SelectedItem.ToString();
-            hideListbox();
-        }
-
-        private void FromTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            AutoCompleteDestination(FromTextBox.Text);
-
-            CheckIfPosible();
-        }
-
-        private void ToTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            AutoCompleteDestination(ToTextBox.Text);
-            CheckIfPosible();
-        }
-        private void AutoCompleteDestination(string textboxUsed)
-        {
-            DestinationListBox.Items.Clear();
-            if (textboxUsed.Length == 0)
-            {
-                hideListbox();
-                return;
-            }
-            foreach (string destination in DestinationsList)
-            {
-                if (destination.StartsWith(textboxUsed.ToUpper()))
+                ComboBoxItem selection = (ComboBoxItem)FromComboBox.SelectedItem;
+                string selectedDestination = selection.Content.ToString();
+                foreach (string destination in ticket.DestinationList)
                 {
-                    DestinationListBox.Items.Add(destination);
-                    DestinationListBox.Visibility = Visibility.Visible;
-                }
+                    if (selectedDestination != destination)
+                    {
 
+                    }
+                }
             }
+        }
+
+
+        private void CalculateTotalPrice()
+        {
+            totalPrice = ticket.TotalPrice;
+            if (RoundWayRadioButton.IsChecked == true)
+            {
+                 totalPrice*= 2;
+            }
+        }
+        private void HideRoundTripDatePicker()
+        {
+            if (RoundWayRadioButton.IsChecked == true)
+            {
+                ToDatepicker.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ToDatepicker.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void OneWayRadiobutton_Checked(object sender, RoutedEventArgs e)
+        {
+            HideRoundTripDatePicker();
+        }
+
+        private void RoundWayRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            HideRoundTripDatePicker();
+        }
+
+        private void AdultNumberUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            NumberOfAdultPassengers += 1;
+            AdultNumberLabel.Content = NumberOfAdultPassengers;
+
+        }
+
+        private void AdultNumberdownButton_Click(object sender, RoutedEventArgs e)
+        {
+            NumberOfAdultPassengers -= 1;
+            AdultNumberLabel.Content = NumberOfAdultPassengers;
+            if (NumberOfAdultPassengers <= 1)
+            {
+                AdultNumberdownButton.IsEnabled = false;
+            }
+        }
+
+        private void KidNumberUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            NumberOfKidPassengers += 1;
+            KidNumberLabel.Content = NumberOfKidPassengers;
+        }
+
+        private void KidNumberdownButton_Click(object sender, RoutedEventArgs e)
+        {
+            NumberOfKidPassengers -= 1;
+            KidNumberLabel.Content = NumberOfKidPassengers;
+            if (NumberOfKidPassengers <= 0)
+            {
+                KidNumberdownButton.IsEnabled = false;
+            }
+        }
+
+        private void FromComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FromComboBox.SelectedItem != null)
+            {
+                ticket.DestinationA= FromComboBox.SelectedItem.ToString();
+            }
+        }
+
+        private void ToComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ToComboBox.SelectedItem != null)
+            {
+                ticket.DestinationB = ToComboBox.SelectedItem.ToString();
+            }
+        }
+
+        private void CalculatePriceButton_Click(object sender, RoutedEventArgs e)
+        {
+            CalculateTotalPrice();
+            MessageBox.Show($"Totaal prijs is {totalPrice} €.");
         }
     }
 }
