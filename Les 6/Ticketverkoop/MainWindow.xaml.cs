@@ -11,8 +11,6 @@ namespace Ticketverkoop
     {
         int NumberOfAdultPassengers = 1;
         int NumberOfKidPassengers = 0;
-        string destinationA;
-        string destinationB;
         bool roundwayTrip = false;
         string fromDatetime;
         string toDateTime;
@@ -76,6 +74,7 @@ namespace Ticketverkoop
         {
             HideRoundTripDatePicker();
             roundwayTrip = false;
+            toDateTime = "";
         }
 
         private void RoundWayRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -127,23 +126,20 @@ namespace Ticketverkoop
             if (FromComboBox.SelectedItem != null)
             {
                 ticket.DestinationA = FromComboBox.SelectedItem.ToString();
-                destinationA = FromComboBox.SelectedItem.ToString();
+                
             }
             if (ToComboBox.SelectedItem != null)
             {
                 ticket.DestinationB = ToComboBox.SelectedItem.ToString();
-                destinationB = ToComboBox.SelectedItem.ToString();
+              
             }
             //Opslaan van Heendatum en terugdatum
             fromDatetime = FromDatepicker.SelectedDate.Value.ToShortDateString();
-            if (roundwayTrip == true)
+            if (RoundWayRadioButton.IsChecked==true)
             {
                 toDateTime = ToDatepicker.SelectedDate.Value.ToShortDateString();
             }
-            else
-            {
-                toDateTime = "";
-            }
+         
             //Opslaan van aantal volwassenen en kinderen 
             ticket.NumberOfAdults = NumberOfAdultPassengers;
             ticket.NumberOfKids = NumberOfKidPassengers;
