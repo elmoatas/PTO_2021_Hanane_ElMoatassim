@@ -1,31 +1,60 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Ticketverkoop
 {
     /// <summary>
     /// Interaction logic for PrintTicket.xaml
     /// </summary>
-    public partial class PrintTicket : TicketInformation
+    public partial class PrintTicket : Window
     {
-        
-        private DateTime DepartureDate;
-        private DateTime ArivalDate;
-        public PrintTicket(string destinationA)
+        string destinationA;
+        string destinationB;
+        string fromDatetime;
+        string toDateTime;
+        int numberOfAdultPassengers;
+        int numberOfKidPassengers;
+        double totalPrice;
+
+        bool roundwayTrip;
+
+        public PrintTicket(string destinationA, string destinationB, bool roundwayTrip, string fromDatetime, string toDateTime,
+            int numberOfAdultPassengers, int numberOfKidPassengers, double totalPrice)
         {
             InitializeComponent();
-            trajectLabel.Content = destinationA;
+            this.roundwayTrip = roundwayTrip;
+            this.destinationA = destinationA;
+            this.destinationB = destinationB;
+            this.fromDatetime = fromDatetime;
+            this.toDateTime = toDateTime;
+            this.numberOfAdultPassengers = numberOfAdultPassengers;
+            this.numberOfKidPassengers = numberOfKidPassengers;
+            this.totalPrice = totalPrice;
+            PrintAll();
+        }
+        private string KindOfTicket()
+        {
+            string RoundwaytripString = "";
+            if (roundwayTrip)
+            {
+                RoundwaytripString = "Heen en Terug";
+            }
+            else
+            {
+                RoundwaytripString = "Enkel reis";
+            }
+            return RoundwaytripString;
+        }
+        private void PrintAll()
+        {
+            TypeOfTicketLabel.Content = KindOfTicket();
+            TrajectLabel.Content = $"{destinationA} - {destinationB}";
+            DateLabel.Content = $"{fromDatetime} - {toDateTime}";
+            NumberOfAdultsLabel.Content = $"{numberOfAdultPassengers} Volwassenen. ";
+            NumberOfKidssLabel.Content = $"{numberOfKidPassengers} Kinderen. ";
+            PriceLabel.Content = $" TotaalPrijs: {totalPrice}€";
+            CodeImage.Source = new BitmapImage(new Uri("barcode-1d.jpg", UriKind.RelativeOrAbsolute));
         }
     }
 }

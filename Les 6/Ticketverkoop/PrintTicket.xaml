@@ -7,7 +7,25 @@
         mc:Ignorable="d"
         Title="PrintTicket" Height="450" Width="323.2">
     <Grid>
-        <Label x:Name="trajectLabel" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Label Content="TREIN TICKET" Grid.Row="0" HorizontalAlignment="Left" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="TypeOfTicketLabel" Content="Heen en terug" Grid.Row="0" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontSize="16"/>
+        <Label x:Name="TrajectLabel" Content="AALST - LEUVEN" Grid.Row="1" FontSize="22" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label x:Name="DateLabel" Content="11/02/12 -10/01/13" Grid.Row="2" HorizontalAlignment="Stretch" FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label x:Name="NumberOfAdultsLabel" Content="3 volwassenen" Grid.Row="3" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Label x:Name="NumberOfKidssLabel" Content="1 kind" Grid.Row="4" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label x:Name="PriceLabel" Content="Totaal Prijs: 13€" Grid.Row="5" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+        <Image x:Name="CodeImage" Grid.Row="6"/>
 
     </Grid>
 </Window>

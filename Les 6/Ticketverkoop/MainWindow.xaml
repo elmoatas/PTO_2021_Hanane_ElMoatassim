@@ -27,9 +27,9 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="FromLabel" Content="From" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-                    <ComboBox x:Name="FromComboBox" Grid.Row="0" Grid.Column="1"  VerticalAlignment="Center" SelectionChanged="FromComboBox_SelectionChanged" />
+                    <ComboBox x:Name="FromComboBox" Grid.Row="0" Grid.Column="1"  VerticalAlignment="Center" SelectionChanged="FromComboBox_SelectionChanged"/>
                     <Label x:Name="ToLabel" Content="To" Grid.Row="1" Grid.Column="0"  VerticalAlignment="Center" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                    <ComboBox x:Name="ToComboBox"  Grid.Row="1" Grid.Column="1"  VerticalAlignment="Center" SelectionChanged="ToComboBox_SelectionChanged" />
+                    <ComboBox x:Name="ToComboBox"  Grid.Row="1" Grid.Column="1"  VerticalAlignment="Center" SelectionChanged="ToComboBox_SelectionChanged"  />
                     <Button x:Name="SwitchDestinationButton" Content="🔃" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
             </GroupBox>
@@ -49,8 +49,8 @@
                     </Grid.ColumnDefinitions>
                     <RadioButton x:Name="OneWayRadiobutton" GroupName="Tripchoice" Content="Enkel Reis" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Checked="OneWayRadiobutton_Checked" />
                     <RadioButton x:Name="RoundWayRadioButton" GroupName="Tripchoice" Content="Heen en terug Reis" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Checked="RoundWayRadioButton_Checked"/>
-                    <DatePicker x:Name="FromDatepicker"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5" />
-                    <DatePicker x:Name="ToDatepicker"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5"/>
+                    <DatePicker x:Name="FromDatepicker"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5" SelectedDateChanged="FromDatepicker_SelectedDateChanged"/>
+                    <DatePicker x:Name="ToDatepicker"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5" />
                     <DockPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" >
                         <Label x:Name="AdultPassengerLabel" Content="Volwassen ticket" Margin="5" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="120"/>
                         <Button x:Name="AdultNumberUpButton" Content="🔼" Margin="5" Click="AdultNumberUpButton_Click" />
@@ -69,7 +69,7 @@
         </DockPanel>
         <DockPanel Grid.Row="3" Margin="10" VerticalAlignment="Stretch">
             <Button x:Name="CalculatePriceButton" Content="Bereken de prijs" Width="120" Margin="5" Click="CalculatePriceButton_Click"/>
-            <Button x:Name="PrintTicket" Content="Print Ticket" Margin="5" Width="120"/>
+            <Button x:Name="PrintTicket" Content="Print Ticket" Margin="5" Width="120" Click="PrintTicket_Click"/>
         </DockPanel>
     </Grid>
 </Window>
