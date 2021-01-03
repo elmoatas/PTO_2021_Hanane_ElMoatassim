@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Poker
 {
@@ -23,6 +12,21 @@ namespace Poker
         public MainWindow()
         {
             InitializeComponent();
+                 }
+         public void ShowHand()
+        {
+            DealCards dealcard = new DealCards();
+            dealcard.Deal();
+            ImageCard1.Source = new BitmapImage(new Uri(dealcard.ImageUrl1, UriKind.RelativeOrAbsolute));
+            ImageCard2.Source = new BitmapImage(new Uri(dealcard.ImageUrl2, UriKind.RelativeOrAbsolute));
+            ImageCard3.Source = new BitmapImage(new Uri(dealcard.ImageUrl3, UriKind.RelativeOrAbsolute));
+            ImageCard4.Source = new BitmapImage(new Uri(dealcard.ImageUrl4, UriKind.RelativeOrAbsolute));
+            ImageCard5.Source = new BitmapImage(new Uri(dealcard.ImageUrl5, UriKind.RelativeOrAbsolute));
+        }
+
+        private void PullCardsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHand();
         }
     }
 }

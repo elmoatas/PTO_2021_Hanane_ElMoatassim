@@ -53,7 +53,10 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cards.cs" />
+    <Compile Include="DealCards.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +65,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="PackOfCards.cs" />
+    <Compile Include="PokerHands.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -92,6 +97,72 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageCards\10C.jpg" />
+    <Resource Include="ImageCards\10D.jpg" />
+    <Resource Include="ImageCards\10H.jpg" />
+    <Resource Include="ImageCards\10S.jpg" />
+    <Resource Include="ImageCards\2C.jpg" />
+    <Resource Include="ImageCards\2D.jpg" />
+    <Resource Include="ImageCards\2H.jpg" />
+    <Resource Include="ImageCards\2S.jpg" />
+    <Resource Include="ImageCards\3C.jpg" />
+    <Resource Include="ImageCards\3D.jpg" />
+    <Resource Include="ImageCards\3H.jpg" />
+    <Resource Include="ImageCards\3S.jpg" />
+    <Resource Include="ImageCards\4C.jpg" />
+    <Resource Include="ImageCards\4D.jpg" />
+    <Resource Include="ImageCards\4H.jpg" />
+    <Resource Include="ImageCards\4S.jpg" />
+    <Resource Include="ImageCards\5C.jpg" />
+    <Resource Include="ImageCards\5D.jpg" />
+    <Resource Include="ImageCards\5H.jpg" />
+    <Resource Include="ImageCards\5S.jpg" />
+    <Resource Include="ImageCards\6C.jpg" />
+    <Resource Include="ImageCards\6D.jpg" />
+    <Resource Include="ImageCards\6H.jpg" />
+    <Resource Include="ImageCards\6S.jpg" />
+    <Resource Include="ImageCards\7C.jpg" />
+    <Resource Include="ImageCards\7D.jpg" />
+    <Resource Include="ImageCards\7H.jpg" />
+    <Resource Include="ImageCards\7S.jpg" />
+    <Resource Include="ImageCards\8C.jpg" />
+    <Resource Include="ImageCards\8D.jpg" />
+    <Resource Include="ImageCards\8H.jpg" />
+    <Resource Include="ImageCards\8S.jpg" />
+    <Resource Include="ImageCards\9C.jpg" />
+    <Resource Include="ImageCards\9D.jpg" />
+    <Resource Include="ImageCards\9H.jpg" />
+    <Resource Include="ImageCards\9S.jpg" />
+    <Resource Include="ImageCards\AC.jpg" />
+    <Resource Include="ImageCards\aces.jpg" />
+    <Resource Include="ImageCards\AD.jpg" />
+    <Resource Include="ImageCards\AH.jpg" />
+    <Resource Include="ImageCards\AS.jpg" />
+    <Resource Include="ImageCards\back_cards-07.jpg" />
+    <Resource Include="ImageCards\blue_back.jpg" />
+    <Resource Include="ImageCards\Gray_back.jpg" />
+    <Resource Include="ImageCards\Green_back.jpg" />
+    <Resource Include="ImageCards\honor_clubs.jpg" />
+    <Resource Include="ImageCards\honor_diamond.jpg" />
+    <Resource Include="ImageCards\honor_heart-14.jpg" />
+    <Resource Include="ImageCards\honor_spade.jpg" />
+    <Resource Include="ImageCards\JC.jpg" />
+    <Resource Include="ImageCards\JD.jpg" />
+    <Resource Include="ImageCards\JH.jpg" />
+    <Resource Include="ImageCards\JS.jpg" />
+    <Resource Include="ImageCards\KC.jpg" />
+    <Resource Include="ImageCards\KD.jpg" />
+    <Resource Include="ImageCards\KH.jpg" />
+    <Resource Include="ImageCards\KS.jpg" />
+    <Resource Include="ImageCards\purple_back.jpg" />
+    <Resource Include="ImageCards\QC.jpg" />
+    <Resource Include="ImageCards\QD.jpg" />
+    <Resource Include="ImageCards\QH.jpg" />
+    <Resource Include="ImageCards\QS.jpg" />
+    <Resource Include="ImageCards\Red_back.jpg" />
+    <Resource Include="ImageCards\Yellow_back.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

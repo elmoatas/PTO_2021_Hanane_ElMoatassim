@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Poker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="#FF2D441E">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="PullCardsButton" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Content="Trek Kaarten" Click="PullCardsButton_Click" Background="#FF685E5E" Foreground="White" FontSize="36" />
+        <Label x:Name="PulledCardsLabel"  Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="0" Content="Getrokken kaarten" Background="{x:Null}" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Image x:Name="ImageCard1" Grid.Column="1" Grid.Row="1" Margin="5" Stretch="Uniform" Source="C:\Users\hanan\OneDrive\Documenten\GitHub\PTO_DEMO_2021\Les 7\Les 7\Poker\Gray_back.jpg"/>
+        <Image x:Name="ImageCard2" Grid.Column="2" Grid.Row="1" Margin="5" Stretch="Uniform" Source="C:\Users\hanan\OneDrive\Documenten\GitHub\PTO_DEMO_2021\Les 7\Les 7\Poker\Gray_back.jpg" />
+        <Image x:Name="ImageCard3" Grid.Column="3" Grid.Row="1" Margin="5" Stretch="Uniform" Source="C:\Users\hanan\OneDrive\Documenten\GitHub\PTO_DEMO_2021\Les 7\Les 7\Poker\Gray_back.jpg" />
+        <Image x:Name="ImageCard4" Grid.Column="4" Grid.Row="1" Margin="5" Stretch="Uniform" Source="C:\Users\hanan\OneDrive\Documenten\GitHub\PTO_DEMO_2021\Les 7\Les 7\Poker\Gray_back.jpg" />
+        <Image x:Name="ImageCard5" Grid.Column="5" Grid.Row="1" Margin="5" Stretch="Uniform" Source="C:\Users\hanan\OneDrive\Documenten\GitHub\PTO_DEMO_2021\Les 7\Les 7\Poker\Gray_back.jpg" />
     </Grid>
 </Window>
