@@ -16,6 +16,7 @@ namespace Oefening_Katten_en_honden
         {
 
         }
+        //PROPERTIES
         public double Height { get => height; set => height = value; }
         public double Weight { get => weight; set => weight = value; }
         public double Length { get => length; set => length = value; }

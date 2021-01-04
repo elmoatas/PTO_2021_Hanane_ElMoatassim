@@ -4,14 +4,14 @@
     class Cards
     {
         //ENUM
-        public enum Suit
+        internal enum Suit
         {
             Hearts,
             Clubs,
             Spades,
             Diamonds
         }
-        public enum Value
+       internal enum Value
         {
             Two = 2,
             Three,
@@ -28,17 +28,17 @@
             Ace
 
         }
-        
+
         //PRIVATE MEMBERS
-        
+
         //CONSTRUCTOR
-        
+     
         //PROPERTIES
-        public Suit MySuit { get; set; }
-        public Value MyValue { get; set; }
+        internal Suit MySuit { get; set; }
+        internal Value MyValue { get; set; }
         
         //METHODES
-        public static string CardSuit(Cards card)
+        internal static string CardSuit(Cards card)
         {
             string cardSuit = "";
 
@@ -61,7 +61,7 @@
             }
             return cardSuit;
         }
-        public static string CardValue(Cards card)
+        internal static string CardValue(Cards card)
         {
             string cardValue = "";
             switch (card.MyValue)

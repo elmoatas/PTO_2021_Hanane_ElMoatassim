@@ -9,16 +9,16 @@ namespace Poker
         private Cards[] packOfCardArray;
 
         //CONSTRUCTOR 
-        public PackOfCards()
+        internal PackOfCards()
         {
             packOfCardArray = new Cards[totalNumberOfCards];
         }
-        
+
         //PROPERTIES
-        public Cards[] GetaPackOfCard { get { return packOfCardArray; } } //get current pack of card 
+        internal Cards[] GetaPackOfCard { get { return packOfCardArray; } } //get current pack of card 
 
         //METHODES
-        public void CreateAndShufflePackOfCards()  
+        internal void CreateAndShufflePackOfCards()  
         {
             //create deck of 52 cards : 13 values, with 4 suitS
             int i = 0;
@@ -34,7 +34,7 @@ namespace Poker
 
             ShuffleCards(); //deze kaarten shufflen
         }
-        private void ShuffleCards()
+        internal void ShuffleCards()
         {
             Random rnd = new Random();
             Cards card;

@@ -9,20 +9,21 @@
         string imageUrl3;
         string imageUrl4;
         string imageUrl5;
-        
+
         //CONSTRUCTOR
-        public DealCards()
+        internal DealCards()
         {
             playerHand = new Cards[5];
         }
         
         //PROPERTIES
-        public string ImageUrl1 { get => imageUrl1; set => imageUrl1 = value; }
-        public string ImageUrl2 { get => imageUrl2; set => imageUrl2 = value; }
-        public string ImageUrl3 { get => imageUrl3; set => imageUrl3 = value; }
-        public string ImageUrl4 { get => imageUrl4; set => imageUrl4 = value; }
-        public string ImageUrl5 { get => imageUrl5; set => imageUrl5 = value; }
-        
+        internal string ImageUrl1 { get => imageUrl1; set => imageUrl1 = value; }
+        internal string ImageUrl2 { get => imageUrl2; set => imageUrl2 = value; }
+        internal string ImageUrl3 { get => imageUrl3; set => imageUrl3 = value; }
+        internal string ImageUrl4 { get => imageUrl4; set => imageUrl4 = value; }
+        internal string ImageUrl5 { get => imageUrl5; set => imageUrl5 = value; }
+        internal Cards[] PlayerHand { get => playerHand; set => playerHand = value; }
+
         //METHODES
         public void Deal()
         {

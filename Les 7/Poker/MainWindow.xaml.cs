@@ -12,8 +12,8 @@ namespace Poker
         public MainWindow()
         {
             InitializeComponent();
-                 }
-         public void ShowHand()
+        }
+        public void ShowHand()
         {
             DealCards dealcard = new DealCards();
             dealcard.Deal();
@@ -22,6 +22,10 @@ namespace Poker
             ImageCard3.Source = new BitmapImage(new Uri(dealcard.ImageUrl3, UriKind.RelativeOrAbsolute));
             ImageCard4.Source = new BitmapImage(new Uri(dealcard.ImageUrl4, UriKind.RelativeOrAbsolute));
             ImageCard5.Source = new BitmapImage(new Uri(dealcard.ImageUrl5, UriKind.RelativeOrAbsolute));
+        }
+        public void showScore()
+        {
+
         }
 
         private void PullCardsButton_Click(object sender, RoutedEventArgs e)
