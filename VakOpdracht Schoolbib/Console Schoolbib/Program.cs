@@ -31,8 +31,7 @@ implementeren.Implementeer wel een manier om aan te geven dat de student betaald
             Console.WriteLine("b. Boek Inleveren ");
             Console.WriteLine("c. Overzicht van ontlening bekijken");
             Console.WriteLine("d. Ontlening verlengen");
-            Console.WriteLine("d. Ontlening verlengen");
-            Console.WriteLine("f. Boetes betalen");
+            Console.WriteLine("e. Boetes betalen");
 
         }
     }
