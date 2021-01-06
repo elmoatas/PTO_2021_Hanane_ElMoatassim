@@ -37,5 +37,10 @@ namespace WPF_Schoolbib
             windowStudent.ShowDialog();
         }
 
+        private void CatalogButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowCatalog windowCatalog = new WindowCatalog();
+            windowCatalog.ShowDialog();
+        }
     }
 }

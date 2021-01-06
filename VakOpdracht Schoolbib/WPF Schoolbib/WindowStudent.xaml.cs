@@ -19,9 +19,56 @@ namespace WPF_Schoolbib
     /// </summary>
     public partial class WindowStudent : Window
     {
+        Students student = new Students();
         public WindowStudent()
         {
             InitializeComponent();
+        }
+        private void OnlyNumbersInID()
+        {
+
+        }
+        private void MakeTextBoxesEmpty()
+        {
+            FirstNameTextBox.Text = "";
+            IDTextBox.Text = "";
+            LastNameTextBox.Text = "";
+        }
+        private void EditInfo()
+        {
+            student.ID = Convert.ToInt32(IDTextBox.Text);
+            student.FirstName = FirstNameTextBox.Text;
+            student.LastName = LastNameTextBox.Text;
+        }
+        private void ShowInfo()
+        {
+            IDTextBox.Text = student.ID.ToString();
+            FirstNameTextBox.Text = student.FirstName;
+            LastNameTextBox.Text = student.LastName;
+        }
+        private void AddStudentTolist()
+        {
+            Students newStudent = new Students();
+            ListBoxItem allStudents = new ListBoxItem();
+            allStudents.Content = newStudent;
+            AllStudentListbox.Items.Add(allStudents);
+        }
+
+        private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ShowInfo();
+        }
+
+        private void EditStudentButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditInfo();
+                    }
+
+        private void AddStudentButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddStudentTolist();
+            MakeTextBoxesEmpty();
+
         }
     }
 }
