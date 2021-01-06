@@ -1,0 +1,55 @@
+﻿<Window x:Class="WPF_Schoolbib.WindowStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Schoolbib"
+        mc:Ignorable="d"
+        Title="WindowStudent" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+                <Label Content="Studenten beheren" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
+        <GroupBox Header="Selecteer een student:" Grid.Row="1" Grid.RowSpan="2">
+               <ListBox x:Name="AllStudentListbox"  Grid.Column="0" />
+        </GroupBox>
+        <GroupBox Header="Leningen" Grid.Column="1" Grid.Row="3">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top"  DockPanel.Dock="Top">
+                    <Button x:Name="PastloansButton" Content="Oude leningen " Margin="10" />
+                    <Button x:Name="CurrentloansButton" Content="Huidige leningen " Margin="10" />
+                </StackPanel>
+                <ListBox x:Name="LoansOfSelectedStudentListbox" />
+            </DockPanel>
+        </GroupBox>
+        <GroupBox Header="Beheer student" Grid.Row="1" Grid.Column="1" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="StudentenID" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                <Label Content="Voornaam" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                <Label Content="Achternaam" Grid.Row="2" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="IDTextBox" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                <TextBox  x:Name="FirstNameTextBox" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                <TextBox x:Name="LastNameTextBox" Grid.Row="2" Grid.Column="1" Margin="5" />
+                <Button x:Name="AddStudentButton" Content="Nieuw" Margin="5" Grid.Column="0" Grid.Row="3" />
+                <Button x:Name="EditStudentButton" Content="Aanpassen" Margin="5" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

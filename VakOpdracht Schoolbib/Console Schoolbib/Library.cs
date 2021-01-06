@@ -6,6 +6,10 @@ namespace Console_Schoolbib
 {
     class Library
     {
+        public Library()
+        {
+
+        }
         public void AddBook(Book book)
         {
 

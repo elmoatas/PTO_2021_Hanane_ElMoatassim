@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console Schoolbib", "Console Schoolbib\Console Schoolbib.csproj", "{1E2F1331-490E-43B5-A9D4-31218D5F9221}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF Schoolbib", "WPF Schoolbib\WPF Schoolbib.csproj", "{BD2ED28F-B199-493C-8221-63F2D063D3AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1E2F1331-490E-43B5-A9D4-31218D5F9221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E2F1331-490E-43B5-A9D4-31218D5F9221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E2F1331-490E-43B5-A9D4-31218D5F9221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD2ED28F-B199-493C-8221-63F2D063D3AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD2ED28F-B199-493C-8221-63F2D063D3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD2ED28F-B199-493C-8221-63F2D063D3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD2ED28F-B199-493C-8221-63F2D063D3AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

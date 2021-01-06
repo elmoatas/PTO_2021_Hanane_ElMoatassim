@@ -23,16 +23,14 @@ implementeren.Implementeer wel een manier om aan te geven dat de student betaald
             Console.WriteLine("################");
             Console.WriteLine("# de schoolbib #");
             Console.WriteLine("################");
-            Console.WriteLine("Log in aan de hand van je studentennummer.");
-            Console.WriteLine("studentennummer: ");
 
-            Console.WriteLine("Welkom Naam");
-            Console.WriteLine("a. Boek Lenen");
-            Console.WriteLine("b. Boek Inleveren ");
-            Console.WriteLine("c. Overzicht van ontlening bekijken");
-            Console.WriteLine("d. Ontlening verlengen");
-            Console.WriteLine("e. Boetes betalen");
-
+            Console.WriteLine("Druk op toets om door te gaan.");
+            Console.ReadKey();
+                   
+            LoginInterface login = new LoginInterface();
+            login.ShowLoginInterface();
+            
+            Console.ReadKey();
         }
     }
 }
