@@ -19,56 +19,53 @@ namespace WPF_Schoolbib
     /// </summary>
     public partial class WindowStudent : Window
     {
-        Students student = new Students();
+        //Students student = new Students();
         public WindowStudent()
         {
             InitializeComponent();
         }
-        private void OnlyNumbersInID()
-        {
-
-        }
+       
         private void MakeTextBoxesEmpty()
         {
             FirstNameTextBox.Text = "";
-            IDTextBox.Text = "";
             LastNameTextBox.Text = "";
         }
         private void EditInfo()
         {
-            student.ID = Convert.ToInt32(IDTextBox.Text);
-            student.FirstName = FirstNameTextBox.Text;
-            student.LastName = LastNameTextBox.Text;
+            Students selected = (Students)((ListBoxItem)AllStudentListbox.SelectedItem).Content;
+            selected.FirstName = FirstNameTextBox.Text;
+            selected.LastName = LastNameTextBox.Text;
         }
+
         private void ShowInfo()
         {
-            IDTextBox.Text = student.ID.ToString();
-            FirstNameTextBox.Text = student.FirstName;
-            LastNameTextBox.Text = student.LastName;
+            Students selected = (Students)((ListBoxItem)AllStudentListbox.SelectedItem).Content;
+            ShowIDLabel.Content = selected.ID;
+            FirstNameTextBox.Text = selected.FirstName;
+            LastNameTextBox.Text = selected.LastName;
         }
         private void AddStudentTolist()
         {
-            Students newStudent = new Students();
-            ListBoxItem allStudents = new ListBoxItem();
-            allStudents.Content = newStudent;
-            AllStudentListbox.Items.Add(allStudents);
+            Students newStudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text);
+            ListBoxItem studentListboxItem = new ListBoxItem();
+            studentListboxItem.Content = newStudent;
+            AllStudentListbox.Items.Add(studentListboxItem);
         }
 
-        private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+       private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowInfo();
         }
 
         private void EditStudentButton_Click(object sender, RoutedEventArgs e)
         {
-            EditInfo();
-                    }
+           EditInfo();
+        }
 
         private void AddStudentButton_Click(object sender, RoutedEventArgs e)
         {
             AddStudentTolist();
             MakeTextBoxesEmpty();
-
         }
     }
 }

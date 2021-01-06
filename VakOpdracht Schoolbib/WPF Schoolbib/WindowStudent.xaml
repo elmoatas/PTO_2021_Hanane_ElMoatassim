@@ -44,7 +44,7 @@
                 <Label Content="StudentenID" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                 <Label Content="Voornaam" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                 <Label Content="Achternaam" Grid.Row="2" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="IDTextBox" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                <Label x:Name="ShowIDLabel" Grid.Row="0" Grid.Column="1" Margin="5"/>
                 <TextBox  x:Name="FirstNameTextBox" Grid.Row="1" Grid.Column="1" Margin="5"/>
                 <TextBox x:Name="LastNameTextBox" Grid.Row="2" Grid.Column="1" Margin="5" />
                 <Button x:Name="AddStudentButton" Content="Nieuw" Margin="5" Grid.Column="0" Grid.Row="3" Click="AddStudentButton_Click" />

@@ -14,13 +14,14 @@ namespace Text_editor
     {
         string selectedPath;
         string path;
+        string fileName;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void StreamWriter(string path)
+        private void StreamWriter()
         {
             StreamWriter streamWriter = new StreamWriter(path);
             streamWriter.WriteLine();
@@ -67,26 +68,29 @@ namespace Text_editor
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = fileNameTextBox.Text;
+            fileName = fileNameTextBox.Text;
             path = Path.Combine(selectedPath, fileName + ".txt");
             filesListBox.Items.Add(path);
             fileNameTextBox.Text = "";
-            StreamWriter(path);
+            StreamWriter();
         }
 
         private void filesListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             path = filesListBox.SelectedItem.ToString();
-            OpenNewWindow(path);
+           OpenNewWindow();
 
         }
 
         //new window
-        private void OpenNewWindow(string pathName)
+        private void OpenNewWindow()
         {
-            Window1 windowTwo = new Window1(pathName);
-            windowTwo.Show();      
+            Window1.path = path;
+            Window1.filename = fileName;
+            Window1 window1 = new Window1();
+            window1.Show();      
         }
+    
       
     }
 }

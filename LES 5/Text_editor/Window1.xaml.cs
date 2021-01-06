@@ -9,29 +9,33 @@ namespace Text_editor
     /// </summary>
     public partial class Window1 : Window
     {
-        private string path;
-        public string Path1 { get => path; set => path = value; }
-        public Window1(string path)
+        //private string path;
+        public static string path { get; set; }
+        public static string filename { get; set; }
+        public Window1()
         {
             InitializeComponent();
-            StreamReader(path);
-            this.path = path;
+            StreamReader();
+            Title = filename;
         }
 
-        private void StreamReader(string path)
+        private void StreamReader()
         {
-            StreamReader inputStream = File.OpenText(path);
-            string line = inputStream.ReadLine();
-            while (line != null)
+            if (path != null)
             {
-                inputTextBox.AppendText(line);
-                inputTextBox.AppendText(Environment.NewLine);
-                line = inputStream.ReadLine();
+                StreamReader inputStream = File.OpenText(path);
+                string line = inputStream.ReadLine();
+                while (line != null)
+                {
+                    inputTextBox.AppendText(line);
+                    inputTextBox.AppendText(Environment.NewLine);
+                    line = inputStream.ReadLine();
+                }
+                inputStream.Close();
             }
-            inputStream.Close();
         }
 
-        private void Write(string path)
+        private void Write()
         {
             StreamWriter outputStream = File.CreateText(path);
             outputStream.WriteLine(inputTextBox.Text);
@@ -40,7 +44,7 @@ namespace Text_editor
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Write(Path1);
+            Write();
         }
     }
 }
