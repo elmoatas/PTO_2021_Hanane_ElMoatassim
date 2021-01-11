@@ -22,6 +22,8 @@ namespace WPF_Schoolbib
         public WindowLoanItem()
         {
             InitializeComponent();
+           
         }
+        
     }
 }

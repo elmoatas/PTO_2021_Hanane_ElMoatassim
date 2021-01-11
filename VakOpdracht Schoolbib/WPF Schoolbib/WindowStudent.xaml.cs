@@ -24,7 +24,8 @@ namespace WPF_Schoolbib
         {
             InitializeComponent();
         }
-       
+        
+       public Students Student { get; set; }
         private void MakeTextBoxesEmpty()
         {
             FirstNameTextBox.Text = "";
@@ -65,7 +66,7 @@ namespace WPF_Schoolbib
         private void AddStudentButton_Click(object sender, RoutedEventArgs e)
         {
             AddStudentTolist();
-            MakeTextBoxesEmpty();
+            MakeTextBoxesEmpty(); 
         }
     }
 }

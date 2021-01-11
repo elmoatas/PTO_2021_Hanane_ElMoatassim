@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CD.cs" />
+    <Compile Include="DVD.cs" />
     <Compile Include="Students.cs" />
     <Compile Include="WindowCatalog.xaml.cs">
       <DependentUpon>WindowCatalog.xaml</DependentUpon>

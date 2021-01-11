@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*"/>
-          
+
         </Grid.RowDefinitions>
         <Label Content="Bibliotheek beheer pagina" Grid.Row="0" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
         <GroupBox Header="Acties" Grid.Row="1" Margin="10" FontSize="24" BorderBrush="#FF074F7A">
@@ -20,9 +20,10 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-        <Button x:Name="CatalogButton" Content="Catalogus Beheren" Grid.Column="0" Margin="10" Click="CatalogButton_Click"/>
-        <Button x:Name="StudentButton" Content="Student Beheren" Grid.Column="1" Margin="10" Click="StudentButton_Click"/>
-        <Button x:Name="LoanButton" Content="Leningen beheren" Grid.Column="2" Margin="10" Click="LoanButton_Click"/>
+                <Button x:Name="CatalogButton" Content="Catalogus Beheren" Grid.Column="0" Margin="10" Click="CatalogButton_Click"/>
+                <Button x:Name="StudentButton" Content="Student Beheren" Grid.Column="1" Margin="10" Click="StudentButton_Click"/>
+                <Button x:Name="LoanButton" Content="Lening Terugbrengen" Grid.Column="2" Margin="10" Click="LoanButton_Click"/>
+                <Button x:Name="ReserverenButton" Content="Reserveren" Grid.Column="2" Margin="10" />
             </Grid>
         </GroupBox>
     </Grid>

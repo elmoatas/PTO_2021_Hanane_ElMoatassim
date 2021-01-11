@@ -35,6 +35,7 @@ namespace WPF_Schoolbib
         {
             WindowStudent windowStudent = new WindowStudent();
             windowStudent.ShowDialog();
+                       
         }
 
         private void CatalogButton_Click(object sender, RoutedEventArgs e)
