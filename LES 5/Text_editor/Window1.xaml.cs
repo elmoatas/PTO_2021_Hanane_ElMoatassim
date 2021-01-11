@@ -11,12 +11,11 @@ namespace Text_editor
     {
         //private string path;
         public static string path { get; set; }
-        public static string filename { get; set; }
-        public Window1()
+       public Window1()
         {
             InitializeComponent();
             StreamReader();
-            Title = filename;
+            Title = path;
         }
 
         private void StreamReader()

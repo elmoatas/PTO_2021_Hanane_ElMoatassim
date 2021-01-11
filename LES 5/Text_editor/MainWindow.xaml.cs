@@ -78,7 +78,7 @@ namespace Text_editor
         private void filesListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             path = filesListBox.SelectedItem.ToString();
-           OpenNewWindow();
+            OpenNewWindow();
 
         }
 
@@ -86,11 +86,10 @@ namespace Text_editor
         private void OpenNewWindow()
         {
             Window1.path = path;
-            Window1.filename = fileName;
             Window1 window1 = new Window1();
-            window1.Show();      
+            window1.Show();
         }
-    
-      
+
+
     }
 }
