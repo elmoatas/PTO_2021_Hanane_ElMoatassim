@@ -5,36 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Schoolbib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="BIBLIOTHEEK BEHEER PAGINA" Height="231.4" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="auto"/>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
+        
         <Label Content="Bibliotheek beheer pagina" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
        
-        <GroupBox Header="Catalogus beheren" Grid.Row="1" Grid.Column="0">
+        <GroupBox Header="Catalogus beheren" Grid.Row="1" Grid.Column="0" Margin="10">
             <StackPanel Margin="10" >
-                <Button x:Name="NewLibraryItemButton" Margin="10" >Nieuwe item toevoegen</Button>
-                <Button x:Name="ModifyEraseLibraryItemButton" Margin="10">aanpassen of verwijderen van student</Button>
+                <Button x:Name="NewLibraryItemButton" Margin="5" >Nieuwe item toevoegen</Button>
+                <Button x:Name="ModifyEraseLibraryItemButton" Margin="5">aanpassen of verwijderen van Item</Button>
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Studenten beheren" Grid.Row="1" Grid.Column="1">
+        
+        <GroupBox Header="Studenten beheren" Grid.Row="1" Grid.Column="1" Margin="10">
             <StackPanel Margin="10" >
-                <Button x:Name="NewStudentButton" Margin="10" Click="NewStudentButton_Click" >Nieuwe student toevoegen</Button>
-                <Button x:Name="ModifyEraseStudentButton" Margin="10" Click="ModifyEraseStudentButton_Click">aanpassen of verwijderen van student</Button>
+                <Button x:Name="NewStudentButton" Margin="5" Click="NewStudentButton_Click" >Nieuwe student toevoegen</Button>
+                <Button x:Name="ModifyEraseStudentButton" Margin="5" Click="ModifyEraseStudentButton_Click">aanpassen of verwijderen van Student</Button>
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Uitleningen beheren" Grid.Row="1" Grid.Column="2">
+
+        <GroupBox Header="Uitleningen beheren" Grid.Row="1" Grid.Column="2" Margin="10">
             <StackPanel Margin="10" >
-                <Button x:Name="ReturnItemButton" Margin="10" >Item terug brengen</Button>
-                <Button x:Name="ReserveItemButton" Margin="10">Item reserveren</Button>
+                <Button x:Name="ReturnItemButton" Margin="5" >Item terug brengen</Button>
+                <Button x:Name="ReserveItemButton" Margin="5">Item reserveren</Button>
             </StackPanel>
         </GroupBox>
       

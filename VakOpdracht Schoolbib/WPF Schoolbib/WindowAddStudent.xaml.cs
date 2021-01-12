@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
@@ -22,11 +23,14 @@ namespace WPF_Schoolbib
         public WindowAddStudent()
         {
             InitializeComponent();
+            StudentListbox.ItemsSource = Students.AllStudentsList;
         }
-
+      
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Students newstudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text);
+            StudentListbox.ItemsSource = null;
+            StudentListbox.ItemsSource = Students.AllStudentsList;
         }
     }
 }

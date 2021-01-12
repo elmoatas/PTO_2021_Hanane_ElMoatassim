@@ -28,7 +28,7 @@
         <Label  Grid.Row="3"  HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Achternaam</Label>
         <TextBox  x:Name="FirstNameTextBox" Grid.Row="2" Grid.Column="1" Margin="5"/>
         <TextBox x:Name="LastNameTextBox" Grid.Row="3" Grid.Column="1" Margin="5" />
-        <Button x:Name="AddButton" Content="Nieuw" Margin="5" Grid.Column="1" Grid.Row="4" Click="AddButton_Click" />
+        <Button x:Name="AddButton" Content="Nieuw" Margin="5" Grid.Column="1" Grid.Row="4" Click="AddButton_Click"  />
         <ListBox x:Name="StudentListbox" Grid.Row="5" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

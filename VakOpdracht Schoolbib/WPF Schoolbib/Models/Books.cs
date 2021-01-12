@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_Schoolbib.Models
 {
-    class Books
+    class Books:Library
     {
     }
 }

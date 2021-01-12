@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WPF_Schoolbib
 {
@@ -22,6 +11,7 @@ namespace WPF_Schoolbib
         public WindowModifyStudent()
         {
             InitializeComponent();
+            StudentListbox.ItemsSource = Students.AllStudentsList;
         }
         private void MakeTextBoxesEmpty()
         {
@@ -30,32 +20,52 @@ namespace WPF_Schoolbib
         }
         private void EditInfo()
         {
-            Students selected = (Students)((ListBoxItem)AllStudentListbox.SelectedItem).Content;
+            Students selected = (Students)StudentListbox.SelectedItem;
             selected.FirstName = FirstNameTextBox.Text;
             selected.LastName = LastNameTextBox.Text;
+
+
         }
 
         private void ShowInfo()
         {
-            Students selected = (Students)((ListBoxItem)AllStudentListbox.SelectedItem).Content;
-            ShowIDLabel.Content = selected.ID;
-            FirstNameTextBox.Text = selected.FirstName;
-            LastNameTextBox.Text = selected.LastName;
+            if (StudentListbox.SelectedItem != null)
+            {
+                Students selected = (Students)StudentListbox.SelectedItem;
+                //ShowIDLabel.Content = selected.ID;
+                FirstNameTextBox.Text = selected.FirstName;
+                LastNameTextBox.Text = selected.LastName;
+            }
         }
         private void AddStudentTolist()
         {
 
             //AllStudentListbox.ItemsSource = Students;
         }
-        private void EditStudentButton_Click(object sender, RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+
+
             EditInfo();
             MakeTextBoxesEmpty();
+            StudentListbox.ItemsSource = null;
+            StudentListbox.ItemsSource = Students.AllStudentsList;
         }
 
         private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowInfo();
+            StudentListbox.ItemsSource = null;
+            StudentListbox.ItemsSource = Students.AllStudentsList;
+        }
+
+        private void EraseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Students selected = (Students)StudentListbox.SelectedItem;
+            Students.AllStudentsList.Remove(selected);
+            StudentListbox.ItemsSource = null;
+            StudentListbox.ItemsSource = Students.AllStudentsList;
+
         }
     }
 }

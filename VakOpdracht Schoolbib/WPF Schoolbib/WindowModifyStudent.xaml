@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <Label Content="Studenten beheren" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
         <GroupBox Header="Selecteer een student:" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#FF1A588B">
-            <ListBox x:Name="AllStudentListbox"  Grid.Column="0" SelectionChanged="AllStudentListbox_SelectionChanged" />
+            <ListBox x:Name="StudentListbox"  Grid.Column="0" SelectionChanged="AllStudentListbox_SelectionChanged" />
         </GroupBox>
         <GroupBox Header="Leningen" Grid.Column="1" Grid.Row="3" BorderBrush="#FF1A588B">
             <DockPanel>
@@ -47,7 +47,8 @@
                 <Label x:Name="ShowIDLabel" Grid.Row="0" Grid.Column="1" Margin="5"/>
                 <TextBox  x:Name="FirstNameTextBox" Grid.Row="1" Grid.Column="1" Margin="5"/>
                 <TextBox x:Name="LastNameTextBox" Grid.Row="2" Grid.Column="1" Margin="5" />
-                <Button x:Name="EditStudentButton" Content="Aanpassen" Margin="5.4,5.2,0,0" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Click="EditStudentButton_Click" Height="23" VerticalAlignment="Top"/>
+                <Button x:Name="EditButton" Content="Aanpassen" Margin="5.4,5.2,0,0" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Click="EditButton_Click" Height="23" VerticalAlignment="Top"/>
+                <Button x:Name="EraseButton" Content="verwijderen" Margin="5.4,5.2,0,0" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Click="EraseButton_Click" Height="23" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
     </Grid>

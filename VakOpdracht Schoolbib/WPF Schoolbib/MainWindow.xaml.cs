@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
@@ -23,13 +11,23 @@ namespace WPF_Schoolbib
         public MainWindow()
         {
             InitializeComponent();
+            TestStudents();
         }
 
-    
+        private void TestStudents()
+        {
+            Students test1 = new Students("voornaam1", "achternaam1");
+            Students test2 = new Students("voornaam2", "achternaam2");
+            Students test3 = new Students("voornaam3", "achternaam3");
+            Students test4 = new Students("voornaam4", "achternaam4");
+
+        }
 
         private void NewStudentButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenWindow();
+            Students test1 = new Students("voornaam1", "achternaam1");
+            //test1.AllStudentsList.Add((Students)test1);
+          
             WindowAddStudent addStudent = new WindowAddStudent();
             addStudent.ShowDialog();
         }
