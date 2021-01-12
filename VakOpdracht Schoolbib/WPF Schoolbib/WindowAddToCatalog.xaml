@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="WindowCatalog" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="LibraryListBox" />
         <Button x:Name="AddButton" Content="Catalogus Beheren"/>
         <Button x:Name="EditButton" Content="Student Beheren"/>
         <Button x:Name="DeleteButton" Content="Leningen beheren"/>

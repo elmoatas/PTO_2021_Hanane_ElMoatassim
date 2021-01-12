@@ -55,17 +55,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CD.cs" />
-    <Compile Include="DVD.cs" />
-    <Compile Include="Students.cs" />
-    <Compile Include="WindowCatalog.xaml.cs">
-      <DependentUpon>WindowCatalog.xaml</DependentUpon>
+    <Compile Include="Models\Books.cs" />
+    <Compile Include="Models\CD.cs" />
+    <Compile Include="Models\DVD.cs" />
+    <Compile Include="Models\LibraryItem.cs" />
+    <Compile Include="Models\Students.cs" />
+    <Compile Include="WindowAddStudent.xaml.cs">
+      <DependentUpon>WindowAddStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowAddToCatalog.xaml.cs">
+      <DependentUpon>WindowAddToCatalog.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowLoanItem.xaml.cs">
       <DependentUpon>WindowLoanItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowStudent.xaml.cs">
-      <DependentUpon>WindowStudent.xaml</DependentUpon>
+    <Compile Include="WindowModifyCatalog.xaml.cs">
+      <DependentUpon>WindowModifyCatalog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowModifyStudent.xaml.cs">
+      <DependentUpon>WindowModifyStudent.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -79,7 +87,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="WindowCatalog.xaml">
+    <Page Include="WindowAddStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowAddToCatalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,7 +99,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowStudent.xaml">
+    <Page Include="WindowModifyCatalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowModifyStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

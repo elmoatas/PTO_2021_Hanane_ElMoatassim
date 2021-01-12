@@ -25,23 +25,23 @@ namespace WPF_Schoolbib
             InitializeComponent();
         }
 
-        private void LoanButton_Click(object sender, RoutedEventArgs e)
+    
+
+        private void NewStudentButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowLoanItem windowLoan = new WindowLoanItem();
-            windowLoan.ShowDialog();
+            OpenWindow();
+            WindowAddStudent addStudent = new WindowAddStudent();
+            addStudent.ShowDialog();
+        }
+        private void OpenWindow()
+        {
+
         }
 
-        private void StudentButton_Click(object sender, RoutedEventArgs e)
+        private void ModifyEraseStudentButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowStudent windowStudent = new WindowStudent();
-            windowStudent.ShowDialog();
-                       
-        }
-
-        private void CatalogButton_Click(object sender, RoutedEventArgs e)
-        {
-            WindowCatalog windowCatalog = new WindowCatalog();
-            windowCatalog.ShowDialog();
+            WindowModifyStudent modifyStudent = new WindowModifyStudent();
+            modifyStudent.ShowDialog();
         }
     }
 }

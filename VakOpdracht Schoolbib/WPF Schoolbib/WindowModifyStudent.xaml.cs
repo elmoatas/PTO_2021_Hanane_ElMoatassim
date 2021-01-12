@@ -15,17 +15,14 @@ using System.Windows.Shapes;
 namespace WPF_Schoolbib
 {
     /// <summary>
-    /// Interaction logic for WindowStudent.xaml
+    /// Interaction logic for WindowModifyStudent.xaml
     /// </summary>
-    public partial class WindowStudent : Window
+    public partial class WindowModifyStudent : Window
     {
-        //Students student = new Students();
-        public WindowStudent()
+        public WindowModifyStudent()
         {
             InitializeComponent();
         }
-        
-       public Students Student { get; set; }
         private void MakeTextBoxesEmpty()
         {
             FirstNameTextBox.Text = "";
@@ -47,26 +44,18 @@ namespace WPF_Schoolbib
         }
         private void AddStudentTolist()
         {
-            Students newStudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text);
-            ListBoxItem studentListboxItem = new ListBoxItem();
-            studentListboxItem.Content = newStudent;
-            AllStudentListbox.Items.Add(studentListboxItem);
-        }
 
-       private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ShowInfo();
+            //AllStudentListbox.ItemsSource = Students;
         }
-
         private void EditStudentButton_Click(object sender, RoutedEventArgs e)
         {
-           EditInfo();
+            EditInfo();
+            MakeTextBoxesEmpty();
         }
 
-        private void AddStudentButton_Click(object sender, RoutedEventArgs e)
+        private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AddStudentTolist();
-            MakeTextBoxesEmpty(); 
+            ShowInfo();
         }
     }
 }

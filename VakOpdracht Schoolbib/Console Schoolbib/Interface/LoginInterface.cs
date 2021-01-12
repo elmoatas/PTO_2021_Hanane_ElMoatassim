@@ -23,8 +23,8 @@ namespace Console_Schoolbib
         }
         public void SheckIfStudentNumberOK()
         {
-            //if student number is niet gelijk aan een van students.number 
-            //dan console writeline nummer is foutief geef een geldige nummer in.
+          //if student number is niet gelijk aan een van students.number 
+          //dan console writeline nummer is foutief geef een geldige nummer in.
           //check if in list
         }
     }
