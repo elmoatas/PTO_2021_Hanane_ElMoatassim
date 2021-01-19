@@ -8,7 +8,7 @@ namespace Console_Schoolbib
         bool numberIsOK;
         public LoginInterface()
         {
-
+          
         }
 
         public int InputStudentNumber { get => inputStudentNumber; set => inputStudentNumber = value; }
@@ -20,12 +20,14 @@ namespace Console_Schoolbib
             Console.WriteLine("Log in aan de hand van je studentennummer.");
             Console.WriteLine("studentennummer: ");
             inputStudentNumber = Convert.ToInt32(Console.ReadLine());
+            SheckIfStudentNumberOK(inputStudentNumber);
         }
-        public void SheckIfStudentNumberOK()
+        public void SheckIfStudentNumberOK(int inputNumber)
         {
-          //if student number is niet gelijk aan een van students.number 
-          //dan console writeline nummer is foutief geef een geldige nummer in.
-          //check if in list
+            //if student number is niet gelijk aan een van students.number 
+            //dan console writeline nummer is foutief geef een geldige nummer in.
+            //check if in list
+           
         }
     }
 }

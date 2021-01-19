@@ -59,7 +59,6 @@
     <Compile Include="Models\CD.cs" />
     <Compile Include="Models\DVD.cs" />
     <Compile Include="Models\Library.cs" />
-    <Compile Include="Models\StudentManagement.cs" />
     <Compile Include="Models\Students.cs" />
     <Compile Include="WindowAddStudent.xaml.cs">
       <DependentUpon>WindowAddStudent.xaml</DependentUpon>
@@ -69,6 +68,9 @@
     </Compile>
     <Compile Include="WindowLoanItem.xaml.cs">
       <DependentUpon>WindowLoanItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowReturnItem.xaml.cs">
+      <DependentUpon>WindowReturnItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowModifyCatalog.xaml.cs">
       <DependentUpon>WindowModifyCatalog.xaml</DependentUpon>
@@ -97,6 +99,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowLoanItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowReturnItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

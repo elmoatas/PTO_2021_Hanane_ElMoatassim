@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
@@ -37,11 +38,7 @@ namespace WPF_Schoolbib
                 LastNameTextBox.Text = selected.LastName;
             }
         }
-        private void AddStudentTolist()
-        {
-
-            //AllStudentListbox.ItemsSource = Students;
-        }
+  
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -55,8 +52,8 @@ namespace WPF_Schoolbib
         private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowInfo();
-            StudentListbox.ItemsSource = null;
-            StudentListbox.ItemsSource = Students.AllStudentsList;
+          
+            AddLoans();
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)
@@ -66,6 +63,26 @@ namespace WPF_Schoolbib
             StudentListbox.ItemsSource = null;
             StudentListbox.ItemsSource = Students.AllStudentsList;
 
+        }
+
+        private void AddLoans() 
+        {
+            if (StudentListbox.SelectedItem != null)
+            {
+                Students selected = (Students)StudentListbox.SelectedItem;
+                foreach (Library item in Library.LibraryList)
+                {
+                    if (item.ID == selected.ItemID)
+                    {
+                        LoansOfSelectedStudentListbox.Items.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void LoansOfSelectedStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+          
         }
     }
 }

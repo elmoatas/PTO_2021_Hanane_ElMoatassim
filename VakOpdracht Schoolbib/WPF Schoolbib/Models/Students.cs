@@ -10,7 +10,7 @@ namespace WPF_Schoolbib
         string firstName;
         string lastName;
         string fullname;
-
+        int itemID;
 
         public static int globalID;
 
@@ -25,13 +25,13 @@ namespace WPF_Schoolbib
             {
 
             }
-                 
         }
 
         public int ID { get; private set; }
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
         public static List<Students> AllStudentsList { get => allStudentsList; set => allStudentsList = value; }
+        public int ItemID { get => itemID; set => itemID = value; }
 
         public override string ToString()
         {

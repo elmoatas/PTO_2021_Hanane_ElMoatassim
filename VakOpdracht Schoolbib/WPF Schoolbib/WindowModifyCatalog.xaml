@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Schoolbib"
         mc:Ignorable="d"
-        Title="WindowModifyCatalog" Height="450" Width="800">
+        Title="WindowModifyCatalog" Height="276" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White">Item bewerken</Label>
+        <GroupBox Header=" Filter op" Grid.Row="1" Grid.Column="0" Margin="5" BorderBrush="#FF1A588B">
+            
+        </GroupBox>
+        <GroupBox Header="kies Een item " Grid.Row="1" Grid.Column="1" Margin="5" BorderBrush="#FF1A588B">
+            <ListBox x:Name="Listbox" Margin="5" SelectionChanged="Listbox_SelectionChanged"/>
+        </GroupBox>
+        <GroupBox Header="Beheer Item" Grid.Row="1" Grid.Column="2" Margin="5" BorderBrush="#FF1A588B">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="ID" Grid.Row="0" Margin=" 5" Grid.Column="0">ID</Label>
+                <Label x:Name="Title" Grid.Row="1"  Margin=" 5" Grid.Column="0" >Title</Label>
+                <Label x:Name="Author" Grid.Row="2" Margin=" 5"  Grid.Column="0">author</Label>
+                <TextBox x:Name="Idtextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
+                <TextBox x:Name="Titletextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
+                <TextBox x:Name="Authortextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
+                <Button x:Name="ModifyButton" Grid.Row="3" Margin="5"  Grid.Column="1" Click="ModifyButton_Click" >bewerken</Button>
+                <Button x:Name="EraseButton" Grid.Row="3" Margin="5"  Grid.Column="0" Click="EraseButton_Click" >Verwijderen</Button>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

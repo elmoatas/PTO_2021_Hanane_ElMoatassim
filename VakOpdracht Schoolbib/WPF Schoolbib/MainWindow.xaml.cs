@@ -17,17 +17,15 @@ namespace WPF_Schoolbib
         private void TestStudents()
         {
             Students test1 = new Students("voornaam1", "achternaam1");
-            Students test2 = new Students("voornaam2", "achternaam2");
-            Students test3 = new Students("voornaam3", "achternaam3");
-            Students test4 = new Students("voornaam4", "achternaam4");
-
+            Students test2 = new Students("hanane", "Elmoatassim");
+            Students test = new Students("voornaam2", "achternaam2");
+            Library newItem = new CD("Redbone", "childish Gambino", 5485);
+            Library newItem2 = new Books("bookthief", "Mark suzak", 5485645);
+            Library newItem3 = new DVD("criminal mind", "Spencer", 54849);
         }
 
         private void NewStudentButton_Click(object sender, RoutedEventArgs e)
         {
-            Students test1 = new Students("voornaam1", "achternaam1");
-            //test1.AllStudentsList.Add((Students)test1);
-          
             WindowAddStudent addStudent = new WindowAddStudent();
             addStudent.ShowDialog();
         }
@@ -40,6 +38,31 @@ namespace WPF_Schoolbib
         {
             WindowModifyStudent modifyStudent = new WindowModifyStudent();
             modifyStudent.ShowDialog();
+        }
+
+        private void NewLibraryItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowAddCatalog addItemWindow = new WindowAddCatalog();
+            addItemWindow.ShowDialog();
+        }
+
+        private void ModifyEraseLibraryItemButton_Click(object sender, RoutedEventArgs e)
+        {
+           
+            WindowModifyCatalog modifyCatalog = new WindowModifyCatalog();
+            modifyCatalog.ShowDialog();
+        }
+
+        private void ReturnItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowReturnItem returnItem = new WindowReturnItem();
+            returnItem.ShowDialog();
+        }
+
+        private void LoanItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowLoanItem loanItem = new WindowLoanItem();
+            loanItem.ShowDialog();
         }
     }
 }

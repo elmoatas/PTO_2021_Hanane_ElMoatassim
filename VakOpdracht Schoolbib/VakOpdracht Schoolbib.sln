@@ -3,7 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console Schoolbib", "Console Schoolbib\Console Schoolbib.csproj", "{1E2F1331-490E-43B5-A9D4-31218D5F9221}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console Schoolbib", "Console Schoolbib\Console Schoolbib.csproj", "{1E2F1331-490E-43B5-A9D4-31218D5F9221}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BD2ED28F-B199-493C-8221-63F2D063D3AA} = {BD2ED28F-B199-493C-8221-63F2D063D3AA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF Schoolbib", "WPF Schoolbib\WPF Schoolbib.csproj", "{BD2ED28F-B199-493C-8221-63F2D063D3AA}"
 EndProject

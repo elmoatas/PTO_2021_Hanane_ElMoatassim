@@ -1,26 +1,48 @@
-﻿<Window x:Class="WPF_Schoolbib.WindowCatalog"
+﻿<Window x:Class="WPF_Schoolbib.WindowAddCatalog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Schoolbib"
         mc:Ignorable="d"
-        Title="WindowCatalog" Height="450" Width="800">
+        Title="Voeg nieuwe item toe" Height="251" Width="463">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="LibraryListBox" />
-        <Button x:Name="AddButton" Content="Catalogus Beheren"/>
-        <Button x:Name="EditButton" Content="Student Beheren"/>
-        <Button x:Name="DeleteButton" Content="Leningen beheren"/>
-        
+        <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White">Item toevoegen aan catalogus</Label>
+        <GroupBox Grid.Row="1" Header="Kies de type:" Margin=" 5" BorderBrush="#FF1A588B">
+            <StackPanel   Margin=" 5">
+                <RadioButton x:Name="CDRadiobutton" Margin="5" GroupName="ItemChoice" Checked="CDRadiobutton_Checked">CD</RadioButton>
+                <RadioButton x:Name="DvdRadiobutton" Margin=" 5" GroupName="ItemChoice" Checked="DvdRadiobutton_Checked">DVD</RadioButton>
+                <RadioButton x:Name="BoekRadiobutton" Margin=" 5" GroupName="ItemChoice" Checked="BoekRadiobutton_Checked">Boek</RadioButton>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Vul de info in: " Grid.Row="1" Grid.Column="1" Margin=" 5"  BorderBrush="#FF1A588B" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="ID" Grid.Row="0" Margin=" 5" Grid.Column="0">ID</Label>
+                <Label x:Name="Title" Grid.Row="1"  Margin=" 5" Grid.Column="0" >Title</Label>
+                <Label x:Name="Author" Grid.Row="2" Margin=" 5"  Grid.Column="0">author</Label>
+                <TextBox x:Name="Idtextbox" Grid.Row="0" Margin="5" Grid.Column="1" TextChanged="Idtextbox_TextChanged"/>
+                <TextBox x:Name="Titletextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
+                <TextBox x:Name="Authortextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
+                <Button x:Name="AddButton" Grid.Row="3" Margin="5"  Grid.Column="1" Click="AddButton_Click">Toevoegen</Button>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

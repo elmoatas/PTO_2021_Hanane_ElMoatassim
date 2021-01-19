@@ -8,25 +8,26 @@
         Title="WindowLoanItem" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Leningen beheren" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="Selecteer een student:" Grid.Row="1" Grid.Column="0"/>
-            <ListBox x:Name="StudentListbox" Grid.Row="1" Grid.Column="0"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label Content="Selecteer een item:" />
-            <ListBox x:Name="LoansListbox" Grid.Row="1" Grid.Column="1"/>
-        </StackPanel>
-        <StackPanel Grid.Column="3" Grid.Row="1">
-            <Button x:Name="BringBackButton" Content="Item Terugbrengen" Grid.Column="3" Grid.Row="1" Margin="10" />
+        <GroupBox Header="Selecteer een item:" Grid.Row="1" Grid.Column="1" BorderBrush="#FF1A588B" >
+            <ListBox x:Name="CatalogusListbox" SelectionChanged="CatalogusListbox_SelectionChanged"/>
+        </GroupBox>
+        <GroupBox Header="Selecteer een student:" Grid.Row="1" Grid.Column="2" BorderBrush="#FF1A588B">
+            <ListBox x:Name="StudentListbox" Grid.Row="1" Grid.Column="1"/>
+        </GroupBox>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Button x:Name="loanButton" Content="Item uitlenen" Grid.Column="3" Grid.Row="1" Margin="10" Click="loanButton_Click" />
+            <RadioButton x:Name="CDRadiobutton" Margin="5" GroupName="ItemChoice" Checked="CDRadiobutton_Checked" >CD</RadioButton>
+            <RadioButton x:Name="DvdRadiobutton" Margin=" 5" GroupName="ItemChoice" Checked="DvdRadiobutton_Checked" >DVD</RadioButton>
+            <RadioButton x:Name="BoekRadiobutton" Margin=" 5" GroupName="ItemChoice" Checked="BoekRadiobutton_Checked" >Boek</RadioButton>
         </StackPanel>
 
     </Grid>

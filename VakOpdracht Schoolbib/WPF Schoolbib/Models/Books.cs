@@ -8,5 +8,9 @@ namespace WPF_Schoolbib.Models
 {
     class Books:Library
     {
+        public Books(string title, string author, int ID):base (title,author,ID)
+        {
+
+        }
     }
 }

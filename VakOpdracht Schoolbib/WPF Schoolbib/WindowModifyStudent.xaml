@@ -26,7 +26,7 @@
                     <Button x:Name="PastloansButton" Content="Oude leningen " Margin="10" />
                     <Button x:Name="CurrentloansButton" Content="Huidige leningen " Margin="10" />
                 </StackPanel>
-                <ListBox x:Name="LoansOfSelectedStudentListbox" />
+                <ListBox x:Name="LoansOfSelectedStudentListbox" SelectionChanged="LoansOfSelectedStudentListbox_SelectionChanged" />
             </DockPanel>
         </GroupBox>
         <GroupBox Header="Beheer student" Grid.Row="1" Grid.Column="1" BorderBrush="#FF1A588B" >
