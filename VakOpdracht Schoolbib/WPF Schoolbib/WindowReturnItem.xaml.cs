@@ -33,14 +33,14 @@ namespace WPF_Schoolbib
         }
         private void ShowItems() 
         {
-            Students selectedStudent = (Students)StudentListbox.SelectedItem;
+           /* Students selectedStudent = (Students)StudentListbox.SelectedItem;
             foreach (Library item in Library.LibraryList)
             {
                 if (item.LoanerID== selectedStudent.ID)
                 {
                     LoansListbox.Items.Add(item);
                 }
-            }
+            }*/
         }
 
         private void StudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -49,14 +49,14 @@ namespace WPF_Schoolbib
         }
 
         private void BringBackButton_Click(object sender, RoutedEventArgs e)
-        {
+        {/*
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
             Library selectedItem = (Library)LoansListbox.SelectedItem;
             if (selectedItem.LoanerID==selectedStudent.ID)
             {
                 selectedItem.LoanerID = 0;
                 LoansListbox.Items.Remove(selectedItem);
-            }
+            }*/
         }
     }
 }

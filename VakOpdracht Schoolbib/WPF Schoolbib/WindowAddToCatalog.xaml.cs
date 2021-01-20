@@ -37,23 +37,31 @@ namespace WPF_Schoolbib
                 ID.Content = "ID";
             }
             Idtextbox.Text = "";
-            Titletextbox.Text = "" ;
+            Titletextbox.Text = "";
             Authortextbox.Text = "";
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            SchoolbibDBContext schoolbibDBContext = new SchoolbibDBContext();
             if (BoekRadiobutton.IsChecked == true)
             {
                 Library newBook = new Books(Titletextbox.Text, Authortextbox.Text, Convert.ToInt32(Idtextbox.Text));
-               
+
+                schoolbibDBContext.LibraryItems.Add(newBook);
+                schoolbibDBContext.SaveChanges();
+
             }
             if (CDRadiobutton.IsChecked == true)
             {
                 Library newCD = new CD(Titletextbox.Text, Authortextbox.Text, Convert.ToInt32(Idtextbox.Text));
+                schoolbibDBContext.LibraryItems.Add(newCD);
+                schoolbibDBContext.SaveChanges();
             }
             if (DvdRadiobutton.IsChecked == true)
             {
                 Library newDVD = new DVD(Titletextbox.Text, Authortextbox.Text, Convert.ToInt32(Idtextbox.Text));
+                schoolbibDBContext.LibraryItems.Add(newDVD);
+                schoolbibDBContext.SaveChanges();
             }
             UpdateUI();
         }

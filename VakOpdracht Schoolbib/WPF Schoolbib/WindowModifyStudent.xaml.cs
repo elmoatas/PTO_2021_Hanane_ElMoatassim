@@ -67,7 +67,7 @@ namespace WPF_Schoolbib
 
         private void AddLoans() 
         {
-            if (StudentListbox.SelectedItem != null)
+           /* if (StudentListbox.SelectedItem != null)
             {
                 Students selected = (Students)StudentListbox.SelectedItem;
                 foreach (Library item in Library.LibraryList)
@@ -77,7 +77,7 @@ namespace WPF_Schoolbib
                         LoansOfSelectedStudentListbox.Items.Add(item);
                     }
                 }
-            }
+            }*/
         }
 
         private void LoansOfSelectedStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)

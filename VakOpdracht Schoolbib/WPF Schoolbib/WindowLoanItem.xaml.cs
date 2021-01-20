@@ -75,8 +75,8 @@ namespace WPF_Schoolbib
         {
             Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;       //geselecteerde item
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            selectedStudent.ItemID = selectedItemCatalogus.ID;
-            selectedItemCatalogus.LoanerID = selectedStudent.ID;
+           // selectedStudent.ItemID = selectedItemCatalogus.ID;
+            //selectedItemCatalogus.LoanerID = selectedStudent.ID;
         }
     }
 }

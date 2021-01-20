@@ -25,12 +25,23 @@ namespace WPF_Schoolbib
             InitializeComponent();
             StudentListbox.ItemsSource = Students.AllStudentsList;
         }
-      
+        private void UpdateUI()
+        {
+     
+            FirstNameTextBox.Text = "";
+           LastNameTextBox.Text = "";
+
+        }
+
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            //StudentListbox.ItemsSource = null;
+            // StudentListbox.ItemsSource = Students.AllStudentsList;
+            SchoolbibDBContext schoolbibDBContext = new SchoolbibDBContext();
             Students newstudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text);
-            StudentListbox.ItemsSource = null;
-            StudentListbox.ItemsSource = Students.AllStudentsList;
+            schoolbibDBContext.Students.Add(newstudent);
+            schoolbibDBContext.SaveChanges();
+            UpdateUI();
         }
     }
 }

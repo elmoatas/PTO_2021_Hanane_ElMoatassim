@@ -11,7 +11,7 @@ namespace WPF_Schoolbib
         public MainWindow()
         {
             InitializeComponent();
-            TestStudents();
+       
         }
 
         private void TestStudents()
