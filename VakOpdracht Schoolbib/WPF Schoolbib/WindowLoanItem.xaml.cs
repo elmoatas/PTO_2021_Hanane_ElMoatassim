@@ -23,47 +23,47 @@ namespace WPF_Schoolbib
         public WindowLoanItem()
         {
             InitializeComponent();
-            StudentListbox.ItemsSource = null;
-            StudentListbox.ItemsSource = Students.AllStudentsList;
+           // StudentListbox.ItemsSource = null;
+            //StudentListbox.ItemsSource = Students.AllStudentsList;
         }
        
         private void CDRadiobutton_Checked(object sender, RoutedEventArgs e)
         {
             CatalogusListbox.Items.Clear();
-            foreach (Library item in Library.LibraryList)
+            /*foreach (Library item in Library.LibraryList)
             {
                 if ( item is CD)
                 {
                     CatalogusListbox.Items.Add(item);
                 }
                 
-            }
+            }*/
         }
 
         private void DvdRadiobutton_Checked(object sender, RoutedEventArgs e)
         {
             CatalogusListbox.Items.Clear();
-            foreach (Library item in Library.LibraryList)
+            /*foreach (Library item in Library.LibraryList)
             {
                 if (item is DVD)
                 {
                     CatalogusListbox.Items.Add(item);
                 }
 
-            }
+            }*/
         }
 
         private void BoekRadiobutton_Checked(object sender, RoutedEventArgs e)
         {
             CatalogusListbox.Items.Clear();
-            foreach (Library item in Library.LibraryList)
+           /* foreach (Library item in Library.LibraryList)
             {
                 if (item is Books)
                 {
                     CatalogusListbox.Items.Add(item);
                 }
 
-            }
+            }*/
         }
 
         private void CatalogusListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)

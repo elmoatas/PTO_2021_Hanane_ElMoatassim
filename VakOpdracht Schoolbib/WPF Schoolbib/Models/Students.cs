@@ -1,45 +1,82 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Threading;
+﻿using System.ComponentModel.DataAnnotations;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
-     class Students
+    enum Studychoises
     {
-        static List<Students> allStudentsList = new List<Students>();
+        Chemie,
+        Othopedagogie,
+        Ergotherapie,
+        Logopedie,
+        Electronica,
+        Verpleegkunde,
+    }
+    class Students
+    {
+        //static List<Students> allStudentsList = new List<Students>();
         private int id;
-       // private int itemID;
+        // private int itemID;
         private string firstName;
         private string lastName;
-        private string fullname;
-
+        private string study;
+        private string sex;
         private Library libraryItem;
 
         //public static int globalID;
+        public Students()
+        {
 
-        public Students(string firstName, string lastName)
+        }
+        public Students(string firstName, string lastName, int studyIndex,string sex )
         {
             this.firstName = firstName;
             this.lastName = lastName;
-            this.fullname = firstName + " " + lastName;
-           // this.ID = Interlocked.Increment(ref globalID);
-            AllStudentsList.Add(this);
+            GetTheStudyChoiceName(studyIndex);
+         
             
+            // this.ID = Interlocked.Increment(ref globalID);
+            // AllStudentsList.Add(this);
+
         }
 
         [Key]
         public int Id { get => id; set => id = value; }
-        //public int ID { get; private set; }
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
-        public static List<Students> AllStudentsList { get => allStudentsList; set => allStudentsList = value; }
-        //public int ItemID { get => itemID; set => itemID = value; }
-        
+        public string Study { get => study; set => study = value; }
+        public string Sex { get => sex; set => sex = value; }
+
+        private void GetTheStudyChoiceName(int ComboBoxIndex)
+        {
+            switch (ComboBoxIndex)
+            {
+                case 0:
+                    study = Studychoises.Chemie.ToString();
+                    break;
+                case 1:
+                    study = Studychoises.Othopedagogie.ToString();
+                    break;
+                case 2:
+                    study = Studychoises.Ergotherapie.ToString();
+                    break;
+                case 3:
+                    study = Studychoises.Logopedie.ToString();
+                    break;
+                case 4:
+                    study = Studychoises.Electronica.ToString();
+                    break;
+                case 5:
+                    study = Studychoises.Verpleegkunde.ToString();
+                    break;
+            }
+        }
+       
+
 
         public override string ToString()
         {
-            return fullname;
+            return $"{ lastName} { firstName} - {study}";
         }
 
     }

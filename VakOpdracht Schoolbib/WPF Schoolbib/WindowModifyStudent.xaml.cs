@@ -12,7 +12,7 @@ namespace WPF_Schoolbib
         public WindowModifyStudent()
         {
             InitializeComponent();
-            StudentListbox.ItemsSource = Students.AllStudentsList;
+            //StudentListbox.ItemsSource = Students.AllStudentsList;
         }
         private void MakeTextBoxesEmpty()
         {
@@ -45,8 +45,8 @@ namespace WPF_Schoolbib
 
             EditInfo();
             MakeTextBoxesEmpty();
-            StudentListbox.ItemsSource = null;
-            StudentListbox.ItemsSource = Students.AllStudentsList;
+            //StudentListbox.ItemsSource = null;
+            //StudentListbox.ItemsSource = Students.AllStudentsList;
         }
 
         private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,9 +59,9 @@ namespace WPF_Schoolbib
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
             Students selected = (Students)StudentListbox.SelectedItem;
-            Students.AllStudentsList.Remove(selected);
-            StudentListbox.ItemsSource = null;
-            StudentListbox.ItemsSource = Students.AllStudentsList;
+            //Students.AllStudentsList.Remove(selected);
+            //StudentListbox.ItemsSource = null;
+            //StudentListbox.ItemsSource = Students.AllStudentsList;
 
         }
 

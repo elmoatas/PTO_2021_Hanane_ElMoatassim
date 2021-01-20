@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
@@ -20,28 +9,81 @@ namespace WPF_Schoolbib
     /// </summary>
     public partial class WindowAddStudent : Window
     {
+        SchoolbibDBContext schoolbibDBContext = new SchoolbibDBContext();
         public WindowAddStudent()
         {
             InitializeComponent();
-            StudentListbox.ItemsSource = Students.AllStudentsList;
+            ShowStudentsInListbox();
+            PutStudyChoicesInComboBox();
+            Validation();
+        }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddStudentToDB();
+            UpdateUI();
+            ShowStudentsInListbox();
+        }
+        private void PutStudyChoicesInComboBox()
+        {
+            string[] studychoises = Enum.GetNames(typeof(Studychoises));
+            StudyCombobox.ItemsSource = studychoises;
         }
         private void UpdateUI()
         {
-     
             FirstNameTextBox.Text = "";
-           LastNameTextBox.Text = "";
+            LastNameTextBox.Text = "";
+            StudyCombobox.SelectedIndex = -1;
+            FemaleRadioButton.IsChecked = false;
+            MaleRadioButton.IsChecked = false;
+        }
+        private string GetSex()
+        {
+            string sex = "";
+            if (FemaleRadioButton.IsChecked == true)
+            {
+                sex = "V";
+            }
+            else
+            {
+                sex = "M";
+            }
+            return sex;
+        }
+        private void Validation()
+        {
+            // student mag niet in database bestaan al (zelfde voornaam en achternaam
+            //als velden leeg zijn kan je niemand toevoegen alle velden moeten ingevuld zijn 
 
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void AddStudentToDB()
         {
-            //StudentListbox.ItemsSource = null;
-            // StudentListbox.ItemsSource = Students.AllStudentsList;
-            SchoolbibDBContext schoolbibDBContext = new SchoolbibDBContext();
-            Students newstudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text);
-            schoolbibDBContext.Students.Add(newstudent);
-            schoolbibDBContext.SaveChanges();
-            UpdateUI();
+            if (AllFieldsAreFilled() == true)
+            {
+                Students newstudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text, StudyCombobox.SelectedIndex, GetSex());
+                schoolbibDBContext.Students.Add(newstudent);
+                schoolbibDBContext.SaveChanges();
+            }
+        }
+        private void ShowStudentsInListbox()
+        {
+            StudentListbox.ItemsSource = null;
+            StudentListbox.ItemsSource = schoolbibDBContext.Students.ToList();
+        }
+        private bool AllFieldsAreFilled()
+        {
+            bool everythingOK = true;
+            if (FirstNameTextBox.Text == "" || LastNameTextBox.Text == "" || StudyCombobox.SelectedIndex == -1 ||
+                (FemaleRadioButton.IsChecked == false && MaleRadioButton.IsChecked == false))
+            {
+                everythingOK = false;
+
+            }
+            else
+            {
+                everythingOK = true;
+            }
+            return everythingOK;
         }
     }
 }

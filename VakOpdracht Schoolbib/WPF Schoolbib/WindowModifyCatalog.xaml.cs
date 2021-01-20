@@ -22,8 +22,8 @@ namespace WPF_Schoolbib
                 ModifyButton.IsEnabled = false;
                 EraseButton.IsEnabled = false;
             }
-            Listbox.ItemsSource = null;
-            Listbox.ItemsSource = Library.LibraryList;
+            //Listbox.ItemsSource = null;
+           // Listbox.ItemsSource = Library.LibraryList;
         }
 
         private void ShowInfo()
@@ -48,9 +48,9 @@ namespace WPF_Schoolbib
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
             Library selected = (Library)Listbox.SelectedItem; ;
-            Library.LibraryList.Remove(selected);
-            Listbox.ItemsSource = null;
-            Listbox.ItemsSource = Students.AllStudentsList;
+           // Library.LibraryList.Remove(selected);
+            //Listbox.ItemsSource = null;
+            //Listbox.ItemsSource = Students.AllStudentsList;
         }
 
         private void ModifyButton_Click(object sender, RoutedEventArgs e)

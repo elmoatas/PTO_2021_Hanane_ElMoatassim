@@ -20,15 +20,21 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White">Student toevoegen</Label>
-
-        <Label Grid.Row="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">StudentenID</Label>
-        <Label  Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Voornaam</Label>
-        <Label  Grid.Row="3"  HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Achternaam</Label>
-        <TextBox  x:Name="FirstNameTextBox" Grid.Row="2" Grid.Column="1" Margin="5"/>
-        <TextBox x:Name="LastNameTextBox" Grid.Row="3" Grid.Column="1" Margin="5" />
-        <Button x:Name="AddButton" Content="Nieuw" Margin="5" Grid.Column="1" Grid.Row="4" Click="AddButton_Click"  />
-        <ListBox x:Name="StudentListbox" Grid.Row="5" Grid.ColumnSpan="2" />
+        <Label  Grid.Row="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Voornaam</Label>
+        <Label  Grid.Row="2"  HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Achternaam</Label>
+        <Label  Grid.Row="3"  HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Studierichting</Label>
+        <Label  Grid.Row="4"  HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Geslacht</Label>
+        <TextBox  x:Name="FirstNameTextBox" Grid.Row="1" Grid.Column="1" Margin="5"/>
+        <TextBox x:Name="LastNameTextBox" Grid.Row="2" Grid.Column="1" Margin="5" />
+        <ComboBox x:Name="StudyCombobox" Grid.Row="3" Grid.Column="1" Margin="5" />
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Margin="5">
+            <RadioButton x:Name="FemaleRadioButton"  Grid.Row="4" Grid.Column="1" Margin="5" GroupName="Sex">Vrouw</RadioButton>
+            <RadioButton x:Name="MaleRadioButton"  Grid.Row="4" Grid.Column="1" Margin="5" GroupName="Sex">Man</RadioButton>
+        </StackPanel>
+        <Button x:Name="AddButton" Content="Nieuw" Margin="5" Grid.Column="1" Grid.Row="5" Click="AddButton_Click"  />
+        <ListBox x:Name="StudentListbox" Grid.Row="1" Grid.RowSpan="5" Grid.Column="2" />
     </Grid>
 </Window>

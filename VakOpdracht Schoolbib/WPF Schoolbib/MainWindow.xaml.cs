@@ -14,16 +14,6 @@ namespace WPF_Schoolbib
        
         }
 
-        private void TestStudents()
-        {
-            Students test1 = new Students("voornaam1", "achternaam1");
-            Students test2 = new Students("hanane", "Elmoatassim");
-            Students test = new Students("voornaam2", "achternaam2");
-            Library newItem = new CD("Redbone", "childish Gambino", 5485);
-            Library newItem2 = new Books("bookthief", "Mark suzak", 5485645);
-            Library newItem3 = new DVD("criminal mind", "Spencer", 54849);
-        }
-
         private void NewStudentButton_Click(object sender, RoutedEventArgs e)
         {
             WindowAddStudent addStudent = new WindowAddStudent();

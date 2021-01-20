@@ -28,8 +28,8 @@ namespace WPF_Schoolbib
 
         private void ShowInfo() 
         {
-            StudentListbox.ItemsSource = null;
-            StudentListbox.ItemsSource = Students.AllStudentsList;
+            //StudentListbox.ItemsSource = null;
+            //StudentListbox.ItemsSource = Students.AllStudentsList;
         }
         private void ShowItems() 
         {
