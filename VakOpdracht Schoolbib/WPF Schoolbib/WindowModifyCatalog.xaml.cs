@@ -13,7 +13,7 @@ namespace WPF_Schoolbib
         public WindowModifyCatalog()
         {
             InitializeComponent();
-            UpdateUIT();
+            //UpdateUIT();
         }
         private void UpdateUIT()
         {
@@ -28,26 +28,26 @@ namespace WPF_Schoolbib
 
         private void ShowInfo()
         {
-            if (Listbox.SelectedItem != null)
+          /*  if (Listbox.SelectedItem != null)
             {
                 Library selected = (Library)Listbox.SelectedItem;
                 Titletextbox.Text = selected.Title;
                 Authortextbox.Text = selected.Author;
                 Idtextbox.Text = Convert.ToString(selected.ID);
-            }
+            }*/
         }
         private void EditInfo()
         {
-            Library selected = (Library)Listbox.SelectedItem;
+          /*  Library selected = (Library)Listbox.SelectedItem;
             selected.Title = Titletextbox.Text;
             selected.Author = Authortextbox.Text;
             selected.ID = Convert.ToInt32(Idtextbox.Text);
-
+          */
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
-            Library selected = (Library)Listbox.SelectedItem; ;
+           // Library selected = (Library)Listbox.SelectedItem; ;
            // Library.LibraryList.Remove(selected);
             //Listbox.ItemsSource = null;
             //Listbox.ItemsSource = Students.AllStudentsList;
@@ -55,12 +55,12 @@ namespace WPF_Schoolbib
 
         private void ModifyButton_Click(object sender, RoutedEventArgs e)
         {
-            EditInfo();
+            //EditInfo();
         }
 
         private void Listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowInfo();
+            //ShowInfo();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace WPF_Schoolbib
         public WindowReturnItem()
         {
             InitializeComponent();
-            ShowInfo();
+            //ShowInfo();
         }
 
         private void ShowInfo() 
@@ -45,7 +45,7 @@ namespace WPF_Schoolbib
 
         private void StudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowItems();
+           // ShowItems();
         }
 
         private void BringBackButton_Click(object sender, RoutedEventArgs e)

@@ -43,17 +43,17 @@ namespace WPF_Schoolbib
         {
 
 
-            EditInfo();
-            MakeTextBoxesEmpty();
+            //EditInfo();
+            //MakeTextBoxesEmpty();
             //StudentListbox.ItemsSource = null;
             //StudentListbox.ItemsSource = Students.AllStudentsList;
         }
 
         private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowInfo();
+            //ShowInfo();
           
-            AddLoans();
+           // AddLoans();
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
@@ -10,75 +9,173 @@ namespace WPF_Schoolbib
     /// </summary>
     public partial class WindowAddCatalog : Window
     {
+        SchoolbibDBContext schoolbibDBContext = new SchoolbibDBContext();
+
         public WindowAddCatalog()
         {
             InitializeComponent();
+            LoadLanguagesInComboBox();
+            LoadGenreInComboBox();
+        }
+        private void LoadLanguagesInComboBox()
+        {
+            string[] languages = Enum.GetNames(typeof(Language));
+            BookLanguageComboBox.ItemsSource = languages;
+            DvdLanguageComboBox.ItemsSource = languages;
+        }
+        private void LoadGenreInComboBox()
+        {
+            string[] bookGenre = Enum.GetNames(typeof(BookGenre));
+            string[] dvdGenre = Enum.GetNames(typeof(DVDGenre));
+            string[] cdGenre = Enum.GetNames(typeof(CDGenre));
+            BookGenreComboBox.ItemsSource = bookGenre;
+            DvdGenreComboBox.ItemsSource = dvdGenre;
+            CdGenreComboBox.ItemsSource = cdGenre;
         }
 
-        private void Idtextbox_TextChanged(object sender, TextChangedEventArgs e)
+        #region books
+        private bool CheckIfAllIsFilledBook()
         {
+            bool allIsFilled = true;
+            if (BookTitletextbox.Text == "" || BookAuthortextbox.Text == "" || BookISBNtextbox.Text == "" ||
+           BookLanguageComboBox.SelectedIndex == -1 || BookPagestextbox.Text == "" || BookGenreComboBox.SelectedIndex == -1 || BookPublishertextbox.Text == "")
+            {
+                allIsFilled = false;
+            }
+            else
+            {
+                allIsFilled = true;
+            }
 
+            return allIsFilled;
         }
-        private void UpdateUI()
+        private void UpdateUIBook()
         {
-            if (BoekRadiobutton.IsChecked == true)
-            {
-                Author.Content = "Autheur";
-                ID.Content = "ISBN";
-            }
-            if (CDRadiobutton.IsChecked == true)
-            {
-                Author.Content = "Artiest";
-                ID.Content = "ID";
-            }
-            if (DvdRadiobutton.IsChecked == true)
-            {
-                Author.Content = "Regisseur";
-                ID.Content = "ID";
-            }
-            Idtextbox.Text = "";
-            Titletextbox.Text = "";
-            Authortextbox.Text = "";
+            BookTitletextbox.Text = "";
+            BookAuthortextbox.Text = "";
+            BookISBNtextbox.Text = "";
+            BookLanguageComboBox.SelectedIndex = -1;
+            BookPagestextbox.Text = "";
+            BookGenreComboBox.SelectedIndex = -1;
+            BookPublishertextbox.Text = "";
         }
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void AddBook()
         {
-            SchoolbibDBContext schoolbibDBContext = new SchoolbibDBContext();
-            if (BoekRadiobutton.IsChecked == true)
+            if (CheckIfAllIsFilledBook() == true)
             {
-                Library newBook = new Books(Titletextbox.Text, Authortextbox.Text, Convert.ToInt32(Idtextbox.Text));
-
-                schoolbibDBContext.LibraryItems.Add(newBook);
+                string title = BookTitletextbox.Text;
+                string Author = BookAuthortextbox.Text;
+                long ISBNCode = Convert.ToInt64(BookISBNtextbox.Text);
+                int languageIndex = BookLanguageComboBox.SelectedIndex;
+                int pages = Convert.ToInt32(BookPagestextbox.Text);
+                int genreIndex = BookGenreComboBox.SelectedIndex;
+                string publisher = BookPublishertextbox.Text;
+                Books newBook = new Books(title, Author, ISBNCode, genreIndex, languageIndex, pages, publisher);
+                schoolbibDBContext.Books.Add(newBook);
                 schoolbibDBContext.SaveChanges();
-
             }
-            if (CDRadiobutton.IsChecked == true)
+        }
+        private void BookAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddBook();
+            UpdateUIBook();
+        }
+        #endregion
+
+        #region DVD
+        private bool CheckIfAllIsFilledDVD()
+        {
+            bool allIsFilled = true;
+            if (DvdEANTextbox.Text == "" || DvdTitleTextbox.Text == "" || DvdDirectorTextbox.Text == "" ||
+                DvdLanguageComboBox.SelectedIndex == -1 || DvdDurationTextbox.Text == "" || DvdGenreComboBox.SelectedIndex == -1)
             {
-                Library newCD = new CD(Titletextbox.Text, Authortextbox.Text, Convert.ToInt32(Idtextbox.Text));
-                schoolbibDBContext.LibraryItems.Add(newCD);
+                allIsFilled = false;
+            }
+            else
+            {
+                allIsFilled = true;
+            }
+
+            return allIsFilled;
+        }
+        private void UpdateUIDVD()
+        {
+            DvdEANTextbox.Text = "";
+            DvdTitleTextbox.Text = "";
+            DvdDirectorTextbox.Text = "";
+            DvdLanguageComboBox.SelectedIndex = -1;
+            DvdDurationTextbox.Text = "";
+            DvdGenreComboBox.SelectedIndex = -1;
+        }
+        private void AddDVD()
+        {
+            if (CheckIfAllIsFilledDVD() == true)
+            {
+                string title = DvdTitleTextbox.Text;
+                string creator = DvdDirectorTextbox.Text;
+                long productNumber = Convert.ToInt64(DvdEANTextbox.Text);
+                int languagIndex = DvdLanguageComboBox.SelectedIndex;
+                int duration = Convert.ToInt32(DvdDurationTextbox.Text);
+                int genreIndex = BookGenreComboBox.SelectedIndex;
+                DVD newDVD = new DVD(title, creator, productNumber, genreIndex, languagIndex, duration);
+                schoolbibDBContext.DVDs.Add(newDVD);
                 schoolbibDBContext.SaveChanges();
             }
-            if (DvdRadiobutton.IsChecked == true)
+        }
+        private void DVDAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddDVD();
+            UpdateUIDVD();
+        }
+        #endregion
+
+        #region CD
+        private bool CheckIfAllIsFilledCD()
+        {
+            bool allIsFilled = true;
+            if (CdEANTextbox.Text == "" || CdTitleTextbox.Text == "" || CdArtistTextbox.Text == "" ||
+            CdDurationTextbox.Text == "" || CdGenreComboBox.SelectedIndex == -1)
             {
-                Library newDVD = new DVD(Titletextbox.Text, Authortextbox.Text, Convert.ToInt32(Idtextbox.Text));
-                schoolbibDBContext.LibraryItems.Add(newDVD);
+                allIsFilled = false;
+            }
+            else
+            {
+                allIsFilled = true;
+            }
+
+            return allIsFilled; ;
+        }
+        private void UpdateUICD()
+        {
+            CdEANTextbox.Text = "";
+            CdTitleTextbox.Text = "";
+            CdArtistTextbox.Text = "";
+            CdDurationTextbox.Text = "";
+            CdGenreComboBox.SelectedIndex = -1;
+        }
+        private void AddCD()
+        {
+
+            if (CheckIfAllIsFilledCD() == true)
+            {
+                string title = CdTitleTextbox.Text;
+                string creator = CdArtistTextbox.Text;
+                long productNumber = Convert.ToInt64(CdEANTextbox.Text);
+                int duration = Convert.ToInt32(CdDurationTextbox.Text);
+                int genreIndex = CdGenreComboBox.SelectedIndex;
+                CD newCD = new CD(title, creator, productNumber, genreIndex, duration);
+                schoolbibDBContext.CDs.Add(newCD);
                 schoolbibDBContext.SaveChanges();
             }
-            UpdateUI();
         }
 
-        private void DvdRadiobutton_Checked(object sender, RoutedEventArgs e)
+        private void CDAddButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateUI();
+            AddCD();
+            UpdateUICD();
         }
+        #endregion
 
-        private void CDRadiobutton_Checked(object sender, RoutedEventArgs e)
-        {
-            UpdateUI();
-        }
 
-        private void BoekRadiobutton_Checked(object sender, RoutedEventArgs e)
-        {
-            UpdateUI();
-        }
     }
 }

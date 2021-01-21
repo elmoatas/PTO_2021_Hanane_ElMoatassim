@@ -29,7 +29,7 @@ namespace WPF_Schoolbib
        
         private void CDRadiobutton_Checked(object sender, RoutedEventArgs e)
         {
-            CatalogusListbox.Items.Clear();
+           // CatalogusListbox.Items.Clear();
             /*foreach (Library item in Library.LibraryList)
             {
                 if ( item is CD)
@@ -42,7 +42,7 @@ namespace WPF_Schoolbib
 
         private void DvdRadiobutton_Checked(object sender, RoutedEventArgs e)
         {
-            CatalogusListbox.Items.Clear();
+            //CatalogusListbox.Items.Clear();
             /*foreach (Library item in Library.LibraryList)
             {
                 if (item is DVD)
@@ -55,15 +55,15 @@ namespace WPF_Schoolbib
 
         private void BoekRadiobutton_Checked(object sender, RoutedEventArgs e)
         {
-            CatalogusListbox.Items.Clear();
-           /* foreach (Library item in Library.LibraryList)
-            {
-                if (item is Books)
-                {
-                    CatalogusListbox.Items.Add(item);
-                }
+            /*CatalogusListbox.Items.Clear();
+          foreach (Library item in Library.LibraryList)
+           {
+               if (item is Books)
+               {
+                   CatalogusListbox.Items.Add(item);
+               }
 
-            }*/
+           }*/
         }
 
         private void CatalogusListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,8 +73,8 @@ namespace WPF_Schoolbib
 
         private void loanButton_Click(object sender, RoutedEventArgs e)
         {
-            Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;       //geselecteerde item
-            Students selectedStudent = (Students)StudentListbox.SelectedItem;
+            //Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;       //geselecteerde item
+            //Students selectedStudent = (Students)StudentListbox.SelectedItem;
            // selectedStudent.ItemID = selectedItemCatalogus.ID;
             //selectedItemCatalogus.LoanerID = selectedStudent.ID;
         }

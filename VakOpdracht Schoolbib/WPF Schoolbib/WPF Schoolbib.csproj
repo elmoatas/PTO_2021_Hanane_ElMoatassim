@@ -70,6 +70,8 @@
     <Compile Include="Models\Books.cs" />
     <Compile Include="Models\CD.cs" />
     <Compile Include="Models\DVD.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\Fines.cs" />
     <Compile Include="Models\Library.cs" />
     <Compile Include="Models\Students.cs" />
     <Compile Include="Models\SchoolbibDBContext.cs" />

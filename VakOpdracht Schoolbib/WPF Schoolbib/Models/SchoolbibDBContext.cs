@@ -13,6 +13,10 @@ namespace WPF_Schoolbib
 
         //Tabellen 
         public DbSet<Students> Students { get; set; }
-        public DbSet<Library> LibraryItems { get; set; }
+        //public DbSet<Library> LibraryItems { get; set; }
+        public DbSet<Books> Books { get; set; }
+        public DbSet<CD> CDs { get; set; }
+        public DbSet<DVD> DVDs { get; set; }
+       
     }
 }

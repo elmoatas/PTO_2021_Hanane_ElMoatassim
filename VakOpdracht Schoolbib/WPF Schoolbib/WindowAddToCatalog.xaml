@@ -5,44 +5,117 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Schoolbib"
         mc:Ignorable="d"
-        Title="Voeg nieuwe item toe" Height="251" Width="463">
+        Title="Voeg nieuwe item toe" Height="467" Width="463">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White">Item toevoegen aan catalogus</Label>
-        <GroupBox Grid.Row="1" Header="Kies de type:" Margin=" 5" BorderBrush="#FF1A588B">
-            <StackPanel   Margin=" 5">
-                <RadioButton x:Name="CDRadiobutton" Margin="5" GroupName="ItemChoice" Checked="CDRadiobutton_Checked">CD</RadioButton>
-                <RadioButton x:Name="DvdRadiobutton" Margin=" 5" GroupName="ItemChoice" Checked="DvdRadiobutton_Checked">DVD</RadioButton>
-                <RadioButton x:Name="BoekRadiobutton" Margin=" 5" GroupName="ItemChoice" Checked="BoekRadiobutton_Checked">Boek</RadioButton>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Header="Vul de info in: " Grid.Row="1" Grid.Column="1" Margin=" 5"  BorderBrush="#FF1A588B" >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Label x:Name="ID" Grid.Row="0" Margin=" 5" Grid.Column="0">ID</Label>
-                <Label x:Name="Title" Grid.Row="1"  Margin=" 5" Grid.Column="0" >Title</Label>
-                <Label x:Name="Author" Grid.Row="2" Margin=" 5"  Grid.Column="0">author</Label>
-                <TextBox x:Name="Idtextbox" Grid.Row="0" Margin="5" Grid.Column="1" TextChanged="Idtextbox_TextChanged"/>
-                <TextBox x:Name="Titletextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
-                <TextBox x:Name="Authortextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
-                <Button x:Name="AddButton" Grid.Row="3" Margin="5"  Grid.Column="1" Click="AddButton_Click">Toevoegen</Button>
-            </Grid>
-        </GroupBox>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Boek">
+                <GroupBox Header="Vul de info in: " Grid.Row="1" Grid.Column="1" Margin=" 5"  BorderBrush="#FF1A588B" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="ISBN" Grid.Row="0" Margin=" 5" Grid.Column="0">ISBN</Label>
+                        <Label x:Name="Title" Grid.Row="1"  Margin=" 5" Grid.Column="0" >Titel</Label>
+                        <Label x:Name="Author" Grid.Row="2" Margin=" 5"  Grid.Column="0">Autheur</Label>
+                        <Label x:Name="Language" Grid.Row="3" Margin=" 5"  Grid.Column="0">Taal</Label>
+                        <Label x:Name="Pages" Grid.Row="4" Margin=" 5"  Grid.Column="0">Paginas</Label>
+                        <Label x:Name="Genre" Grid.Row="5" Margin=" 5"  Grid.Column="0">Genre</Label>
+                        <Label x:Name="Publisher" Grid.Row="6" Margin=" 5"  Grid.Column="0">Uitgeverij</Label>
+                        <TextBox x:Name="BookISBNtextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
+                        <TextBox x:Name="BookTitletextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
+                        <TextBox x:Name="BookAuthortextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
+                        <ComboBox x:Name="BookLanguageComboBox" Grid.Row="3" Margin="5" Grid.Column="1"/>
+                        <TextBox x:Name="BookPagestextbox" Grid.Row="4" Margin="5" Grid.Column="1"/>
+                        <ComboBox x:Name="BookGenreComboBox" Grid.Row="5" Margin="5" Grid.Column="1"/>
+                        <TextBox x:Name="BookPublishertextbox" Grid.Row="6" Margin="5" Grid.Column="1"/>
+                        <Button x:Name="BookAddButton" Grid.Row="7" Margin="5"  Grid.Column="0" Click="BookAddButton_Click" >Toevoegen</Button>
+                    </Grid>
+                </GroupBox>
+            </TabItem>
+            <TabItem Header="DVD">
+                <GroupBox Header="Vul de info in: " Grid.Row="1" Grid.Column="1" Margin=" 5"  BorderBrush="#FF1A588B" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Margin=" 5" Grid.Column="0">EAN</Label>
+                        <Label Grid.Row="1"  Margin=" 5" Grid.Column="0" >Titel</Label>
+                        <Label Grid.Row="2" Margin=" 5"  Grid.Column="0">Regisseur</Label>
+                        <Label Grid.Row="3" Margin=" 5"  Grid.Column="0">Taal</Label>
+                        <Label Grid.Row="4" Margin=" 5"  Grid.Column="0">Speellengte in minuten</Label>
+                        <Label Grid.Row="5" Margin=" 5"  Grid.Column="0">Genre</Label>
+                        <TextBox x:Name="DvdEANTextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
+                        <TextBox x:Name="DvdTitleTextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
+                        <TextBox x:Name="DvdDirectorTextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
+                        <ComboBox x:Name="DvdLanguageComboBox" Grid.Row="3" Margin="5" Grid.Column="1"/>
+                        <TextBox x:Name="DvdDurationTextbox" Grid.Row="4" Margin="5" Grid.Column="1"/>
+                        <ComboBox x:Name="DvdGenreComboBox" Grid.Row="5" Margin="5" Grid.Column="1"/>
+                        <Button x:Name="DvdAddButton" Grid.Row="7" Margin="5"  Grid.Column="0" Click="DVDAddButton_Click" >Toevoegen</Button>
+                    </Grid>
+                </GroupBox>
+            </TabItem>
+            <TabItem Header="CD">
+                <GroupBox Header="Vul de info in: " Grid.Row="1" Grid.Column="1" Margin=" 5"  BorderBrush="#FF1A588B" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Margin=" 5" Grid.Column="0">EAN</Label>
+                        <Label Grid.Row="1"  Margin=" 5" Grid.Column="0" >Titel</Label>
+                        <Label Grid.Row="2" Margin=" 5"  Grid.Column="0">Artiest</Label>                        
+                        <Label Grid.Row="3" Margin=" 5"  Grid.Column="0">Speellengte in minuten</Label>
+                        <Label Grid.Row="4" Margin=" 5"  Grid.Column="0">Genre</Label>
+                        <TextBox x:Name="CdEANTextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
+                        <TextBox x:Name="CdTitleTextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
+                        <TextBox x:Name="CdArtistTextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>                        
+                        <TextBox x:Name="CdDurationTextbox" Grid.Row="3" Margin="5" Grid.Column="1"/>
+                        <ComboBox x:Name="CdGenreComboBox" Grid.Row="4" Margin="5" Grid.Column="1"/>
+                        <Button x:Name="CDAddButton" Grid.Row="5" Margin="5"  Grid.Column="0" Click="CDAddButton_Click" >Toevoegen</Button>
+                    </Grid>
+                </GroupBox>
+            </TabItem>
+        </TabControl>
+
+
+
     </Grid>
 </Window>

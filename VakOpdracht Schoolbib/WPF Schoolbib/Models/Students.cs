@@ -3,7 +3,7 @@ using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
-    enum Studychoises
+    enum Studychoices
     {
         Chemie,
         Othopedagogie,
@@ -32,12 +32,8 @@ namespace WPF_Schoolbib
         {
             this.firstName = firstName;
             this.lastName = lastName;
-            GetTheStudyChoiceName(studyIndex);
-         
-            
-            // this.ID = Interlocked.Increment(ref globalID);
-            // AllStudentsList.Add(this);
-
+            this.sex = sex;
+            GetTheStudyChoiceName(studyIndex);       
         }
 
         [Key]
@@ -47,36 +43,34 @@ namespace WPF_Schoolbib
         public string Study { get => study; set => study = value; }
         public string Sex { get => sex; set => sex = value; }
 
-        private void GetTheStudyChoiceName(int ComboBoxIndex)
+        public void GetTheStudyChoiceName(int ComboBoxIndex)
         {
             switch (ComboBoxIndex)
             {
                 case 0:
-                    study = Studychoises.Chemie.ToString();
+                    study = Studychoices.Chemie.ToString();
                     break;
                 case 1:
-                    study = Studychoises.Othopedagogie.ToString();
+                    study = Studychoices.Othopedagogie.ToString();
                     break;
                 case 2:
-                    study = Studychoises.Ergotherapie.ToString();
+                    study = Studychoices.Ergotherapie.ToString();
                     break;
                 case 3:
-                    study = Studychoises.Logopedie.ToString();
+                    study = Studychoices.Logopedie.ToString();
                     break;
                 case 4:
-                    study = Studychoises.Electronica.ToString();
+                    study = Studychoices.Electronica.ToString();
                     break;
                 case 5:
-                    study = Studychoises.Verpleegkunde.ToString();
+                    study = Studychoices.Verpleegkunde.ToString();
                     break;
             }
         }
-       
-
-
+     
         public override string ToString()
         {
-            return $"{ lastName} { firstName} - {study}";
+            return $"{lastName} {firstName} - {sex} - {study}";
         }
 
     }
