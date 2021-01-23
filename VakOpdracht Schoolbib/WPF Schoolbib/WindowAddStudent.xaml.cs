@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
@@ -10,11 +11,13 @@ namespace WPF_Schoolbib
     public partial class WindowAddStudent : Window
     {
         SchoolbibDBContext schoolbibDBContext = new SchoolbibDBContext();
+        StudentRepository studentRepository = new StudentRepository();
         public WindowAddStudent()
         {
             InitializeComponent();
             ShowStudentsInListbox();
             PutStudyChoicesInComboBox();
+            PutSexChoisesInComboBox();
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
@@ -26,29 +29,21 @@ namespace WPF_Schoolbib
         private void PutStudyChoicesInComboBox()
         {
             string[] studychoises = Enum.GetNames(typeof(Studychoices));
-            StudyCombobox.ItemsSource = studychoises;
+            StudyComboBox.ItemsSource = studychoises;
+        }
+        private void PutSexChoisesInComboBox()
+        {
+            string[] sexChoices = Enum.GetNames(typeof(SexEnum));
+            SexComboBox.ItemsSource = sexChoices;
         }
         private void UpdateUI()
         {
             FirstNameTextBox.Text = "";
             LastNameTextBox.Text = "";
-            StudyCombobox.SelectedIndex = -1;
-            FemaleRadioButton.IsChecked = false;
-            MaleRadioButton.IsChecked = false;
+            StudyComboBox.SelectedIndex = -1;
+            SexComboBox.SelectedIndex = -1;
         }
-        private string GetSex()
-        {
-            string sex = "";
-            if (FemaleRadioButton.IsChecked == true)
-            {
-                sex = "V";
-            }
-            else
-            {
-                sex = "M";
-            }
-            return sex;
-        }
+
         private void Validation()
         {
             // student mag niet in database bestaan al (zelfde voornaam en achternaam
@@ -69,13 +64,9 @@ namespace WPF_Schoolbib
         {
             if (AllFieldsAreFilled() == true)
             {
-                Students newstudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text, StudyCombobox.SelectedIndex, GetSex());
-                newstudent.FirstName = FirstNameTextBox.Text;
-                newstudent.LastName = LastNameTextBox.Text;
-                newstudent.GetTheStudyChoiceName(StudyCombobox.SelectedIndex);
-                newstudent.Sex = GetSex();
-                schoolbibDBContext.Students.Add(newstudent);
-                schoolbibDBContext.SaveChanges();
+                Students newstudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text, StudyComboBox.SelectedIndex, SexComboBox.SelectedIndex);
+                studentRepository.CreateStudent(newstudent);
+
             }
         }
         private void ShowStudentsInListbox()
@@ -86,8 +77,8 @@ namespace WPF_Schoolbib
         private bool AllFieldsAreFilled()
         {
             bool everythingOK = true;
-            if (FirstNameTextBox.Text == "" || LastNameTextBox.Text == "" || StudyCombobox.SelectedIndex == -1 ||
-                (FemaleRadioButton.IsChecked == false && MaleRadioButton.IsChecked == false))
+            if (FirstNameTextBox.Text == "" || LastNameTextBox.Text == "" || StudyComboBox.SelectedIndex == -1 ||
+                SexComboBox.SelectedIndex == -1)
             {
                 everythingOK = false;
 

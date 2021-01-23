@@ -29,11 +29,9 @@
         <Label  Grid.Row="4"  HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Geslacht</Label>
         <TextBox  x:Name="FirstNameTextBox" Grid.Row="1" Grid.Column="1" Margin="5"/>
         <TextBox x:Name="LastNameTextBox" Grid.Row="2" Grid.Column="1" Margin="5" />
-        <ComboBox x:Name="StudyCombobox" Grid.Row="3" Grid.Column="1" Margin="5" />
-        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Margin="5">
-            <RadioButton x:Name="FemaleRadioButton"  Grid.Row="4" Grid.Column="1" Margin="5" GroupName="Sex">Vrouw</RadioButton>
-            <RadioButton x:Name="MaleRadioButton"  Grid.Row="4" Grid.Column="1" Margin="5" GroupName="Sex">Man</RadioButton>
-        </StackPanel>
+        <ComboBox x:Name="StudyComboBox" Grid.Row="3" Grid.Column="1" Margin="5" />
+        <ComboBox x:Name="SexComboBox" Grid.Row="4" Grid.Column="1" Margin="5"/>
+        
         <Button x:Name="AddButton" Content="Nieuw" Margin="5" Grid.Column="1" Grid.Row="5" Click="AddButton_Click"  />
         <ListBox x:Name="StudentListbox" Grid.Row="1" Grid.RowSpan="5" Grid.Column="2" />
     </Grid>

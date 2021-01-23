@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using WPF_Schoolbib.Models;
 
@@ -9,23 +11,49 @@ namespace WPF_Schoolbib
     /// </summary>
     public partial class WindowModifyStudent : Window
     {
+        StudentRepository studentRepository = new StudentRepository();
         public WindowModifyStudent()
         {
             InitializeComponent();
-            //StudentListbox.ItemsSource = Students.AllStudentsList;
+            ShowStudentsInListbox();
+            PutStudyChoicesInComboBox();
+            PutSexChoisesInComboBox();
         }
-        private void MakeTextBoxesEmpty()
+        private void ShowStudentsInListbox()
+        {
+            StudentListbox.ItemsSource = null;
+            StudentListbox.ItemsSource = studentRepository.GetAllStudents();
+        }
+        private void PutStudyChoicesInComboBox()
+        {
+            string[] studychoises = Enum.GetNames(typeof(Studychoices));
+            StudyCombobox.ItemsSource = studychoises;
+        }
+        private void PutSexChoisesInComboBox()
+        {
+            string[] sexChoices = Enum.GetNames(typeof(SexEnum));
+            SexComboBox.ItemsSource = sexChoices;
+        }
+
+
+        private void MakeAllFieldsEmpty()
         {
             FirstNameTextBox.Text = "";
             LastNameTextBox.Text = "";
+            SexComboBox.SelectedItem = -1;
+            StudyCombobox.SelectedIndex = -1;
+            ShowIDLabel.Content = "";
         }
         private void EditInfo()
         {
             Students selected = (Students)StudentListbox.SelectedItem;
             selected.FirstName = FirstNameTextBox.Text;
             selected.LastName = LastNameTextBox.Text;
-
-
+            selected.Studyindex = StudyCombobox.SelectedIndex;
+            selected.GetTheStudyChoiceName();
+            selected.GetSex();
+            selected.SexIndex = SexComboBox.SelectedIndex;
+            studentRepository.UpdateStudent(selected);
         }
 
         private void ShowInfo()
@@ -33,56 +61,52 @@ namespace WPF_Schoolbib
             if (StudentListbox.SelectedItem != null)
             {
                 Students selected = (Students)StudentListbox.SelectedItem;
-                //ShowIDLabel.Content = selected.ID;
+                ShowIDLabel.Content = selected.Id;
                 FirstNameTextBox.Text = selected.FirstName;
                 LastNameTextBox.Text = selected.LastName;
+                StudyCombobox.SelectedIndex = selected.Studyindex;
+                SexComboBox.SelectedIndex = selected.SexIndex;
             }
         }
-  
+
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-
-
-            //EditInfo();
-            //MakeTextBoxesEmpty();
-            //StudentListbox.ItemsSource = null;
-            //StudentListbox.ItemsSource = Students.AllStudentsList;
+            EditInfo();
+            MakeAllFieldsEmpty();
+            ShowStudentsInListbox();
         }
 
         private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //ShowInfo();
-          
-           // AddLoans();
+            ShowInfo();
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
             Students selected = (Students)StudentListbox.SelectedItem;
-            //Students.AllStudentsList.Remove(selected);
-            //StudentListbox.ItemsSource = null;
-            //StudentListbox.ItemsSource = Students.AllStudentsList;
-
+            studentRepository.DeleteStudent(selected);
+            ShowStudentsInListbox();
+            MakeAllFieldsEmpty();
         }
 
-        private void AddLoans() 
+        private void AddLoans()
         {
-           /* if (StudentListbox.SelectedItem != null)
-            {
-                Students selected = (Students)StudentListbox.SelectedItem;
-                foreach (Library item in Library.LibraryList)
-                {
-                    if (item.ID == selected.ItemID)
-                    {
-                        LoansOfSelectedStudentListbox.Items.Add(item);
-                    }
-                }
-            }*/
+            /* if (StudentListbox.SelectedItem != null)
+             {
+                 Students selected = (Students)StudentListbox.SelectedItem;
+                 foreach (Library item in Library.LibraryList)
+                 {
+                     if (item.ID == selected.ItemID)
+                     {
+                         LoansOfSelectedStudentListbox.Items.Add(item);
+                     }
+                 }
+             }*/
         }
 
         private void LoansOfSelectedStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-          
+
         }
     }
 }

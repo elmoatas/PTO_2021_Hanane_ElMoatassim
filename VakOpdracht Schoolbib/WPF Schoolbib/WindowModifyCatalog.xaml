@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Schoolbib"
         mc:Ignorable="d"
-        Title="WindowModifyCatalog" Height="276" Width="800">
+        Title="WindowModifyCatalog" Height="416.4" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -18,31 +18,105 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White">Item bewerken</Label>
         <GroupBox Header=" Filter op" Grid.Row="1" Grid.Column="0" Margin="5" BorderBrush="#FF1A588B">
-            
+
         </GroupBox>
         <GroupBox Header="kies Een item " Grid.Row="1" Grid.Column="1" Margin="5" BorderBrush="#FF1A588B">
             <ListBox x:Name="Listbox" Margin="5" SelectionChanged="Listbox_SelectionChanged"/>
         </GroupBox>
-        <GroupBox Header="Beheer Item" Grid.Row="1" Grid.Column="2" Margin="5" BorderBrush="#FF1A588B">
+        <GroupBox Visibility="Hidden" x:Name="BookGroupBox" Header="Beheer Item" Grid.Row="1" Grid.Column="2" Margin="5" BorderBrush="#FF1A588B">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="ISBN" Grid.Row="0" Margin=" 5" Grid.Column="0">ISBN</Label>
+            <Label x:Name="Title" Grid.Row="1"  Margin=" 5" Grid.Column="0" >Titel</Label>
+            <Label x:Name="Author" Grid.Row="2" Margin=" 5"  Grid.Column="0">Autheur</Label>
+            <Label x:Name="Language" Grid.Row="3" Margin=" 5"  Grid.Column="0">Taal</Label>
+            <Label x:Name="Pages" Grid.Row="4" Margin=" 5"  Grid.Column="0">Paginas</Label>
+            <Label x:Name="Genre" Grid.Row="5" Margin=" 5"  Grid.Column="0">Genre</Label>
+            <Label x:Name="Publisher" Grid.Row="6" Margin=" 5"  Grid.Column="0">Uitgeverij</Label>
+            <TextBox x:Name="BookISBNtextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
+            <TextBox x:Name="BookTitletextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
+            <TextBox x:Name="BookAuthortextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
+            <ComboBox x:Name="BookLanguageComboBox" Grid.Row="3" Margin="5" Grid.Column="1"/>
+            <TextBox x:Name="BookPagestextbox" Grid.Row="4" Margin="5" Grid.Column="1"/>
+            <ComboBox x:Name="BookGenreComboBox" Grid.Row="5" Margin="5" Grid.Column="1"/>
+            <TextBox x:Name="BookPublishertextbox" Grid.Row="6" Margin="5" Grid.Column="1"/>
+            <Button x:Name="BOOKModifyButton" Grid.Row="7" Margin="5"  Grid.Column="1" Click="ModifyButton_Click" >bewerken</Button>
+            <Button x:Name="BOOKEraseButton" Grid.Row="7" Margin="5"  Grid.Column="0" Click="EraseButton_Click" >Verwijderen</Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Visibility="Hidden"  x:Name="DVDGroupBox" Header="Beheer Item" Grid.Row="1" Grid.Column="2" Margin="5" BorderBrush="#FF1A588B">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label x:Name="ID" Grid.Row="0" Margin=" 5" Grid.Column="0">ID</Label>
-                <Label x:Name="Title" Grid.Row="1"  Margin=" 5" Grid.Column="0" >Title</Label>
-                <Label x:Name="Author" Grid.Row="2" Margin=" 5"  Grid.Column="0">author</Label>
-                <TextBox x:Name="Idtextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
-                <TextBox x:Name="Titletextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
-                <TextBox x:Name="Authortextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
-                <Button x:Name="ModifyButton" Grid.Row="3" Margin="5"  Grid.Column="1" Click="ModifyButton_Click" >bewerken</Button>
-                <Button x:Name="EraseButton" Grid.Row="3" Margin="5"  Grid.Column="0" Click="EraseButton_Click" >Verwijderen</Button>
+                <Label Grid.Row="0" Margin=" 5" Grid.Column="0">EAN</Label>
+                <Label Grid.Row="1"  Margin=" 5" Grid.Column="0" >Titel</Label>
+                <Label Grid.Row="2" Margin=" 5"  Grid.Column="0">Regisseur</Label>
+                <Label Grid.Row="3" Margin=" 5"  Grid.Column="0">Taal</Label>
+                <Label Grid.Row="4" Margin=" 5"  Grid.Column="0">Speellengte in minuten</Label>
+                <Label Grid.Row="5" Margin=" 5"  Grid.Column="0">Genre</Label>
+                <TextBox x:Name="DvdEANTextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
+                <TextBox x:Name="DvdTitleTextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
+                <TextBox x:Name="DvdDirectorTextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
+                <ComboBox x:Name="DvdLanguageComboBox" Grid.Row="3" Margin="5" Grid.Column="1"/>
+                <TextBox x:Name="DvdDurationTextbox" Grid.Row="4" Margin="5" Grid.Column="1"/>
+                <ComboBox x:Name="DvdGenreComboBox" Grid.Row="5" Margin="5" Grid.Column="1"/>
+                <Button x:Name="DVDModifyButton" Grid.Row="7" Margin="5"  Grid.Column="1" Click="ModifyButton_Click" >bewerken</Button>
+                <Button x:Name="DVDEraseButton" Grid.Row="7" Margin="5"  Grid.Column="0" Click="EraseButton_Click" >Verwijderen</Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Visibility="Hidden"  x:Name="CDGroupBox" Header="Beheer Item" Grid.Row="1" Grid.Column="2" Margin="5" BorderBrush="#FF1A588B">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Margin=" 5" Grid.Column="0">EAN</Label>
+                <Label Grid.Row="1"  Margin=" 5" Grid.Column="0" >Titel</Label>
+                <Label Grid.Row="2" Margin=" 5"  Grid.Column="0">Artiest</Label>
+                <Label Grid.Row="3" Margin=" 5"  Grid.Column="0">Speellengte in minuten</Label>
+                <Label Grid.Row="4" Margin=" 5"  Grid.Column="0">Genre</Label>
+                <TextBox x:Name="CdEANTextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
+                <TextBox x:Name="CdTitleTextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
+                <TextBox x:Name="CdArtistTextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
+                <TextBox x:Name="CdDurationTextbox" Grid.Row="3" Margin="5" Grid.Column="1"/>
+                <ComboBox x:Name="CdGenreComboBox" Grid.Row="4" Margin="5" Grid.Column="1"/>
+                <Button x:Name="CDModifyButton" Grid.Row="5" Margin="5"  Grid.Column="1" Click="ModifyButton_Click" >bewerken</Button>
+                <Button x:Name="CDEraseButton" Grid.Row="6" Margin="5"  Grid.Column="0" Click="EraseButton_Click" >Verwijderen</Button>
             </Grid>
         </GroupBox>
     </Grid>

@@ -1,17 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
-    enum Studychoices
-    {
-        Chemie,
-        Othopedagogie,
-        Ergotherapie,
-        Logopedie,
-        Electronica,
-        Verpleegkunde,
-    }
+    
     class Students
     {
         //static List<Students> allStudentsList = new List<Students>();
@@ -22,18 +16,21 @@ namespace WPF_Schoolbib
         private string study;
         private string sex;
         private Library libraryItem;
-
-        //public static int globalID;
+        private int studyindex;
+        private int sexIndex;
+       
         public Students()
         {
 
         }
-        public Students(string firstName, string lastName, int studyIndex,string sex )
+        public Students(string firstName, string lastName, int studyIndex,int sexIndex )
         {
             this.firstName = firstName;
             this.lastName = lastName;
-            this.sex = sex;
-            GetTheStudyChoiceName(studyIndex);       
+            this.sexIndex = sexIndex;
+            this.studyindex = studyIndex;
+            GetTheStudyChoiceName();
+            GetSex();
         }
 
         [Key]
@@ -42,13 +39,25 @@ namespace WPF_Schoolbib
         public string LastName { get => lastName; set => lastName = value; }
         public string Study { get => study; set => study = value; }
         public string Sex { get => sex; set => sex = value; }
+        public int Studyindex { get => studyindex; set => studyindex = value; }
+        public int SexIndex { get => sexIndex; set => sexIndex = value; }
 
-        public void GetTheStudyChoiceName(int ComboBoxIndex)
+        public void GetSex()
         {
-            switch (ComboBoxIndex)
+            switch (sexIndex)
+            {
+                case 0: sex = SexEnum.Vrouw.ToString(); break;
+                case 1: sex = SexEnum.Man.ToString(); break;
+                case 2: sex = SexEnum.None.ToString(); break;
+            }
+        }
+
+        public void GetTheStudyChoiceName()
+        {
+            switch (studyindex)
             {
                 case 0:
-                    study = Studychoices.Chemie.ToString();
+                    study = Studychoices.Informatica.ToString();
                     break;
                 case 1:
                     study = Studychoices.Othopedagogie.ToString();

@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace WPF_Schoolbib.Models
 {
+    enum Studychoices
+    {
+        Informatica,
+        Othopedagogie,
+        Ergotherapie,
+        Logopedie,
+        Electronica,
+        Verpleegkunde,
+    }
     enum BookGenre
     {
         Thriller,
@@ -37,6 +46,12 @@ namespace WPF_Schoolbib.Models
         ENG,
         DUI,
         SPA
+    }
+    enum SexEnum
+    { 
+        Vrouw,
+        Man,
+        None
     }
     class Enums
     {

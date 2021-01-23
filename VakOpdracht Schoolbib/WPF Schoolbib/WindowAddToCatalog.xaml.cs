@@ -9,8 +9,10 @@ namespace WPF_Schoolbib
     /// </summary>
     public partial class WindowAddCatalog : Window
     {
-        SchoolbibDBContext schoolbibDBContext = new SchoolbibDBContext();
-
+        LibraryRepository libraryRepository = new LibraryRepository();
+        string book = "BOOK";
+        string cd = "CD";
+        string dvd = "DVD";
         public WindowAddCatalog()
         {
             InitializeComponent();
@@ -33,149 +35,141 @@ namespace WPF_Schoolbib
             CdGenreComboBox.ItemsSource = cdGenre;
         }
 
-        #region books
-        private bool CheckIfAllIsFilledBook()
-        {
-            bool allIsFilled = true;
-            if (BookTitletextbox.Text == "" || BookAuthortextbox.Text == "" || BookISBNtextbox.Text == "" ||
-           BookLanguageComboBox.SelectedIndex == -1 || BookPagestextbox.Text == "" || BookGenreComboBox.SelectedIndex == -1 || BookPublishertextbox.Text == "")
-            {
-                allIsFilled = false;
-            }
-            else
-            {
-                allIsFilled = true;
-            }
-
-            return allIsFilled;
-        }
-        private void UpdateUIBook()
-        {
-            BookTitletextbox.Text = "";
-            BookAuthortextbox.Text = "";
-            BookISBNtextbox.Text = "";
-            BookLanguageComboBox.SelectedIndex = -1;
-            BookPagestextbox.Text = "";
-            BookGenreComboBox.SelectedIndex = -1;
-            BookPublishertextbox.Text = "";
-        }
-        private void AddBook()
-        {
-            if (CheckIfAllIsFilledBook() == true)
-            {
-                string title = BookTitletextbox.Text;
-                string Author = BookAuthortextbox.Text;
-                long ISBNCode = Convert.ToInt64(BookISBNtextbox.Text);
-                int languageIndex = BookLanguageComboBox.SelectedIndex;
-                int pages = Convert.ToInt32(BookPagestextbox.Text);
-                int genreIndex = BookGenreComboBox.SelectedIndex;
-                string publisher = BookPublishertextbox.Text;
-                Books newBook = new Books(title, Author, ISBNCode, genreIndex, languageIndex, pages, publisher);
-                schoolbibDBContext.Books.Add(newBook);
-                schoolbibDBContext.SaveChanges();
-            }
-        }
+        //checken of alles ingevuld is
+        //item toevoegen als klassobject en aan DB
+        //alle velden leegmaken
         private void BookAddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddBook();
-            UpdateUIBook();
+            AddItem(book);
+            MakeAllFieldsEmpty(book);
         }
-        #endregion
-
-        #region DVD
-        private bool CheckIfAllIsFilledDVD()
+        private void CDAddButton_Click(object sender, RoutedEventArgs e)
         {
-            bool allIsFilled = true;
-            if (DvdEANTextbox.Text == "" || DvdTitleTextbox.Text == "" || DvdDirectorTextbox.Text == "" ||
-                DvdLanguageComboBox.SelectedIndex == -1 || DvdDurationTextbox.Text == "" || DvdGenreComboBox.SelectedIndex == -1)
-            {
-                allIsFilled = false;
-            }
-            else
-            {
-                allIsFilled = true;
-            }
-
-            return allIsFilled;
-        }
-        private void UpdateUIDVD()
-        {
-            DvdEANTextbox.Text = "";
-            DvdTitleTextbox.Text = "";
-            DvdDirectorTextbox.Text = "";
-            DvdLanguageComboBox.SelectedIndex = -1;
-            DvdDurationTextbox.Text = "";
-            DvdGenreComboBox.SelectedIndex = -1;
-        }
-        private void AddDVD()
-        {
-            if (CheckIfAllIsFilledDVD() == true)
-            {
-                string title = DvdTitleTextbox.Text;
-                string creator = DvdDirectorTextbox.Text;
-                long productNumber = Convert.ToInt64(DvdEANTextbox.Text);
-                int languagIndex = DvdLanguageComboBox.SelectedIndex;
-                int duration = Convert.ToInt32(DvdDurationTextbox.Text);
-                int genreIndex = BookGenreComboBox.SelectedIndex;
-                DVD newDVD = new DVD(title, creator, productNumber, genreIndex, languagIndex, duration);
-                schoolbibDBContext.DVDs.Add(newDVD);
-                schoolbibDBContext.SaveChanges();
-            }
+            AddItem(cd);
+            MakeAllFieldsEmpty(cd);
         }
         private void DVDAddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddDVD();
-            UpdateUIDVD();
+            AddItem(dvd);
+            MakeAllFieldsEmpty(dvd);
         }
-        #endregion
+        private void AddItem(string Item)
+        {
+            if (Item == book)
+            {
+                if (CheckIfAllFieldsAreFilled(book) == true)
+                {
+                    string title = BookTitletextbox.Text;
+                    string Author = BookAuthortextbox.Text;
+                    long ISBNCode = Convert.ToInt64(BookISBNtextbox.Text);
+                    int languageIndex = BookLanguageComboBox.SelectedIndex;
+                    int pages = Convert.ToInt32(BookPagestextbox.Text);
+                    int genreIndex = BookGenreComboBox.SelectedIndex;
+                    string publisher = BookPublishertextbox.Text;
+                    Library newBook = new Books(title, Author, ISBNCode, genreIndex, languageIndex, pages, publisher);
+                    libraryRepository.CreateLibraryItem(newBook);
+                }
+            }
+            else if (Item == cd)
+            {
+                if (CheckIfAllFieldsAreFilled(cd) == true)
+                {
+                    string title = CdTitleTextbox.Text;
+                    string creator = CdArtistTextbox.Text;
+                    long productNumber = Convert.ToInt64(CdEANTextbox.Text);
+                    int duration = Convert.ToInt32(CdDurationTextbox.Text);
+                    int genreIndex = CdGenreComboBox.SelectedIndex;
+                    Library newCD = new CD(title, creator, productNumber, genreIndex, duration);
+                    libraryRepository.CreateLibraryItem(newCD);
+                }
+            }
+            else if (Item == dvd)
+            {
+                if (CheckIfAllFieldsAreFilled(dvd) == true)
+                {
+                    string title = DvdTitleTextbox.Text;
+                    string creator = DvdDirectorTextbox.Text;
+                    long productNumber = Convert.ToInt64(DvdEANTextbox.Text);
+                    int languagIndex = DvdLanguageComboBox.SelectedIndex;
+                    int duration = Convert.ToInt32(DvdDurationTextbox.Text);
+                    int genreIndex = DvdGenreComboBox.SelectedIndex;
+                    Library newDVD = new DVD(title, creator, productNumber, genreIndex, languagIndex, duration);
+                    libraryRepository.CreateLibraryItem(newDVD);
 
-        #region CD
-        private bool CheckIfAllIsFilledCD()
+                }
+            }
+        }
+        private bool CheckIfAllFieldsAreFilled(string item)
         {
             bool allIsFilled = true;
-            if (CdEANTextbox.Text == "" || CdTitleTextbox.Text == "" || CdArtistTextbox.Text == "" ||
-            CdDurationTextbox.Text == "" || CdGenreComboBox.SelectedIndex == -1)
+            if (item == book)
             {
-                allIsFilled = false;
+                if (BookTitletextbox.Text == "" || BookAuthortextbox.Text == "" || BookISBNtextbox.Text == "" ||
+               BookLanguageComboBox.SelectedIndex == -1 || BookPagestextbox.Text == "" || BookGenreComboBox.SelectedIndex == -1 || BookPublishertextbox.Text == "")
+                {
+                    allIsFilled = false;
+                }
+                else
+                {
+                    allIsFilled = true;
+                }
             }
-            else
+            else if (item == cd)
             {
-                allIsFilled = true;
+                if (CdEANTextbox.Text == "" || CdTitleTextbox.Text == "" || CdArtistTextbox.Text == "" ||
+CdDurationTextbox.Text == "" || CdGenreComboBox.SelectedIndex == -1)
+                {
+                    allIsFilled = false;
+                }
+                else
+                {
+                    allIsFilled = true;
+                }
             }
-
-            return allIsFilled; ;
-        }
-        private void UpdateUICD()
-        {
-            CdEANTextbox.Text = "";
-            CdTitleTextbox.Text = "";
-            CdArtistTextbox.Text = "";
-            CdDurationTextbox.Text = "";
-            CdGenreComboBox.SelectedIndex = -1;
-        }
-        private void AddCD()
-        {
-
-            if (CheckIfAllIsFilledCD() == true)
+            else if (item == dvd)
             {
-                string title = CdTitleTextbox.Text;
-                string creator = CdArtistTextbox.Text;
-                long productNumber = Convert.ToInt64(CdEANTextbox.Text);
-                int duration = Convert.ToInt32(CdDurationTextbox.Text);
-                int genreIndex = CdGenreComboBox.SelectedIndex;
-                CD newCD = new CD(title, creator, productNumber, genreIndex, duration);
-                schoolbibDBContext.CDs.Add(newCD);
-                schoolbibDBContext.SaveChanges();
+                if (DvdEANTextbox.Text == "" || DvdTitleTextbox.Text == "" || DvdDirectorTextbox.Text == "" ||
+                DvdLanguageComboBox.SelectedIndex == -1 || DvdDurationTextbox.Text == "" || DvdGenreComboBox.SelectedIndex == -1)
+                {
+                    allIsFilled = false;
+                }
+                else
+                {
+                    allIsFilled = true;
+                }
+            }
+            return allIsFilled;
+        }
+        private void MakeAllFieldsEmpty(string item)
+        {
+            if (item == book)
+            {
+                BookTitletextbox.Text = "";
+                BookAuthortextbox.Text = "";
+                BookISBNtextbox.Text = "";
+                BookLanguageComboBox.SelectedIndex = -1;
+                BookPagestextbox.Text = "";
+                BookGenreComboBox.SelectedIndex = -1;
+                BookPublishertextbox.Text = "";
+            }
+            else if (item == cd)
+            {
+                CdEANTextbox.Text = "";
+                CdTitleTextbox.Text = "";
+                CdArtistTextbox.Text = "";
+                CdDurationTextbox.Text = "";
+                CdGenreComboBox.SelectedIndex = -1;
+            }
+            else if (item == dvd)
+            {
+                DvdEANTextbox.Text = "";
+                DvdTitleTextbox.Text = "";
+                DvdDirectorTextbox.Text = "";
+                DvdLanguageComboBox.SelectedIndex = -1;
+                DvdDurationTextbox.Text = "";
+                DvdGenreComboBox.SelectedIndex = -1;
             }
         }
-
-        private void CDAddButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddCD();
-            UpdateUICD();
-        }
-        #endregion
-
 
     }
 }

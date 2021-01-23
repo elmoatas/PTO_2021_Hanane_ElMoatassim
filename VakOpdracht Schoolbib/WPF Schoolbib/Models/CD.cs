@@ -1,41 +1,41 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
 
-    class CD
+    class CD : Library
     {
         private int id;
-        private string title;
-        private string creator;
-        private long productNumber;
         private int duration;
         private string genre;
         private CDGenre cdGenre;
+        int genreIndex;
 
-      
-
-        public CD(string title, string creator, long productnumber, int genreIndex, int duration)
+        public CD()
         {
-            this.title = title;
-            this.creator = creator;
-            this.productNumber = productnumber;
-            GetCdGenre(genreIndex);
+
+        }
+
+        public CD(string title, string creator, long productnumber, int genreIndex, int duration) : base(title, creator, productnumber)
+        {
+            this.genreIndex = genreIndex;
+            GetCdGenre();
             this.duration = duration;
         }
 
 
         [Key]
         public int Id { get => id; set => id = value; }
-        public string Title { get => title; set => title = value; }
-        public string Creator { get => creator; set => creator = value; }
-        public long ProductNumber { get => productNumber; set => productNumber = value; }
         public int Duration { get => duration; set => duration = value; }
         public string Genre { get => genre; set => genre = value; }
         public CDGenre CdGenre { get => cdGenre; set => cdGenre = value; }
+        [NotMapped]
+             public int GenreIndex { get => genreIndex; set => genreIndex = value; }
 
-        private void GetCdGenre(int genreIndex)
+
+        public void GetCdGenre()
         {
             switch (genreIndex)
             {
@@ -46,9 +46,6 @@ namespace WPF_Schoolbib
                 case 4: cdGenre = (CDGenre)4; break;
             }
         }
-        public override string ToString()
-        {
-            return $" {productNumber} - {title} ";
-        }
+     
     }
 }

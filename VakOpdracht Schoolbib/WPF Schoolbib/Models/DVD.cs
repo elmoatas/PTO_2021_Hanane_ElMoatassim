@@ -1,42 +1,45 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
 
-    class DVD 
+    class DVD : Library
     {
         private int id;
-        private string title;
-        private string creator;
-        private long productNumber;
         private int duration;
         private DVDGenre dvdGenre;
         private Language language;
+        int languageIndex;
+        int genreIndex;
 
-       
-
-        public DVD(string title, string creator, long productnumber, int genreIndex, int languageIndex, int duration)
+        public DVD()
         {
-            this.title = title;
-            this.creator = creator;
-            this.productNumber = productnumber;
-            GetDvdGenre(genreIndex);
-            GetLanguage(languageIndex);
+
+        }
+
+        public DVD(string title, string creator, long productnumber, int genreIndex, int languageIndex, int duration) : base(title, creator, productnumber)
+        {
+            this.languageIndex = languageIndex;
+            this.genreIndex = genreIndex;
+            GetDvdGenre();
+            GetLanguage();
             this.duration = duration;
         }
 
 
         [Key]
         public int Id { get => id; set => id = value; }
-        public string Title { get => title; set => title = value; }
-        public string Creator { get => creator; set => creator = value; }
-        public long ProductNumber { get => productNumber; set => productNumber = value; }
         public int Duration { get => duration; set => duration = value; }
         private DVDGenre DvdGenre { get => dvdGenre; set => dvdGenre = value; }
         private Language Language { get => language; set => language = value; }
+        [NotMapped]
+        public int LanguageIndex { get => languageIndex; set => languageIndex = value; }
+        public int GenreIndex { get => genreIndex; set => genreIndex = value; }
 
-        private void GetDvdGenre(int genreIndex)
+
+        public void GetDvdGenre()
         {
             switch (genreIndex)
             {
@@ -46,7 +49,7 @@ namespace WPF_Schoolbib
                 case 3: dvdGenre = (DVDGenre)3; break;
             }
         }
-        private void GetLanguage(int languageIndex)
+        public void GetLanguage()
         {
             switch (languageIndex)
             {
@@ -58,11 +61,7 @@ namespace WPF_Schoolbib
             }
         }
 
-        public override string ToString()
-        {
-            return $" {productNumber} - {title} ";
-        }
-    }
+         }
 
 
 }

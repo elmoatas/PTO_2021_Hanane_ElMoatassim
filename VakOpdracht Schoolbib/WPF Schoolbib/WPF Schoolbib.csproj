@@ -73,6 +73,8 @@
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Fines.cs" />
     <Compile Include="Models\Library.cs" />
+    <Compile Include="Models\LibraryRepository.cs" />
+    <Compile Include="Models\StudentRepository.cs" />
     <Compile Include="Models\Students.cs" />
     <Compile Include="Models\SchoolbibDBContext.cs" />
     <Compile Include="WindowAddStudent.xaml.cs">
