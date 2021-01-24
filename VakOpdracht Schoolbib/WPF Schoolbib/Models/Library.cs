@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace WPF_Schoolbib.Models
 {
@@ -7,7 +7,7 @@ namespace WPF_Schoolbib.Models
 
     abstract class Library
     {
-        private int id;
+        private int libraryId;
         private string title;
         private string creator;
         private long productNumber;
@@ -26,17 +26,17 @@ namespace WPF_Schoolbib.Models
             this.creator = creator;
             this.productNumber = productnumber;
             this.availability = availability;
-            this.loanDate =  DateTime.Today;
+            this.loanDate = DateTime.Today;
         }
-
-        public int Id { get => id; set => id = value; }
+        [Key]
+        public int LibraryId { get => libraryId; set => libraryId = value; }
         public string Title { get => title; set => title = value; }
         public string Creator { get => creator; set => creator = value; }
         public long ProductNumber { get => productNumber; set => productNumber = value; }
 
         public Students Loaner { get => loaner; set => loaner = value; }
         public AvailabilityItem Availability { get => availability; set => availability = value; }
-              public DateTime LoanDate { get => loanDate; set => loanDate = value; }
+        public DateTime LoanDate { get => loanDate; set => loanDate = value; }
 
 
         //public DateTime ReturnDate { get => returnDate; set => returnDate = value; }

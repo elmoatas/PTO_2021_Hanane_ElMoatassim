@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White">Item toevoegen aan catalogus</Label>
         <TabControl Grid.Row="1">
-            <TabItem Header="Boek">
+            <TabItem Header="Boek" >
                 <GroupBox Header="Vul de info in: " Grid.Row="1" Grid.Column="1" Margin=" 5"  BorderBrush="#FF1A588B" >
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -45,7 +45,7 @@
                         <TextBox x:Name="BookPagestextbox" Grid.Row="4" Margin="5" Grid.Column="1"/>
                         <ComboBox x:Name="BookGenreComboBox" Grid.Row="5" Margin="5" Grid.Column="1"/>
                         <TextBox x:Name="BookPublishertextbox" Grid.Row="6" Margin="5" Grid.Column="1"/>
-                        <Button x:Name="BookAddButton" Grid.Row="7" Margin="5"  Grid.Column="0" Click="BookAddButton_Click" >Toevoegen</Button>
+                        <Button x:Name="BookAddButton" Background="#FF1A588B" Foreground="#FFFCFCFC" Grid.Row="7" Margin="5"  Grid.Column="0" Click="BookAddButton_Click" >Toevoegen</Button>
                     </Grid>
                 </GroupBox>
             </TabItem>
@@ -78,7 +78,7 @@
                         <ComboBox x:Name="DvdLanguageComboBox" Grid.Row="3" Margin="5" Grid.Column="1"/>
                         <TextBox x:Name="DvdDurationTextbox" Grid.Row="4" Margin="5" Grid.Column="1"/>
                         <ComboBox x:Name="DvdGenreComboBox" Grid.Row="5" Margin="5" Grid.Column="1"/>
-                        <Button x:Name="DvdAddButton" Grid.Row="7" Margin="5"  Grid.Column="0" Click="DVDAddButton_Click" >Toevoegen</Button>
+                        <Button x:Name="DvdAddButton" Background="#FF1A588B" Foreground="#FFFCFCFC" Grid.Row="7" Margin="5"  Grid.Column="0" Click="DVDAddButton_Click" >Toevoegen</Button>
                     </Grid>
                 </GroupBox>
             </TabItem>
@@ -109,7 +109,7 @@
                         <TextBox x:Name="CdArtistTextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>                        
                         <TextBox x:Name="CdDurationTextbox" Grid.Row="3" Margin="5" Grid.Column="1"/>
                         <ComboBox x:Name="CdGenreComboBox" Grid.Row="4" Margin="5" Grid.Column="1"/>
-                        <Button x:Name="CDAddButton" Grid.Row="5" Margin="5"  Grid.Column="0" Click="CDAddButton_Click" >Toevoegen</Button>
+                        <Button x:Name="CDAddButton" Background="#FF1A588B" Foreground="#FFFCFCFC" Grid.Row="5" Margin="5"  Grid.Column="0" Click="CDAddButton_Click" >Toevoegen</Button>
                     </Grid>
                 </GroupBox>
             </TabItem>

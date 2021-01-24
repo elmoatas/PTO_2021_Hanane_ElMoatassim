@@ -35,7 +35,6 @@ namespace WPF_Schoolbib
             SexComboBox.ItemsSource = sexChoices;
         }
 
-
         private void MakeAllFieldsEmpty()
         {
             FirstNameTextBox.Text = "";
@@ -79,7 +78,7 @@ namespace WPF_Schoolbib
         private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowInfo();
-            AddLoans();
+            ShowLoans();
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)
@@ -90,11 +89,10 @@ namespace WPF_Schoolbib
             MakeAllFieldsEmpty();
         }
 
-        private void AddLoans()
+        private void ShowLoans()
         {
             if (StudentListbox.SelectedItem != null)
             {
-              
                 Students selected = (Students)StudentListbox.SelectedItem;
                 LoansOfSelectedStudentListbox.ItemsSource = null;
                 LoansOfSelectedStudentListbox.ItemsSource = studentRepository.GetAllLoanedItems(selected);

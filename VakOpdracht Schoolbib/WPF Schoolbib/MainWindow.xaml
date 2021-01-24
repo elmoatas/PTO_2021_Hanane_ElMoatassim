@@ -8,39 +8,40 @@
         Title="BIBLIOTHEEK BEHEER PAGINA" Height="231.4" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        <Label Content="Bibliotheek beheer pagina" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
-       
-        <GroupBox Header="Catalogus beheren" Grid.Row="1" Grid.Column="0" Margin="10">
+        <Image Grid.Column="0" Grid.Row="0" Source="image\Library.png" ></Image>
+        <Image Grid.Column="2" Grid.Row="0" Source="image\Library.png" ></Image>
+        <Label Content="Bibliotheek beheer pagina" Grid.Column="1" Grid.Row="0"  FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FFEAA0A0" Background="#FF1A588B" />
+
+        <GroupBox Header="Catalogus beheren" Grid.Row="1" Grid.Column="0" Margin="10" BorderBrush="#FF1A588B">
             <StackPanel Margin="10" >
-                <Button x:Name="NewLibraryItemButton" Margin="5" Click="NewLibraryItemButton_Click" >Nieuwe item toevoegen</Button>
-                <Button x:Name="ModifyEraseLibraryItemButton" Margin="5" Click="ModifyEraseLibraryItemButton_Click">aanpassen of verwijderen van Item</Button>
-            </StackPanel>
-        </GroupBox>
-        
-        <GroupBox Header="Studenten beheren" Grid.Row="1" Grid.Column="1" Margin="10">
-            <StackPanel Margin="10" >
-                <Button x:Name="NewStudentButton" Margin="5" Click="NewStudentButton_Click" >Nieuwe student toevoegen</Button>
-                <Button x:Name="ModifyEraseStudentButton" Margin="5" Click="ModifyEraseStudentButton_Click">aanpassen of verwijderen van Student</Button>
+                <Button x:Name="NewLibraryItemButton" Margin="5" Click="NewLibraryItemButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC" >Nieuwe item toevoegen</Button>
+                <Button x:Name="ModifyEraseLibraryItemButton" Margin="5" Click="ModifyEraseLibraryItemButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC">aanpassen of verwijderen van Item</Button>
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Header="Uitleningen beheren" Grid.Row="1" Grid.Column="2" Margin="10">
+        <GroupBox Header="Studenten beheren" Grid.Row="1" Grid.Column="1" Margin="10" BorderBrush="#FF1A588B">
             <StackPanel Margin="10" >
-                <Button x:Name="LoanItemButton" Margin="5" Click="LoanItemButton_Click">Item uitlenen </Button>
-                <Button x:Name="ReturnItemButton" Margin="5" Click="ReturnItemButton_Click" >Item terug brengen</Button>
-                <Button x:Name="ReserveItemButton" Margin="5">Item reserveren</Button>
+                <Button x:Name="NewStudentButton" Margin="5" Click="NewStudentButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC">Nieuwe student toevoegen</Button>
+                <Button x:Name="ModifyEraseStudentButton" Margin="5" Click="ModifyEraseStudentButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC">aanpassen of verwijderen van Student</Button>
             </StackPanel>
         </GroupBox>
-      
+
+        <GroupBox Header="Uitleningen beheren" Grid.Row="1" Grid.Column="2" Margin="10" BorderBrush="#FF1A588B">
+            <StackPanel Margin="10" >
+                <Button x:Name="LoanItemButton" Margin="5" Click="LoanItemButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC" >Item uitlenen</Button>
+                <Button x:Name="ReturnItemButton" Margin="5" Click="ReturnItemButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC">Item terug brengen</Button>
+                <Button x:Name="ReserveItemButton" Margin="5" Background="#FF1A588B" Foreground="#FFFCFCFC">Item reserveren</Button>
+            </StackPanel>
+        </GroupBox>
+
 
     </Grid>
 </Window>

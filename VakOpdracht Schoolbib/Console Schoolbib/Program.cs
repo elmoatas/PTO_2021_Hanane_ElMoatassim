@@ -29,7 +29,10 @@ implementeren.Implementeer wel een manier om aan te geven dat de student betaald
                    
             LoginInterface login = new LoginInterface();
             login.ShowLoginInterface();
-            
+            //bool terugegeven als goed ingelogd is 
+            SelfServiceInterface selfService = new SelfServiceInterface();
+            selfService.ShowSelfService();
+
             Console.ReadKey();
         }
     }

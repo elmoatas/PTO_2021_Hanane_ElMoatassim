@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
@@ -71,21 +61,22 @@ namespace WPF_Schoolbib
 
         private void CatalogusListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
+
         }
 
         private void loanButton_Click(object sender, RoutedEventArgs e)
         {
+            SchoolbibDBContext dbContext = new SchoolbibDBContext();
             Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
             selectedItemCatalogus.LoanDate = DateTime.Now;
             selectedItemCatalogus.Availability = AvailabilityItem.Uitgeleend;
             selectedStudent.LibraryItem.Add(selectedItemCatalogus);
             studentRepository.UpdateStudent(selectedStudent);
-            libraryRepository.UpdateLibraryItems(selectedItemCatalogus);
-       
+            dbContext.SaveChanges();
+
             ShowLibraryInListbox();
-          
+
         }
     }
 }

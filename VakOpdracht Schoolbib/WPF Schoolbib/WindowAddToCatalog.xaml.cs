@@ -66,7 +66,7 @@ namespace WPF_Schoolbib
                     int pages = Convert.ToInt32(BookPagestextbox.Text);
                     int genreIndex = BookGenreComboBox.SelectedIndex;
                     string publisher = BookPublishertextbox.Text;
-                    Library newBook = new Books(title, Author, ISBNCode,AvailabilityItem.Aanwezig, genreIndex, languageIndex, pages, publisher);
+                    Library newBook = new Books(title, Author, ISBNCode, AvailabilityItem.Aanwezig, genreIndex, languageIndex, pages, publisher);
                     libraryRepository.CreateLibraryItem(newBook);
                 }
             }
@@ -117,7 +117,7 @@ namespace WPF_Schoolbib
             else if (item == cd)
             {
                 if (CdEANTextbox.Text == "" || CdTitleTextbox.Text == "" || CdArtistTextbox.Text == "" ||
-CdDurationTextbox.Text == "" || CdGenreComboBox.SelectedIndex == -1)
+                    CdDurationTextbox.Text == "" || CdGenreComboBox.SelectedIndex == -1)
                 {
                     allIsFilled = false;
                 }

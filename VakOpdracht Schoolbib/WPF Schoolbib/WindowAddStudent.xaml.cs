@@ -22,7 +22,7 @@ namespace WPF_Schoolbib
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             AddStudentToDB();
-            UpdateUI();
+            SetToInitialState();
             ShowStudentsInListbox();
             Close();
         }
@@ -36,28 +36,12 @@ namespace WPF_Schoolbib
             string[] sexChoices = Enum.GetNames(typeof(SexEnum));
             SexComboBox.ItemsSource = sexChoices;
         }
-        private void UpdateUI()
+        private void SetToInitialState()
         {
             FirstNameTextBox.Text = "";
             LastNameTextBox.Text = "";
             StudyComboBox.SelectedIndex = -1;
             SexComboBox.SelectedIndex = -1;
-        }
-
-        private void Validation()
-        {
-            // student mag niet in database bestaan al (zelfde voornaam en achternaam
-            //als velden leeg zijn kan je niemand toevoegen alle velden moeten ingevuld zijn 
-            /* List<Customer> customers = dbContext.Customers.ToList();
-             foreach (Customer customer in customers)
-             {
-                 ListBoxItem item = new ListBoxItem();
-
-                 item.Content = customer.CompanyName;
-
-                 customerListBox.Items.Add(item);
-             }*/
-
         }
 
         private void AddStudentToDB()
@@ -66,7 +50,6 @@ namespace WPF_Schoolbib
             {
                 Students newstudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text, StudyComboBox.SelectedIndex, SexComboBox.SelectedIndex);
                 studentRepository.CreateStudent(newstudent);
-
             }
         }
         private void ShowStudentsInListbox()

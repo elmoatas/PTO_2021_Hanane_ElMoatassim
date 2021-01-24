@@ -32,7 +32,7 @@
         <ComboBox x:Name="StudyComboBox" Grid.Row="3" Grid.Column="1" Margin="5" />
         <ComboBox x:Name="SexComboBox" Grid.Row="4" Grid.Column="1" Margin="5"/>
         
-        <Button x:Name="AddButton" Content="Nieuw" Margin="5" Grid.Column="1" Grid.Row="5" Click="AddButton_Click"  />
+        <Button x:Name="AddButton" Content="Nieuw" Margin="5" Grid.Column="1" Grid.Row="5" Click="AddButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC"  />
         <ListBox x:Name="StudentListbox" Grid.Row="1" Grid.RowSpan="5" Grid.Column="2" />
     </Grid>
 </Window>

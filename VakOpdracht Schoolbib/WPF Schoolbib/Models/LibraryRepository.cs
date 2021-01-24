@@ -64,7 +64,7 @@ namespace WPF_Schoolbib.Models
         }
         public List<Library> GetOnlyAvailableItems()
         {
-            List<Books> books = dbContext.Books.Where((b)=> b.Availability == AvailabilityItem.Aanwezig).ToList();
+            List<Books> books = dbContext.Books.Where((b) => b.Availability == AvailabilityItem.Aanwezig).ToList();
             List<DVD> dvd = dbContext.DVDs.Where((d) => d.Availability == AvailabilityItem.Aanwezig).ToList();
             List<CD> cd = dbContext.CDs.Where((c) => c.Availability == AvailabilityItem.Aanwezig).ToList();
             List<Library> allAvailableItems = new List<Library>(); ;
@@ -76,18 +76,19 @@ namespace WPF_Schoolbib.Models
         //Update
         public void UpdateLibraryItems(Library library)
         {
-            switch (library)
-            {
-                case Books book:
+            //switch (library)
+            //{
+            //    case Books book:
+            
                     dbContext.SaveChanges();
-                    break;
-                case DVD dvd:
-                    dbContext.SaveChanges();
-                    break;
-                case CD cd:
-                    dbContext.SaveChanges();
-                    break;
-            }
+            //        break;
+            //    case DVD dvd:
+            //        dbContext.SaveChanges();
+            //        break;
+            //    case CD cd:
+            //        dbContext.SaveChanges();
+            //        break;
+            //}
 
         }
         //Delete
