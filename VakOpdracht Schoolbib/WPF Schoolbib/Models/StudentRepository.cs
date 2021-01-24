@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity.Migrations;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace WPF_Schoolbib.Models
 {
-   //RESPONSIBILITY => Database Operaties
+    //RESPONSIBILITY => Database Operaties
     class StudentRepository
     {
         SchoolbibDBContext dbContext = new SchoolbibDBContext();
@@ -18,21 +14,32 @@ namespace WPF_Schoolbib.Models
         }
 
         //CREATE == insert 
-        public void CreateStudent(Students students) 
+        public void CreateStudent(Students students)
         {
             dbContext.Students.Add(students);
             dbContext.SaveChanges();
         }
         //Read ==Select 
-        public List<Students> GetAllStudents() 
+        public List<Students> GetAllStudents()
         {
             List<Students> allStudents = dbContext.Students.ToList();
             return allStudents;
         }
-        //Update
-        public void UpdateStudent(Students students) 
+        public List<Library> GetAllLoanedItems(Students student)
         {
-            dbContext.Students.AddOrUpdate(students);
+            List<Library> allLoans = student.LibraryItem.ToList();
+            //List<Books> books = dbContext.Books.Where((st) => st.Id == student.Id).ToList();
+            //List<CD> cd = dbContext.CDs.Where((st) => st.Id == student.Id).ToList();
+            //List<DVD> dvd = dbContext.DVDs.Where((st) => st.Id == student.Id).ToList();
+            //List<Library> allLoans = new List<Library>();
+            //allLoans.AddRange(books);
+            //allLoans.AddRange(cd);
+            //allLoans.AddRange(dvd);
+            return allLoans;
+        }
+        //Update
+        public void UpdateStudent(Students students)
+        {
             dbContext.SaveChanges();
         }
         //Delete

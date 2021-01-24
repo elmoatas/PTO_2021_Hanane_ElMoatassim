@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace WPF_Schoolbib.Models
 {
+    enum AvailabilityItem
+    {
+        Aanwezig,
+        Uitgeleend,
+        Gereserveerd, 
+        Verloren
+    }
     enum Studychoices
     {
         Informatica,

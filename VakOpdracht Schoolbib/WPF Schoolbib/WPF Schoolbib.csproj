@@ -67,6 +67,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\202101232319470_InitialCreate.cs" />
+    <Compile Include="Migrations\202101232319470_InitialCreate.designer.cs">
+      <DependentUpon>202101232319470_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241014596_Library.cs" />
+    <Compile Include="Migrations\202101241014596_Library.designer.cs">
+      <DependentUpon>202101241014596_Library.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241017057_Library1.cs" />
+    <Compile Include="Migrations\202101241017057_Library1.designer.cs">
+      <DependentUpon>202101241017057_Library1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241044106_Library2.cs" />
+    <Compile Include="Migrations\202101241044106_Library2.designer.cs">
+      <DependentUpon>202101241044106_Library2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Books.cs" />
     <Compile Include="Models\CD.cs" />
     <Compile Include="Models\DVD.cs" />
@@ -74,6 +91,7 @@
     <Compile Include="Models\Fines.cs" />
     <Compile Include="Models\Library.cs" />
     <Compile Include="Models\LibraryRepository.cs" />
+    <Compile Include="Models\Loans.cs" />
     <Compile Include="Models\StudentRepository.cs" />
     <Compile Include="Models\Students.cs" />
     <Compile Include="Models\SchoolbibDBContext.cs" />
@@ -146,6 +164,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202101232319470_InitialCreate.resx">
+      <DependentUpon>202101232319470_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241014596_Library.resx">
+      <DependentUpon>202101241014596_Library.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241017057_Library1.resx">
+      <DependentUpon>202101241017057_Library1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241044106_Library2.resx">
+      <DependentUpon>202101241044106_Library2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

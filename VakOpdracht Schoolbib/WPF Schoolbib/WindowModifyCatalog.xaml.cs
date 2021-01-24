@@ -74,6 +74,8 @@ namespace WPF_Schoolbib
                 if (selected is Books book)
                 {
                     BookGroupBox.Visibility = Visibility.Visible;
+                    CDGroupBox.Visibility = Visibility.Hidden;
+                    DVDGroupBox.Visibility = Visibility.Hidden;
                     BookTitletextbox.Text = book.Title;
                     BookAuthortextbox.Text = book.Creator;
                     BookISBNtextbox.Text = book.ProductNumber.ToString();
@@ -87,6 +89,8 @@ namespace WPF_Schoolbib
                 else if (selected is CD cd)
                 {
                     CDGroupBox.Visibility = Visibility.Visible;
+                    BookGroupBox.Visibility = Visibility.Hidden;
+                    DVDGroupBox.Visibility = Visibility.Hidden;
                     CdTitleTextbox.Text = cd.Title;
                     CdArtistTextbox.Text = cd.Creator;
                     CdEANTextbox.Text = cd.ProductNumber.ToString();
@@ -99,6 +103,8 @@ namespace WPF_Schoolbib
                 else if (selected is DVD dvd)
                 {
                     DVDGroupBox.Visibility = Visibility.Visible;
+                    CDGroupBox.Visibility = Visibility.Hidden;
+                    BookGroupBox.Visibility = Visibility.Hidden;
                     DvdTitleTextbox.Text = dvd.Title;
                     DvdDirectorTextbox.Text = dvd.Creator;
                     DvdEANTextbox.Text = dvd.ProductNumber.ToString();

@@ -19,7 +19,7 @@ namespace WPF_Schoolbib
 
         }
 
-        public DVD(string title, string creator, long productnumber, int genreIndex, int languageIndex, int duration) : base(title, creator, productnumber)
+        public DVD(string title, string creator,  long productnumber, AvailabilityItem availability, int genreIndex, int languageIndex, int duration) : base(title, creator, productnumber, availability)
         {
             this.languageIndex = languageIndex;
             this.genreIndex = genreIndex;

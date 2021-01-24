@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WPF_Schoolbib.Models;
@@ -12,6 +11,7 @@ namespace WPF_Schoolbib
     public partial class WindowModifyStudent : Window
     {
         StudentRepository studentRepository = new StudentRepository();
+
         public WindowModifyStudent()
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace WPF_Schoolbib
         {
             FirstNameTextBox.Text = "";
             LastNameTextBox.Text = "";
-            SexComboBox.SelectedItem = -1;
+            SexComboBox.SelectedIndex = -1;
             StudyCombobox.SelectedIndex = -1;
             ShowIDLabel.Content = "";
         }
@@ -79,6 +79,7 @@ namespace WPF_Schoolbib
         private void AllStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowInfo();
+            AddLoans();
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)
@@ -91,17 +92,13 @@ namespace WPF_Schoolbib
 
         private void AddLoans()
         {
-            /* if (StudentListbox.SelectedItem != null)
-             {
-                 Students selected = (Students)StudentListbox.SelectedItem;
-                 foreach (Library item in Library.LibraryList)
-                 {
-                     if (item.ID == selected.ItemID)
-                     {
-                         LoansOfSelectedStudentListbox.Items.Add(item);
-                     }
-                 }
-             }*/
+            if (StudentListbox.SelectedItem != null)
+            {
+              
+                Students selected = (Students)StudentListbox.SelectedItem;
+                LoansOfSelectedStudentListbox.ItemsSource = null;
+                LoansOfSelectedStudentListbox.ItemsSource = studentRepository.GetAllLoanedItems(selected);
+            }
         }
 
         private void LoansOfSelectedStudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)

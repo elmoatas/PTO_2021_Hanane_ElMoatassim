@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
@@ -20,43 +9,35 @@ namespace WPF_Schoolbib
     /// </summary>
     public partial class WindowReturnItem : Window
     {
+        StudentRepository studentRepository = new StudentRepository();
+        LibraryRepository libraryRepository = new LibraryRepository();
         public WindowReturnItem()
         {
             InitializeComponent();
-            //ShowInfo();
+            ShowStudentsInListbox();
+        }
+        private void ShowStudentsInListbox()
+        {
+            StudentListbox.ItemsSource = null;
+            StudentListbox.ItemsSource = studentRepository.GetAllStudents();
         }
 
-        private void ShowInfo() 
+        private void ShowItems()
         {
-            //StudentListbox.ItemsSource = null;
-            //StudentListbox.ItemsSource = Students.AllStudentsList;
+            Students selected = (Students)StudentListbox.SelectedItem;
+            LoansListbox.ItemsSource = null;
+            LoansListbox.ItemsSource = studentRepository.GetAllLoanedItems(selected);
         }
-        private void ShowItems() 
-        {
-           /* Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            foreach (Library item in Library.LibraryList)
-            {
-                if (item.LoanerID== selectedStudent.ID)
-                {
-                    LoansListbox.Items.Add(item);
-                }
-            }*/
-        }
+
 
         private void StudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           // ShowItems();
+            ShowItems();
         }
 
         private void BringBackButton_Click(object sender, RoutedEventArgs e)
-        {/*
-            Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            Library selectedItem = (Library)LoansListbox.SelectedItem;
-            if (selectedItem.LoanerID==selectedStudent.ID)
-            {
-                selectedItem.LoanerID = 0;
-                LoansListbox.Items.Remove(selectedItem);
-            }*/
+        {
+
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
 {
-    
+
     class Students
     {
         //static List<Students> allStudentsList = new List<Students>();
@@ -15,15 +14,15 @@ namespace WPF_Schoolbib
         private string lastName;
         private string study;
         private string sex;
-        private Library libraryItem;
         private int studyindex;
         private int sexIndex;
-       
+        private List<Library> libraryItem = new List<Library>();
+
         public Students()
         {
-
+         
         }
-        public Students(string firstName, string lastName, int studyIndex,int sexIndex )
+        public Students(string firstName, string lastName, int studyIndex, int sexIndex)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -41,6 +40,7 @@ namespace WPF_Schoolbib
         public string Sex { get => sex; set => sex = value; }
         public int Studyindex { get => studyindex; set => studyindex = value; }
         public int SexIndex { get => sexIndex; set => sexIndex = value; }
+        public List<Library> LibraryItem { get => libraryItem; set => libraryItem = value; }
 
         public void GetSex()
         {
@@ -76,7 +76,7 @@ namespace WPF_Schoolbib
                     break;
             }
         }
-     
+
         public override string ToString()
         {
             return $"{lastName} {firstName} - {sex} - {study}";

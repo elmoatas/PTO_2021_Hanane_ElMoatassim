@@ -18,7 +18,7 @@ namespace WPF_Schoolbib.Models
         {
 
         }
-        public Books(string title, string creator, long productnumber, int genreIndex, int languageIndex, int pages, string publisher):base(title, creator, productnumber)
+        public Books(string title, string creator, long productnumber, AvailabilityItem availability, int genreIndex, int languageIndex, int pages, string publisher):base(title, creator, productnumber, availability)
         {
             this.languageIndex = languageIndex;
             this.genreIndex = genreIndex;

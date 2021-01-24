@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace WPF_Schoolbib.Models
@@ -20,15 +19,18 @@ namespace WPF_Schoolbib.Models
             {
                 case Books book:
                     dbContext.Books.Add(book);
+                    dbContext.SaveChanges();
                     break;
                 case DVD dvd:
                     dbContext.DVDs.Add(dvd);
+                    dbContext.SaveChanges();
                     break;
                 case CD cd:
                     dbContext.CDs.Add(cd);
+                    dbContext.SaveChanges();
                     break;
             }
-            dbContext.SaveChanges();
+
         }
         //Read ==Select 
         public List<Library> GetAllLibraryItems()
@@ -44,27 +46,54 @@ namespace WPF_Schoolbib.Models
             allLibraryItems.AddRange(cd);
             return allLibraryItems;
         }
+        public List<Books> GetAllBooks()
+        {
+
+            List<Books> books = dbContext.Books.ToList();
+            return books;
+        }
+        public List<DVD> GetAllDvds()
+        {
+            List<DVD> dvd = dbContext.DVDs.ToList();
+            return dvd;
+        }
+        public List<CD> GetAllCds()
+        {
+            List<CD> cd = dbContext.CDs.ToList();
+            return cd;
+        }
+        public List<Library> GetOnlyAvailableItems()
+        {
+            List<Books> books = dbContext.Books.Where((b)=> b.Availability == AvailabilityItem.Aanwezig).ToList();
+            List<DVD> dvd = dbContext.DVDs.Where((d) => d.Availability == AvailabilityItem.Aanwezig).ToList();
+            List<CD> cd = dbContext.CDs.Where((c) => c.Availability == AvailabilityItem.Aanwezig).ToList();
+            List<Library> allAvailableItems = new List<Library>(); ;
+            allAvailableItems.AddRange(books);
+            allAvailableItems.AddRange(dvd);
+            allAvailableItems.AddRange(cd);
+            return allAvailableItems;
+        }
         //Update
         public void UpdateLibraryItems(Library library)
         {
             switch (library)
             {
                 case Books book:
-                    dbContext.Books.AddOrUpdate(book);
+                    dbContext.SaveChanges();
                     break;
                 case DVD dvd:
-                    dbContext.DVDs.AddOrUpdate(dvd);
+                    dbContext.SaveChanges();
                     break;
                 case CD cd:
-                    dbContext.CDs.AddOrUpdate(cd);
+                    dbContext.SaveChanges();
                     break;
             }
-            dbContext.SaveChanges();
+
         }
         //Delete
         public void DeleteLibraryItems(Library library)
         {
-                    switch (library)
+            switch (library)
             {
                 case Books book:
                     dbContext.Entry(book).State = EntityState.Deleted;

@@ -20,50 +20,53 @@ namespace WPF_Schoolbib
     /// </summary>
     public partial class WindowLoanItem : Window
     {
+        StudentRepository studentRepository = new StudentRepository();
+        LibraryRepository libraryRepository = new LibraryRepository();
         public WindowLoanItem()
         {
             InitializeComponent();
-           // StudentListbox.ItemsSource = null;
-            //StudentListbox.ItemsSource = Students.AllStudentsList;
+            ShowLibraryInListbox();
+            ShowStudentsInListbox();
         }
-       
+        private void ShowStudentsInListbox()
+        {
+            StudentListbox.ItemsSource = null;
+            StudentListbox.ItemsSource = studentRepository.GetAllStudents();
+        }
+        private void ShowLibraryInListbox()
+        {
+            CatalogusListbox.ItemsSource = null;
+            CatalogusListbox.ItemsSource = libraryRepository.GetOnlyAvailableItems();
+        }
+        private void ShowBooksInListbox()
+        {
+            CatalogusListbox.ItemsSource = null;
+            CatalogusListbox.ItemsSource = libraryRepository.GetAllBooks();
+        }
+        private void ShowDVDsInListbox()
+        {
+            CatalogusListbox.ItemsSource = null;
+            CatalogusListbox.ItemsSource = libraryRepository.GetAllDvds();
+        }
+        private void ShowCDsInListbox()
+        {
+            CatalogusListbox.ItemsSource = null;
+            CatalogusListbox.ItemsSource = libraryRepository.GetAllCds();
+        }
+
         private void CDRadiobutton_Checked(object sender, RoutedEventArgs e)
         {
-           // CatalogusListbox.Items.Clear();
-            /*foreach (Library item in Library.LibraryList)
-            {
-                if ( item is CD)
-                {
-                    CatalogusListbox.Items.Add(item);
-                }
-                
-            }*/
+            ShowCDsInListbox();
         }
 
         private void DvdRadiobutton_Checked(object sender, RoutedEventArgs e)
         {
-            //CatalogusListbox.Items.Clear();
-            /*foreach (Library item in Library.LibraryList)
-            {
-                if (item is DVD)
-                {
-                    CatalogusListbox.Items.Add(item);
-                }
-
-            }*/
+            ShowDVDsInListbox();
         }
 
         private void BoekRadiobutton_Checked(object sender, RoutedEventArgs e)
         {
-            /*CatalogusListbox.Items.Clear();
-          foreach (Library item in Library.LibraryList)
-           {
-               if (item is Books)
-               {
-                   CatalogusListbox.Items.Add(item);
-               }
-
-           }*/
+            ShowBooksInListbox();
         }
 
         private void CatalogusListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,10 +76,16 @@ namespace WPF_Schoolbib
 
         private void loanButton_Click(object sender, RoutedEventArgs e)
         {
-            //Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;       //geselecteerde item
-            //Students selectedStudent = (Students)StudentListbox.SelectedItem;
-           // selectedStudent.ItemID = selectedItemCatalogus.ID;
-            //selectedItemCatalogus.LoanerID = selectedStudent.ID;
+            Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;
+            Students selectedStudent = (Students)StudentListbox.SelectedItem;
+            selectedItemCatalogus.LoanDate = DateTime.Now;
+            selectedItemCatalogus.Availability = AvailabilityItem.Uitgeleend;
+            selectedStudent.LibraryItem.Add(selectedItemCatalogus);
+            studentRepository.UpdateStudent(selectedStudent);
+            libraryRepository.UpdateLibraryItems(selectedItemCatalogus);
+       
+            ShowLibraryInListbox();
+          
         }
     }
 }

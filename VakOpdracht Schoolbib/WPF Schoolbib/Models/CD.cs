@@ -18,7 +18,7 @@ namespace WPF_Schoolbib
 
         }
 
-        public CD(string title, string creator, long productnumber, int genreIndex, int duration) : base(title, creator, productnumber)
+        public CD(string title, string creator, long productnumber, AvailabilityItem availability, int genreIndex, int duration) : base(title, creator, productnumber, availability)
         {
             this.genreIndex = genreIndex;
             GetCdGenre();

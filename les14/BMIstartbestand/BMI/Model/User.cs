@@ -19,5 +19,7 @@ namespace BMI.Model
         public string Name { get => name; set => name = value; }
         public DateTime Birthdate { get => birthdate; set => birthdate = value; }
         public int Id { get => id; set => id = value; }
+
+        over
     }
 }
