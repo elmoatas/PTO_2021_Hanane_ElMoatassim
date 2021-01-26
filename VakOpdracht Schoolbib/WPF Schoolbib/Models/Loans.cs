@@ -6,10 +6,9 @@ namespace WPF_Schoolbib.Models
 {
     public class Loans
     {
-
+        LibraryRepository libraryRepository = new LibraryRepository();
         private double fine = 0;
-
-
+        
         public Loans()
         {
 
@@ -19,15 +18,24 @@ namespace WPF_Schoolbib.Models
         [Key]
         public int ID { get; set; }
         public DateTime LoanDate { get; set; }
-
-
         public double Fine { get; set; }
-        public Students Student { get; set; }
-        public Library LoanedItem { get; set; }
+        public int StudentId { get; set; }
+        public int itemId { get; set; }
+     
+
         [NotMapped]
         public DateTime ExpectedReturndate { get => LoanDate.AddDays(30); }
+
+        [NotMapped]
+        public string ItemTitle { get => libraryRepository.GetLibraryItemWithID(itemId).Title; }
+
+        [NotMapped]
+        public AvailabilityItem ItemAvailibility { get => libraryRepository.GetLibraryItemWithID(itemId).Availability; }
+
         [NotMapped]
         public DateTime ReturnDate { get; set; }
+
+
         public void CalculateFine()
         {
             if (ExpectedReturndate < ReturnDate)
@@ -35,6 +43,22 @@ namespace WPF_Schoolbib.Models
                 int timespan = (ExpectedReturndate - ReturnDate).Days;
                 fine = 0.50 * timespan;
             }
+        }
+       
+
+        public override string ToString()
+        {
+            string show;
+            if (ReturnDate == null)
+            {
+                show = $" Titel:{ItemTitle} - Uitleendatum:{LoanDate}";
+            }
+            else
+            {
+                show = $" Titel:{ItemTitle} - Uitleendatum:{LoanDate} - Inleverdatum: {ReturnDate}";
+            }
+            
+            return show;
         }
 
     }

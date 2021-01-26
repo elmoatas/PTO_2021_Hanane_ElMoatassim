@@ -9,7 +9,6 @@ namespace WPF_Schoolbib.Models
         SchoolbibDBContext dbContext = new SchoolbibDBContext();
         public LibraryRepository()
         {
-            dbContext.Database.CreateIfNotExists();
         }
 
         //CREATE == insert 
@@ -30,60 +29,45 @@ namespace WPF_Schoolbib.Models
                     dbContext.SaveChanges();
                     break;
             }
-
         }
         //Read ==Select 
         public List<Library> GetAllLibraryItems()
         {
-
-            List<Books> books = dbContext.Books.ToList();
-            List<DVD> dvd = dbContext.DVDs.ToList();
-            List<CD> cd = dbContext.CDs.ToList();
-
-            List<Library> allLibraryItems = new List<Library>(); ;
-            allLibraryItems.AddRange(books);
-            allLibraryItems.AddRange(dvd);
-            allLibraryItems.AddRange(cd);
-            return allLibraryItems;
+            return dbContext.LibraryItems.ToList();
         }
         public List<Books> GetAllBooks()
         {
-
-            List<Books> books = dbContext.Books.ToList();
-            return books;
+            return dbContext.Books.ToList();
         }
         public List<DVD> GetAllDvds()
         {
-            List<DVD> dvd = dbContext.DVDs.ToList();
-            return dvd;
+
+            return dbContext.DVDs.ToList();
         }
         public List<CD> GetAllCds()
         {
-            List<CD> cd = dbContext.CDs.ToList();
-            return cd;
+            return dbContext.CDs.ToList();
         }
-        public Books GetBookWith(long ISBN)
+        public Books GetBookWithISBN(long ISBN)
         {
-
             return (from Books in dbContext.Books
                     where Books.ProductNumber == ISBN
                     select Books).First();
         }
-
+        public Library GetLibraryItemWithID(long id)
+        {
+            return (from Library in dbContext.LibraryItems
+                    where Library.LibraryId == id
+                    select Library).First();
+        }
         public List<Library> GetItemsBasedOnAvailability(AvailabilityItem availability)
         {
-            List<Books> books = dbContext.Books.Where((b) => b.Availability == AvailabilityItem.Uitgeleend).ToList();
-            List<DVD> dvd = dbContext.DVDs.Where((d) => d.Availability == AvailabilityItem.Uitgeleend).ToList();
-            List<CD> cd = dbContext.CDs.Where((c) => c.Availability == AvailabilityItem.Uitgeleend).ToList();
-            List<Library> Items = new List<Library>(); ;
-            Items.AddRange(books);
-            Items.AddRange(dvd);
-            Items.AddRange(cd);
-            return Items;
+            return dbContext.LibraryItems.Where((L) => L.Availability == availability).ToList();
         }
         //Update
         public void UpdateLibraryItems(Library library)
         {
+
             dbContext.Entry<Library>(library).State = EntityState.Modified;
             dbContext.SaveChanges();
         }

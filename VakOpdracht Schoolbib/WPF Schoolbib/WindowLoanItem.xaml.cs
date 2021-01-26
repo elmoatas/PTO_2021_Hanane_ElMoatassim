@@ -84,9 +84,10 @@ namespace WPF_Schoolbib
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
             
             Loans newLoan = new Loans();
-            newLoan.Student = selectedStudent;
+            newLoan.StudentId = selectedStudent.Id;        
             newLoan.LoanDate = DateTime.UtcNow;
-            newLoan.LoanedItem = selectedItemCatalogus;
+            newLoan.itemId = selectedItemCatalogus.LibraryId;
+          
             loansRepository.CreateLoan(newLoan);
 
             selectedItemCatalogus.Availability = AvailabilityItem.Uitgeleend;

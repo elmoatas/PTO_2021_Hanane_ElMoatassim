@@ -10,7 +10,7 @@ namespace WPF_Schoolbib.Models
         SchoolbibDBContext dbContext = new SchoolbibDBContext();
         public StudentRepository()
         {
-            dbContext.Database.CreateIfNotExists();
+           // dbContext.Database.CreateIfNotExists();
         }
 
         //CREATE == insert 

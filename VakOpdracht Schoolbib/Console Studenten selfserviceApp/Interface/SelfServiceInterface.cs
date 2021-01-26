@@ -47,15 +47,15 @@ namespace Console_Schoolbib
             Console.WriteLine($"geef het ISBN nummer vanm het boek dat je wilt uitlenen.");
             Console.WriteLine($"ISBN:");
             long ISBN = Convert.ToInt64( Console.ReadLine());
-            Books bookChoice = libraryRepository.GetBookWith(ISBN);
+            Books bookChoice = libraryRepository.GetBookWithISBN(ISBN);
             Console.WriteLine($"wil je {bookChoice.Title} - {bookChoice.Creator} uitlenen (J/N): ");
             string choice = Console.ReadLine().ToUpper();
             if ( choice == "J")
             {
                 Loans newLoan = new Loans();
-                newLoan.Student = student;
+                newLoan.StudentId = student.Id;
                 newLoan.LoanDate = DateTime.UtcNow;
-                newLoan.LoanedItem = bookChoice;
+                newLoan.itemId = bookChoice.LibraryId;
                 loansRepository.CreateLoan(newLoan);
                 bookChoice.Availability = AvailabilityItem.Uitgeleend;
                 //UpdateLoans
@@ -83,7 +83,7 @@ namespace Console_Schoolbib
 
             Console.WriteLine($"Geef het ISBN nummer van het boek dat je wilt terugbrengen.");
             long ISBN = Convert.ToInt64(Console.ReadLine());
-            Books bookChoice = libraryRepository.GetBookWith(ISBN);
+            Books bookChoice = libraryRepository.GetBookWithISBN(ISBN);
             Console.WriteLine($"wil je {bookChoice.Title} - {bookChoice.Creator} terugbrengen (J/N): ");
             string choice = Console.ReadLine().ToUpper();
             if (choice == "J")

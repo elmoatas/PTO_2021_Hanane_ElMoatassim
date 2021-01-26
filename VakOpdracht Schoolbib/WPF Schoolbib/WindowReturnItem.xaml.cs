@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using WPF_Schoolbib.Models;
 
@@ -27,16 +28,25 @@ namespace WPF_Schoolbib
         {
             Students selected = (Students)StudentListbox.SelectedItem;
             LoansListbox.ItemsSource = null;
-            LoansListbox.ItemsSource = loansRepository.GetLoansOfStudent(selected); ;
+            LoansListbox.ItemsSource = loansRepository.GetOnlyLentLoans(selected); 
         }
         private void FillInChoice()
         {
-            Library selectedItemCatalogus = (Library)LoansListbox.SelectedItem;
+            Loans selectedLoan = (Loans)LoansListbox.SelectedItem;
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            if (LoansListbox.SelectedItem != null) { ItemLabel.Content = selectedItemCatalogus.Title; }
+            if (LoansListbox.SelectedItem != null) { ItemLabel.Content = selectedLoan.ItemTitle; }
             if (StudentListbox.SelectedItem != null) { StudentLabel.Content = $" {selectedStudent.LastName} {selectedStudent.FirstName}"; }
         }
-
+        private void BringBackLoanedBook()
+        {
+            Loans selectedloan = (Loans)LoansListbox.SelectedItem;
+            Students selectedStudent = (Students)StudentListbox.SelectedItem;
+            selectedloan.ReturnDate = DateTime.Now;
+            loansRepository.UpdateLoan(selectedloan);
+            Library libraryItem = libraryRepository.GetLibraryItemWithID(selectedloan.itemId);
+            libraryItem.Availability = AvailabilityItem.Aanwezig;
+            libraryRepository.UpdateLibraryItems(libraryItem);
+        }
 
         private void StudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -50,21 +60,8 @@ namespace WPF_Schoolbib
 
         private void BringBackButton_Click(object sender, RoutedEventArgs e)
         {
-            SchoolbibDBContext dbContext = new SchoolbibDBContext();
-            Library selectedItemCatalogus = (Library)LoansListbox.SelectedItem;
-            Students selectedStudent = (Students)StudentListbox.SelectedItem;
-                
-            
-
-            selectedItemCatalogus.Availability = AvailabilityItem.Aanwezig;
-
-            studentRepository.UpdateStudent(selectedStudent);
-
-            dbContext.SaveChanges();
+            BringBackLoanedBook();
             ShowLoanedItems();
-
         }
-
-
     }
 }

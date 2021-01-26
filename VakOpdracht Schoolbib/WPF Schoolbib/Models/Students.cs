@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
@@ -7,22 +6,19 @@ namespace WPF_Schoolbib
 
     public class Students
     {
-        //static List<Students> allStudentsList = new List<Students>();
+        LoansRepository loansRepository = new LoansRepository();
         private int id;
-        // private int itemID;
         private string firstName;
         private string lastName;
         private string study;
         private string sex;
         private int studyindex;
         private int sexIndex;
-        //private List<Loans> loans;
-        //private List<Library> currentLoansList = new List<Library>();
-        //private List<Library> pastLoansList = new List<Library>();
+
 
         public Students()
         {
-         
+
         }
         public Students(string firstName, string lastName, int studyIndex, int sexIndex)
         {
@@ -42,8 +38,6 @@ namespace WPF_Schoolbib
         public string Sex { get => sex; set => sex = value; }
         public int Studyindex { get => studyindex; set => studyindex = value; }
         public int SexIndex { get => sexIndex; set => sexIndex = value; }
-        //public List<Library> CurrentLoansList { get => currentLoansList; set => currentLoansList = value; }
-        //internal List<Library> PastLoansList { get => pastLoansList; set => pastLoansList = value; }
 
         public void GetSex()
         {

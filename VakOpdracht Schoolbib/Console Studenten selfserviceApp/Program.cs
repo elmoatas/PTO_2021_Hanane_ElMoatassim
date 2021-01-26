@@ -43,6 +43,7 @@ implementeren.Implementeer wel een manier om aan te geven dat de student betaald
 
             SelfServiceInterface selfService = new SelfServiceInterface();
             selfService.ShowSelfService();
+
             
            //"a. Boek Lenen"
            //"b. Boek Inleveren "
