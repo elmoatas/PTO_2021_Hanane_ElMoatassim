@@ -11,6 +11,7 @@ namespace WPF_Schoolbib
     public partial class WindowModifyStudent : Window
     {
         StudentRepository studentRepository = new StudentRepository();
+        LoansRepository loansRepository = new LoansRepository();
 
         public WindowModifyStudent()
         {
@@ -95,7 +96,7 @@ namespace WPF_Schoolbib
             {
                 Students selected = (Students)StudentListbox.SelectedItem;
                 LoansOfSelectedStudentListbox.ItemsSource = null;
-                LoansOfSelectedStudentListbox.ItemsSource = studentRepository.GetAllLoanedItems(selected);
+                LoansOfSelectedStudentListbox.ItemsSource = loansRepository.GetLoansOfStudent(selected);
             }
         }
 

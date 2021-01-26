@@ -71,11 +71,11 @@
     <Compile Include="Models\CD.cs" />
     <Compile Include="Models\DVD.cs" />
     <Compile Include="Models\Enums.cs" />
-    <Compile Include="Models\Fines.cs" />
-    <Compile Include="Models\Library.cs" />
-    <Compile Include="Models\LibraryRepository.cs" />
     <Compile Include="Models\Loans.cs" />
-    <Compile Include="Models\StudentRepository.cs" />
+    <Compile Include="Models\Library.cs" />
+    <Compile Include="Repository\LibraryRepository.cs" />
+    <Compile Include="Repository\LoansRepository.cs" />
+    <Compile Include="Repository\StudentRepository.cs" />
     <Compile Include="Models\Students.cs" />
     <Compile Include="Models\SchoolbibDBContext.cs" />
     <Compile Include="WindowAddStudent.xaml.cs">
@@ -86,6 +86,9 @@
     </Compile>
     <Compile Include="WindowLoanItem.xaml.cs">
       <DependentUpon>WindowLoanItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowReserve.xaml.cs">
+      <DependentUpon>WindowReserve.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowReturnItem.xaml.cs">
       <DependentUpon>WindowReturnItem.xaml</DependentUpon>
@@ -117,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowLoanItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowReserve.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -54,5 +54,11 @@ namespace WPF_Schoolbib
             WindowLoanItem loanItem = new WindowLoanItem();
             loanItem.ShowDialog();
         }
+
+        private void ReserveItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowReserve reserveItem = new WindowReserve();
+            reserveItem.ShowDialog();
+        }
     }
 }

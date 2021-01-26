@@ -8,26 +8,38 @@
         Title="WindowLoanItem" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Leningen beheren" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="Selecteer een student:" Grid.Row="1" Grid.Column="0"/>
-            <ListBox x:Name="StudentListbox" Grid.Row="1" Grid.Column="0" SelectionChanged="StudentListbox_SelectionChanged" />
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label Content="Selecteer een item:" />
-            <ListBox x:Name="LoansListbox" Grid.Row="1" Grid.Column="1"/>
-        </StackPanel>
-        <StackPanel Grid.Column="3" Grid.Row="1">
-            <Button x:Name="BringBackButton" Content="Item Terugbrengen" Grid.Column="3" Grid.Row="1" Margin="10" Click="BringBackButton_Click" />
-        </StackPanel>
-
+        <Label Content="Item terugbrengen" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
+        <GroupBox Header="Selecteer een student:" Grid.Row="1" Grid.Column="0" >
+            <ListBox x:Name="StudentListbox"  SelectionChanged="StudentListbox_SelectionChanged" />
+        </GroupBox>
+        <GroupBox Header="Selecteer een item:" Grid.Row="1" Grid.Column="1">
+            <ListBox x:Name="LoansListbox" Grid.Row="1" Grid.Column="1" SelectionChanged="LoansListbox_SelectionChanged"/>
+        </GroupBox>
+        <GroupBox Header="Dit is je keuze: " Grid.Column="0" Grid.Row="2"  BorderBrush="#FF1A588B" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5" >Item:</Label>
+                <Label Grid.Column="0" Grid.Row="1" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5" >Geselecteerde Student:</Label>
+                <Label x:Name="ItemLabel" Grid.Column="1" Grid.Row="0" Margin="5" >Item</Label>
+                <Label x:Name="StudentLabel" Grid.Column="1" Grid.Row="1" Margin="5" >Geselecteerde Student</Label>
+                <Button x:Name="BringBackButton" Content="Item Terugbrengen" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Margin="5" Background="#FF1A588B" Foreground="#FFFCFCFC" FontSize="18" Click="BringBackButton_Click" />
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

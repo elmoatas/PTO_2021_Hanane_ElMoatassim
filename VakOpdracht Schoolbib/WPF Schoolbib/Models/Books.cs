@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WPF_Schoolbib.Models
 {
 
-    class Books :Library
+    public class Books :Library
     {
         private int id;
         private int pages;

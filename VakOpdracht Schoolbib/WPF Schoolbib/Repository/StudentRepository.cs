@@ -5,7 +5,7 @@ using System.Linq;
 namespace WPF_Schoolbib.Models
 {
     //RESPONSIBILITY => Database Operaties
-    class StudentRepository
+    public class StudentRepository
     {
         SchoolbibDBContext dbContext = new SchoolbibDBContext();
         public StudentRepository()
@@ -25,18 +25,14 @@ namespace WPF_Schoolbib.Models
             List<Students> allStudents = dbContext.Students.ToList();
             return allStudents;
         }
-        public List<Library> GetAllLoanedItems(Students student)
+        public Students GetUserWith(int IDnumber)
         {
-            List<Library> allLoans = student.LibraryItem.ToList();
-            //List<Books> books = dbContext.Books.Where((st) => st.Id == student.Id).ToList();
-            //List<CD> cd = dbContext.CDs.Where((st) => st.Id == student.Id).ToList();
-            //List<DVD> dvd = dbContext.DVDs.Where((st) => st.Id == student.Id).ToList();
-            //List<Library> allLoans = new List<Library>();
-            //allLoans.AddRange(books);
-            //allLoans.AddRange(cd);
-            //allLoans.AddRange(dvd);
-            return allLoans;
+        
+            return (from Students in dbContext.Students
+                    where Students.Id == IDnumber
+                    select Students).First();
         }
+
         //Update
         public void UpdateStudent(Students students)
         {

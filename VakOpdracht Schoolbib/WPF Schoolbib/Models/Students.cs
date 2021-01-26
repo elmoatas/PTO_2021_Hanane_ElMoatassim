@@ -5,7 +5,7 @@ using WPF_Schoolbib.Models;
 namespace WPF_Schoolbib
 {
 
-    class Students
+    public class Students
     {
         //static List<Students> allStudentsList = new List<Students>();
         private int id;
@@ -16,7 +16,9 @@ namespace WPF_Schoolbib
         private string sex;
         private int studyindex;
         private int sexIndex;
-        private List<Library> libraryItem = new List<Library>();
+        //private List<Loans> loans;
+        //private List<Library> currentLoansList = new List<Library>();
+        //private List<Library> pastLoansList = new List<Library>();
 
         public Students()
         {
@@ -40,7 +42,8 @@ namespace WPF_Schoolbib
         public string Sex { get => sex; set => sex = value; }
         public int Studyindex { get => studyindex; set => studyindex = value; }
         public int SexIndex { get => sexIndex; set => sexIndex = value; }
-        public List<Library> LibraryItem { get => libraryItem; set => libraryItem = value; }
+        //public List<Library> CurrentLoansList { get => currentLoansList; set => currentLoansList = value; }
+        //internal List<Library> PastLoansList { get => pastLoansList; set => pastLoansList = value; }
 
         public void GetSex()
         {

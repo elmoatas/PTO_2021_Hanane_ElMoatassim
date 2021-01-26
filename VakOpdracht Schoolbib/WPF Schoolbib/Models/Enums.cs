@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace WPF_Schoolbib.Models
 {
-    enum AvailabilityItem
+    public enum AvailabilityItem
     {
         Aanwezig,
         Uitgeleend,
         Gereserveerd, 
         Verloren
     }
-    enum Studychoices
+   public enum Studychoices
     {
         Informatica,
         Othopedagogie,
@@ -22,7 +22,7 @@ namespace WPF_Schoolbib.Models
         Electronica,
         Verpleegkunde,
     }
-    enum BookGenre
+   public enum BookGenre
     {
         Thriller,
         Fantasy,
@@ -31,7 +31,7 @@ namespace WPF_Schoolbib.Models
         nonFictie,
         Avontuur
     }
-    enum CDGenre
+    public enum CDGenre
     {
         HipHop,
         Rock,
@@ -39,14 +39,14 @@ namespace WPF_Schoolbib.Models
         Klasiek,
         Jazz
     }
-    enum DVDGenre
+   public enum DVDGenre
     {
         Actie,
         Fantasy,
         Komedie,
         Drama
     }
-    enum Language
+    public enum Language
     {
         FR,
         NL,
@@ -54,7 +54,7 @@ namespace WPF_Schoolbib.Models
         DUI,
         SPA
     }
-    enum SexEnum
+    public enum SexEnum
     { 
         Vrouw,
         Man,

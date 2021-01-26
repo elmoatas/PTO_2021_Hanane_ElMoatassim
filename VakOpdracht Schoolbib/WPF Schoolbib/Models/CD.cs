@@ -5,7 +5,7 @@ using WPF_Schoolbib.Models;
 namespace WPF_Schoolbib
 {
 
-    class CD : Library
+   public class CD : Library
     {
         private int id;
         private int duration;

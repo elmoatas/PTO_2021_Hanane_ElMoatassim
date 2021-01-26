@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0" Grid.Row="0" Source="image\Library.png" ></Image>
         <Image Grid.Column="2" Grid.Row="0" Source="image\Library.png" ></Image>
-        <Label Content="Bibliotheek beheer pagina" Grid.Column="1" Grid.Row="0"  FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FFEAA0A0" Background="#FF1A588B" />
+        <Label Content="Bibliotheek beheer pagina" Grid.Column="1" Grid.Row="0"  FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF1A588B" />
 
         <GroupBox Header="Catalogus beheren" Grid.Row="1" Grid.Column="0" Margin="10" BorderBrush="#FF1A588B">
             <StackPanel Margin="10" >
@@ -38,7 +38,7 @@
             <StackPanel Margin="10" >
                 <Button x:Name="LoanItemButton" Margin="5" Click="LoanItemButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC" >Item uitlenen</Button>
                 <Button x:Name="ReturnItemButton" Margin="5" Click="ReturnItemButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC">Item terug brengen</Button>
-                <Button x:Name="ReserveItemButton" Margin="5" Background="#FF1A588B" Foreground="#FFFCFCFC">Item reserveren</Button>
+                <Button x:Name="ReserveItemButton" Margin="5" Background="#FF1A588B" Foreground="#FFFCFCFC" Click="ReserveItemButton_Click">Item reserveren</Button>
             </StackPanel>
         </GroupBox>
 

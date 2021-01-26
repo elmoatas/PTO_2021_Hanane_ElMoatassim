@@ -16,7 +16,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Content="Studenten beheren" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
+        <Label Content="Studenten bewerken" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
         <GroupBox Header="Selecteer een student:" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#FF1A588B">
             <ListBox x:Name="StudentListbox"  Grid.Column="0" SelectionChanged="AllStudentListbox_SelectionChanged" />
         </GroupBox>
@@ -53,8 +53,8 @@
                 <TextBox x:Name="LastNameTextBox" Grid.Row="2" Grid.Column="1" Margin="5" />
                 <ComboBox x:Name="StudyCombobox" Grid.Row="3" Grid.Column="1" Margin="5" />
                 <ComboBox x:Name="SexComboBox" Grid.Row="4" Grid.Column="1" Margin="5"/>
-                <Button x:Name="EditButton" Content="Aanpassen" Margin="5.4,5.2,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Click="EditButton_Click" Height="23" VerticalAlignment="Top"/>
-                <Button x:Name="EraseButton" Content="verwijderen" Margin="5.4,5.2,0,0" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" Click="EraseButton_Click" Height="23" VerticalAlignment="Top"/>
+                <Button x:Name="EditButton" Content="Aanpassen" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5.4,5.2,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Click="EditButton_Click" Height="23" VerticalAlignment="Top"/>
+                <Button x:Name="EraseButton" Content="verwijderen" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5.4,5.2,0,0" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" Click="EraseButton_Click" Height="23" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
     </Grid>

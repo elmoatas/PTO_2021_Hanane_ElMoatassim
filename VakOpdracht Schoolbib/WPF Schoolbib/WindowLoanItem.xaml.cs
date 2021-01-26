@@ -12,6 +12,7 @@ namespace WPF_Schoolbib
     {
         StudentRepository studentRepository = new StudentRepository();
         LibraryRepository libraryRepository = new LibraryRepository();
+        LoansRepository loansRepository = new LoansRepository();
         public WindowLoanItem()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace WPF_Schoolbib
         private void ShowLibraryInListbox()
         {
             CatalogusListbox.ItemsSource = null;
-            CatalogusListbox.ItemsSource = libraryRepository.GetOnlyAvailableItems();
+            CatalogusListbox.ItemsSource = libraryRepository.GetItemsBasedOnAvailability(AvailabilityItem.Aanwezig);
         }
         private void ShowBooksInListbox()
         {
@@ -42,6 +43,14 @@ namespace WPF_Schoolbib
         {
             CatalogusListbox.ItemsSource = null;
             CatalogusListbox.ItemsSource = libraryRepository.GetAllCds();
+        }
+
+        private void FillInChoice() 
+        {
+            Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;
+            Students selectedStudent = (Students)StudentListbox.SelectedItem;
+            if (CatalogusListbox.SelectedItem !=null) { ItemLabel.Content = selectedItemCatalogus.Title; }
+            if (StudentListbox.SelectedItem!=null) { StudentLabel.Content = $" {selectedStudent.LastName} {selectedStudent.FirstName}"; }
         }
 
         private void CDRadiobutton_Checked(object sender, RoutedEventArgs e)
@@ -61,22 +70,32 @@ namespace WPF_Schoolbib
 
         private void CatalogusListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            FillInChoice();
+        }
 
+        private void StudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillInChoice();
         }
 
         private void loanButton_Click(object sender, RoutedEventArgs e)
         {
-            SchoolbibDBContext dbContext = new SchoolbibDBContext();
             Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            selectedItemCatalogus.LoanDate = DateTime.Now;
-            selectedItemCatalogus.Availability = AvailabilityItem.Uitgeleend;
-            selectedStudent.LibraryItem.Add(selectedItemCatalogus);
-            studentRepository.UpdateStudent(selectedStudent);
-            dbContext.SaveChanges();
+            
+            Loans newLoan = new Loans();
+            newLoan.Student = selectedStudent;
+            newLoan.LoanDate = DateTime.UtcNow;
+            newLoan.LoanedItem = selectedItemCatalogus;
+            loansRepository.CreateLoan(newLoan);
 
+            selectedItemCatalogus.Availability = AvailabilityItem.Uitgeleend;
+            libraryRepository.UpdateLibraryItems(selectedItemCatalogus);
+                    
             ShowLibraryInListbox();
 
         }
+
+     
     }
 }
