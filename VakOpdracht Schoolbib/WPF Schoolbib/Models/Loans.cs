@@ -7,8 +7,9 @@ namespace WPF_Schoolbib.Models
     public class Loans
     {
         LibraryRepository libraryRepository = new LibraryRepository();
+
         private double fine = 0;
-        
+
         public Loans()
         {
 
@@ -18,16 +19,24 @@ namespace WPF_Schoolbib.Models
         [Key]
         public int ID { get; set; }
         public DateTime LoanDate { get; set; }
+        public string ReturnDateString { get => GetReturnDate(); }
         public double Fine { get; set; }
+
+        //Info over student 
         public int StudentId { get; set; }
+        public string StudentFirstName { get; set; }
+        public string StudentLastName { get; set; }
+        
+
+
+        //Info over Item
         public int itemId { get; set; }
-     
+        public string ItemTitle { get; set; }
+        public string ItemCreator { get; set; }
+        public long ItemProductNumber { get; set; }
 
         [NotMapped]
         public DateTime ExpectedReturndate { get => LoanDate.AddDays(30); }
-
-        [NotMapped]
-        public string ItemTitle { get => libraryRepository.GetLibraryItemWithID(itemId).Title; }
 
         [NotMapped]
         public AvailabilityItem ItemAvailibility { get => libraryRepository.GetLibraryItemWithID(itemId).Availability; }
@@ -35,7 +44,17 @@ namespace WPF_Schoolbib.Models
         [NotMapped]
         public DateTime ReturnDate { get; set; }
 
-
+        private string GetReturnDate()
+        {
+            if (ReturnDate == DateTime.MinValue)
+            {
+                return $"Verwachte inleverdatum: {ExpectedReturndate}";
+            }
+            else
+            {
+                return $"Inleverdatum: {ReturnDate.ToShortDateString()}";
+            }
+        }
         public void CalculateFine()
         {
             if (ExpectedReturndate < ReturnDate)
@@ -48,7 +67,7 @@ namespace WPF_Schoolbib.Models
 
         public override string ToString()
         {
-             return $" Titel: {ItemTitle}";
+            return $" Titel: {ItemTitle} ";
         }
 
     }

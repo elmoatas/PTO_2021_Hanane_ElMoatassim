@@ -38,6 +38,7 @@ namespace WPF_Schoolbib.Models
         Rap,
         Klasiek,
         Jazz
+
     }
    public enum DVDGenre
     {
@@ -45,8 +46,9 @@ namespace WPF_Schoolbib.Models
         Fantasy,
         Komedie,
         Drama
+
     }
-    public enum Language
+    public enum LanguageEnum
     {
         FR,
         NL,

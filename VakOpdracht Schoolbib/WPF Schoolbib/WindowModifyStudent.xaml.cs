@@ -14,8 +14,9 @@ namespace WPF_Schoolbib
     {
         StudentRepository studentRepository = new StudentRepository();
         LibraryRepository libraryRepository = new LibraryRepository();
+        LoansRepository loansRepository = new LoansRepository();
         SchoolbibDBContext dbContext = new SchoolbibDBContext();
-                
+
         public WindowModifyStudent()
         {
             InitializeComponent();
@@ -94,18 +95,29 @@ namespace WPF_Schoolbib
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
             Students selected = (Students)StudentListbox.SelectedItem;
-
-
-            if (libraryRepository.GetLibraryItemReservedBy(selected) != null)
+          
+            foreach (Loans loan in loansRepository.GetLoansOfStudent(selected.Id))
             {
-                Library item = libraryRepository.GetLibraryItemReservedBy(selected);
-                item.ReserveStudentID = -1;
-                item.Availability = AvailabilityItem.Aanwezig;
-                libraryRepository.UpdateLibraryItems(item);
+                if (loan.ItemAvailibility == AvailabilityItem.Uitgeleend)
+                {
+                    MessageBox.Show("Kan student niet verwijderen! Student heeft nog items die uitgeleend zijn. Gelieve de Items eerst terug te brengen");
+                }
+                else
+                {
+                    if (libraryRepository.GetLibraryItemReservedBy(selected) != null)
+                    {
+                        Library item = libraryRepository.GetLibraryItemReservedBy(selected);
+                        item.ReserveStudentID = -1;
+                        item.Availability = AvailabilityItem.Aanwezig;
+                        libraryRepository.UpdateLibraryItems(item);
+                    }
+                    studentRepository.DeleteStudent(selected);
+                    ShowStudentsInListbox();
+                    MakeAllFieldsEmpty();
+                }
+             
             }
-            studentRepository.DeleteStudent(selected);
-            ShowStudentsInListbox();
-            MakeAllFieldsEmpty();
+
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -187,7 +199,7 @@ namespace WPF_Schoolbib
 
         private void ShowLoansButton_Click(object sender, RoutedEventArgs e)
         {
-                       
+
             WindowShowStudentLoans showStudentLoans = new WindowShowStudentLoans(Convert.ToInt32(ShowIDLabel.Content));
             showStudentLoans.ShowDialog();
         }

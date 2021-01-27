@@ -28,19 +28,19 @@ namespace WPF_Schoolbib
         private void ShowLibraryInListbox()
         {
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
-          
-            List <Library> availableItems= libraryRepository.GetItemsBasedOnAvailability(AvailabilityItem.Aanwezig);
-            List <Library> reservedItems = libraryRepository.GetItemsBasedOnAvailability(AvailabilityItem.GereserveerdAanwezig);
-            if (StudentListbox.SelectedItem!=null)
-            foreach (Library item in reservedItems)
-            {
-                if(item.ReserveStudentID == selectedStudent.Id)
+
+            List<Library> availableItems = libraryRepository.GetItemsBasedOnAvailability(AvailabilityItem.Aanwezig);
+            List<Library> reservedItems = libraryRepository.GetItemsBasedOnAvailability(AvailabilityItem.GereserveerdAanwezig);
+            if (StudentListbox.SelectedItem != null)
+                foreach (Library item in reservedItems)
                 {
-                    availableItems.Add(item);
+                    if (item.ReserveStudentID == selectedStudent.Id)
+                    {
+                        availableItems.Add(item);
+                    }
                 }
-            }
-           CatalogusListbox.ItemsSource = availableItems;
-            
+            CatalogusListbox.ItemsSource = availableItems;
+
         }
         private void ShowBooksInListbox()
         {
@@ -58,12 +58,12 @@ namespace WPF_Schoolbib
             CatalogusListbox.ItemsSource = libraryRepository.GetAllCds();
         }
 
-        private void FillInChoice() 
+        private void FillInChoice()
         {
             Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            if (CatalogusListbox.SelectedItem !=null) { ItemLabel.Content = selectedItemCatalogus.Title; }
-            if (StudentListbox.SelectedItem!=null) { StudentLabel.Content = $" {selectedStudent.LastName} {selectedStudent.FirstName}"; }
+            if (CatalogusListbox.SelectedItem != null) { ItemLabel.Content = selectedItemCatalogus.Title; }
+            if (StudentListbox.SelectedItem != null) { StudentLabel.Content = $" {selectedStudent.LastName} {selectedStudent.FirstName}"; }
         }
 
         private void CDRadiobutton_Checked(object sender, RoutedEventArgs e)
@@ -102,6 +102,12 @@ namespace WPF_Schoolbib
                 newLoan.StudentId = selectedStudent.Id;
                 newLoan.LoanDate = DateTime.UtcNow;
                 newLoan.itemId = selectedItemCatalogus.LibraryId;
+                newLoan.ItemTitle = selectedItemCatalogus.Title;
+                newLoan.ItemCreator = selectedItemCatalogus.Creator;
+                newLoan.ItemProductNumber = selectedItemCatalogus.ProductNumber;
+                newLoan.StudentFirstName = selectedStudent.FirstName;
+                newLoan.StudentLastName = selectedStudent.LastName;
+
                 selectedItemCatalogus.ReserveStudentID = -1;
 
                 loansRepository.CreateLoan(newLoan);
@@ -111,11 +117,16 @@ namespace WPF_Schoolbib
 
                 MessageBox.Show($"{selectedStudent.FirstName} {selectedStudent.LastName}  heeft volgend item uitgeleend: {selectedItemCatalogus.Title} ");
             }
-            
+
             ShowLibraryInListbox();
 
         }
 
-     
+        private void LoansOfStudentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Students selectedStudent = (Students)StudentListbox.SelectedItem;
+            WindowShowStudentLoans showStudentLoans = new WindowShowStudentLoans(selectedStudent.Id);
+            showStudentLoans.ShowDialog();
+        }
     }
 }

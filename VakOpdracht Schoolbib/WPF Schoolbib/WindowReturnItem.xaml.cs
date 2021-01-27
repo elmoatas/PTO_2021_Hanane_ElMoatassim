@@ -41,7 +41,7 @@ namespace WPF_Schoolbib
         {
             Loans selectedloan = (Loans)LoansListbox.SelectedItem;
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            selectedloan.ReturnDate = DateTime.Now;
+            selectedloan.ReturnDate = DateTime.UtcNow;
             loansRepository.UpdateLoan(selectedloan);
             Library libraryItem = libraryRepository.GetLibraryItemWithID(selectedloan.itemId);
             if(libraryItem.ReserveStudentID != -1)

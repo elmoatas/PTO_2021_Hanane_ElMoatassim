@@ -4,65 +4,61 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WPF_Schoolbib.Models
 {
 
-    public class Books :Library
+    public class Books : Library
     {
-        private int id;
-        private int pages;
-        private string publisher;
-        private Language language;
-        private BookGenre bookGenre;
-        int languageIndex;
-        int genreIndex;
 
         public Books()
         {
 
         }
-        public Books(string title, string creator, long productnumber, AvailabilityItem availability, int genreIndex, int languageIndex, int pages, string publisher):base(title, creator, productnumber, availability)
+        public Books(int languageIndex, int pages, int genreIndex, string publisher)
         {
-            this.languageIndex = languageIndex;
-            this.genreIndex = genreIndex;
-            GetBookGenre();
-            GetLanguage();
-            this.pages = pages;
-            this.publisher = publisher;
+            this.LanguageIndex = languageIndex;
+            this.Pages = pages;
+            this.GenreIndex = genreIndex;
+            this.Publisher = publisher;
         }
 
-
         [Key]
-        public int Id { get => id; set => id = value; }
-        public int Pages { get => pages; set => pages = value; }
-        public string Publisher { get => publisher; set => publisher = value; }
-        public Language Language { get => language; set => language = value; }
-        public BookGenre BookGenre { get => bookGenre; set => bookGenre = value; }
-        [NotMapped]
-        public int LanguageIndex { get => languageIndex; set => languageIndex = value; }
-        public int GenreIndex { get => genreIndex; set => genreIndex = value; }
+        public int Id { get; set; }
+        public int Pages { get; set; }
+        public string Publisher { get; set; }
+        public int LanguageIndex { get; set; }
+        public int GenreIndex { get; set; }
 
-        public void GetBookGenre()
+        [NotMapped]
+        public string Language { get => GetLanguage(); }
+        [NotMapped]
+        public string Bookgenre { get => GetBookGenre(); }
+
+
+        private string GetBookGenre()
         {
             switch (GenreIndex)
             {
-                case 0: bookGenre = (BookGenre)0 ; break;
-                case 1: bookGenre = (BookGenre)1; break;
-                case 2: bookGenre = (BookGenre)2; break;
-                case 3: bookGenre = (BookGenre)3; break;
-                case 4: bookGenre = (BookGenre)4; break;
-                case 5: bookGenre = (BookGenre)5; break;
-            }
-        }
-        public void GetLanguage()
-        {
-            switch (LanguageIndex)
-            {
-                case 0: language = (Language)0; break;
-                case 1: language = (Language)1; break;
-                case 2: language = (Language)2; break;
-                case 3: language = (Language)3; break;
-                case 4: language = (Language)4; break;
+                case 0: return BookGenre.Thriller.ToString();
+                case 1: return BookGenre.Fantasy.ToString();
+                case 2: return BookGenre.ScienceFictie.ToString();
+                case 3: return BookGenre.Romance.ToString();
+                case 4: return BookGenre.nonFictie.ToString();
+                case 5: return BookGenre.Avontuur.ToString();
+                default: return "";
             }
         }
 
-       
+        private string GetLanguage()
+        {
+            switch (LanguageIndex)
+            {
+                case 0: return LanguageEnum.FR.ToString();
+                case 1: return LanguageEnum.NL.ToString();
+                case 2: return LanguageEnum.ENG.ToString();
+                case 3: return LanguageEnum.DUI.ToString();
+                case 4: return LanguageEnum.SPA.ToString();
+                default: return "";
+            }
+        }
+
+
     }
 }

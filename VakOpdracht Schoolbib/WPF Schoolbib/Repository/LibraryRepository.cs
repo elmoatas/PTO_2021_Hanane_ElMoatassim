@@ -34,6 +34,7 @@ namespace WPF_Schoolbib.Models
                     break;
             }
         }
+
         //Read ==Select 
         public List<Library> GetAllLibraryItems()
         {
@@ -75,12 +76,14 @@ namespace WPF_Schoolbib.Models
                         where Library.ReserveStudentID == selectedStudent.Id
                         select Library).First();
         }
+
         //Update
         public void UpdateLibraryItems(Library library)
         {
             dbContext.Entry<Library>(library).State = EntityState.Modified;
             dbContext.SaveChanges();
         }
+
         //Delete
         public void DeleteLibraryItems(Library library)
         {

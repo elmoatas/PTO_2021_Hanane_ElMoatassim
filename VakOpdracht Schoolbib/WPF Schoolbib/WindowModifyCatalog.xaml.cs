@@ -12,6 +12,7 @@ namespace WPF_Schoolbib
     public partial class WindowModifyCatalog : Window
     {
         LibraryRepository libraryRepository = new LibraryRepository();
+        StudentRepository studentRepository = new StudentRepository();
         public WindowModifyCatalog()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace WPF_Schoolbib
         }
         private void LoadLanguagesInComboBox()
         {
-            string[] languages = Enum.GetNames(typeof(Language));
+            string[] languages = Enum.GetNames(typeof(LanguageEnum));
             BookLanguageComboBox.ItemsSource = languages;
             DvdLanguageComboBox.ItemsSource = languages;
         }
@@ -84,8 +85,7 @@ namespace WPF_Schoolbib
                     BookPagestextbox.Text = book.Pages.ToString();
                     BookGenreComboBox.SelectedIndex = book.GenreIndex;
                     BookPublishertextbox.Text = book.Publisher;
-                    book.GetBookGenre();
-                    book.GetLanguage();
+
                 }
                 else if (selected is CD cd)
                 {
@@ -97,7 +97,7 @@ namespace WPF_Schoolbib
                     CdEANTextbox.Text = cd.ProductNumber.ToString();
                     CdDurationTextbox.Text = cd.Duration.ToString();
                     CdGenreComboBox.SelectedIndex = cd.GenreIndex;
-                    cd.GetCdGenre();
+
 
 
                 }
@@ -112,18 +112,25 @@ namespace WPF_Schoolbib
                     DvdLanguageComboBox.SelectedIndex = dvd.LanguageIndex;
                     DvdDurationTextbox.Text = dvd.Duration.ToString();
                     DvdGenreComboBox.SelectedIndex = dvd.GenreIndex;
-                    dvd.GetLanguage();
-                    dvd.GetDvdGenre();
+
                 }
             }
         }
 
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
-            Library selected = (Library)Listbox.SelectedItem; ;
-            libraryRepository.DeleteLibraryItems(selected);
-            ShowLibraryInListbox();
-            MakeAllFieldsEmpty();
+            Library selected = (Library)Listbox.SelectedItem; 
+            if(selected.Availability == AvailabilityItem.Uitgeleend)
+            {
+                MessageBox.Show($"Verwijderen niet mogelijk! Item is uitgeleend. gelieve Item Eerst in te leveren.");
+            }
+            else
+            {
+                libraryRepository.DeleteLibraryItems(selected);
+                ShowLibraryInListbox();
+                MakeAllFieldsEmpty();
+            }
+           
         }
         private void EditItem()
         {
@@ -137,8 +144,7 @@ namespace WPF_Schoolbib
                 book.Pages = Convert.ToInt32(BookPagestextbox.Text);
                 book.GenreIndex = BookGenreComboBox.SelectedIndex;
                 book.Publisher = BookPublishertextbox.Text;
-                book.GetBookGenre();
-                book.GetLanguage();
+
                 libraryRepository.UpdateLibraryItems(book);
 
             }
@@ -149,7 +155,7 @@ namespace WPF_Schoolbib
                 cd.ProductNumber = Convert.ToInt64(CdEANTextbox.Text);
                 cd.Duration = Convert.ToInt32(CdDurationTextbox.Text);
                 cd.GenreIndex = CdGenreComboBox.SelectedIndex;
-                cd.GetCdGenre();
+             
                 libraryRepository.UpdateLibraryItems(cd);
 
             }
@@ -162,8 +168,7 @@ namespace WPF_Schoolbib
                 dvd.LanguageIndex = DvdLanguageComboBox.SelectedIndex;
                 dvd.Duration = Convert.ToInt32(DvdDurationTextbox.Text);
                 dvd.GenreIndex = BookGenreComboBox.SelectedIndex;
-                dvd.GetLanguage();
-                dvd.GetDvdGenre();
+             
                 libraryRepository.UpdateLibraryItems(dvd);
             }
         }

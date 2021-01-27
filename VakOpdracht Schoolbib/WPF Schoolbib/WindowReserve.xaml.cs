@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
@@ -27,17 +16,19 @@ namespace WPF_Schoolbib
             InitializeComponent();
             ShowLoanedItems();
             ShowStudentsInListbox();
+            StudentsListbox.ItemsSource = studentRepository.GetAllStudents();
         }
 
         private void ShowLoanedItems()
         {
             LoansListbox.ItemsSource = null;
-            LoansListbox.ItemsSource = libraryRepository.GetItemsBasedOnAvailability( AvailabilityItem.Uitgeleend);
+            LoansListbox.ItemsSource = libraryRepository.GetItemsBasedOnAvailability(AvailabilityItem.Uitgeleend);
         }
         private void ShowStudentsInListbox()
         {
             StudentsListbox.ItemsSource = null;
             StudentsListbox.ItemsSource = studentRepository.GetAllStudents();
+
         }
         private void FillInChoice()
         {
@@ -65,11 +56,12 @@ namespace WPF_Schoolbib
         private void LoansListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FillInChoice();
+            ShowStudentsInListbox();
         }
 
         private void StudentsListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-          
+
             FillInChoice();
         }
 

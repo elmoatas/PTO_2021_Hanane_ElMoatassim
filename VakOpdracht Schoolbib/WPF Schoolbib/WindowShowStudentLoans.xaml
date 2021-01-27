@@ -31,9 +31,9 @@
                 </StackPanel>
                 <Label Grid.Row="2"  Background="#FF1A588B" Foreground="White" >Filter op Itemsoort</Label>
                 <StackPanel Grid.Row="3">
-                    <CheckBox x:Name="BookFilter" Margin="5" Click="Filter_Checked">Boek</CheckBox>
-                    <CheckBox x:Name="CDFilter" Margin="5" Click="Filter_Checked">CD</CheckBox>
-                    <CheckBox x:Name="DVDFilter" Margin="5" Click="Filter_Checked">DVD</CheckBox>
+                    <CheckBox x:Name="BookFilter" Margin="5" Click="FilterItem_Click">Boek</CheckBox>
+                    <CheckBox x:Name="CDFilter" Margin="5" Click="FilterItem_Click">CD</CheckBox>
+                    <CheckBox x:Name="DVDFilter" Margin="5" Click="FilterItem_Click">DVD</CheckBox>
                 </StackPanel>
                 <Label Grid.Row="4"  Background="#FF1A588B" Foreground="White"> Sorteer op </Label>
                 <ComboBox Grid.Row="5" x:Name="SortByCombobox" Margin="10">
@@ -45,12 +45,12 @@
         </GroupBox>
        
         <GroupBox Header="Leningen" Margin="5" Grid.Column="1" Grid.Row="0" BorderBrush="#FF1A588B">
-                <ListBox x:Name="LoansOfSelectedStudentListbox" />
+                <ListBox x:Name="LoansOfSelectedStudentListbox" SelectionChanged="LoansOfSelectedStudentListbox_SelectionChanged" />
         </GroupBox>
        
         <GroupBox Grid.Column="2" Grid.Row="0" Margin="5" BorderBrush="#FF1A588B">
             <Grid>
-                <ListBox x:Name="LoanInfoListbox" />
+                <TextBlock x:Name="LoanInfoTextBlock" />
             </Grid>            
         </GroupBox>
    

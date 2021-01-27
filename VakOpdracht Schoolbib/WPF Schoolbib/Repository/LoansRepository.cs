@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -38,6 +39,14 @@ namespace WPF_Schoolbib.Models
                 }
             }
             return allLoansOfSelectedStudent;
+        }
+        public Loans GetLoanedLoanWith(int loanID, int itemID)
+        {
+            return(from Loans in dbContext.Loans
+                  where Loans.ID == loanID &&
+                  Loans.itemId == itemID &&
+                  Loans.ReturnDateString == DateTime.MinValue.ToString()
+                  select Loans).First();
         }
         public Loans GetLoanWith(int loanID)
         {
