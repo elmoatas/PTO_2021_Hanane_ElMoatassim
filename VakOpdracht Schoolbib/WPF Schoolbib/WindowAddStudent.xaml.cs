@@ -16,26 +16,23 @@ namespace WPF_Schoolbib
         {
             InitializeComponent();
             ShowStudentsInListbox();
-            PutStudyChoicesInComboBox();
-            PutSexChoisesInComboBox();
-        }
+            PutChoicesInComboBox();
+    }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             AddStudentToDB();
             SetToInitialState();
             ShowStudentsInListbox();
-            Close();
+
         }
-        private void PutStudyChoicesInComboBox()
+        private void PutChoicesInComboBox()
         {
             string[] studychoises = Enum.GetNames(typeof(Studychoices));
             StudyComboBox.ItemsSource = studychoises;
-        }
-        private void PutSexChoisesInComboBox()
-        {
             string[] sexChoices = Enum.GetNames(typeof(SexEnum));
             SexComboBox.ItemsSource = sexChoices;
         }
+
         private void SetToInitialState()
         {
             FirstNameTextBox.Text = "";
@@ -48,7 +45,11 @@ namespace WPF_Schoolbib
         {
             if (AllFieldsAreFilled() == true)
             {
-                Students newstudent = new Students(FirstNameTextBox.Text, LastNameTextBox.Text, StudyComboBox.SelectedIndex, SexComboBox.SelectedIndex);
+                Students newstudent = new Students();
+                newstudent.FirstName = FirstNameTextBox.Text;
+                newstudent.LastName = LastNameTextBox.Text;
+                newstudent.Studyindex = StudyComboBox.SelectedIndex;
+                newstudent.SexIndex = SexComboBox.SelectedIndex;
                 studentRepository.CreateStudent(newstudent);
             }
         }
@@ -71,6 +72,12 @@ namespace WPF_Schoolbib
                 everythingOK = true;
             }
             return everythingOK;
+        }
+
+        private void ModifyStudent_Click(object sender, RoutedEventArgs e)
+        {
+            WindowModifyStudent windowModifyStudent = new WindowModifyStudent();
+            windowModifyStudent.ShowDialog();
         }
     }
 }

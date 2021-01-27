@@ -10,8 +10,8 @@ namespace WPF_Schoolbib.Models
     {
         Aanwezig,
         Uitgeleend,
-        Gereserveerd, 
-        Verloren
+        GereserveerdAanwezig,
+        Gereserveerduitgeleend
     }
    public enum Studychoices
     {
@@ -56,9 +56,8 @@ namespace WPF_Schoolbib.Models
     }
     public enum SexEnum
     { 
-        Vrouw,
-        Man,
-        None
+        Vrouw =0,
+        Man =1
     }
     class Enums
     {

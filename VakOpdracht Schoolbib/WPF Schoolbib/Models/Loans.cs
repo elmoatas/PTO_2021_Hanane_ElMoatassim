@@ -44,21 +44,11 @@ namespace WPF_Schoolbib.Models
                 fine = 0.50 * timespan;
             }
         }
-       
+        // - Uitleendatum: {LoanDate.ToShortDateString()
 
         public override string ToString()
         {
-            string show;
-            if (ReturnDate == null)
-            {
-                show = $" Titel:{ItemTitle} - Uitleendatum:{LoanDate}";
-            }
-            else
-            {
-                show = $" Titel:{ItemTitle} - Uitleendatum:{LoanDate} - Inleverdatum: {ReturnDate}";
-            }
-            
-            return show;
+             return $" Titel: {ItemTitle}";
         }
 
     }

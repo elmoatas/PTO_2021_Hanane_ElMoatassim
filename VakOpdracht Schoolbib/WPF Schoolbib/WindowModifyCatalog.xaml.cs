@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using WPF_Schoolbib.Models;
@@ -176,6 +177,53 @@ namespace WPF_Schoolbib
         private void Listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowInfo();
+        }
+
+        private void Filter_Checked(object sender, RoutedEventArgs e)
+        {
+            Listbox.ItemsSource = null;
+            List<Library> filteredItems= new List<Library>();
+            if (BookFilter.IsChecked == true)
+            {
+                filteredItems.AddRange(libraryRepository.GetAllBooks());
+            }
+            else
+            {
+                foreach (Library item in libraryRepository.GetAllBooks())
+                {
+                    filteredItems.Remove(item);
+                }
+            }
+
+            if (CDFilter.IsChecked == true)
+            {
+                filteredItems.AddRange(libraryRepository.GetAllCds());
+            }
+            else
+            {
+                foreach (Library item in libraryRepository.GetAllCds())
+                {
+                    filteredItems.Remove(item);
+                }
+            }
+
+            if (DVDFilter.IsChecked == true)
+            {
+                filteredItems.AddRange(libraryRepository.GetAllDvds());
+            }
+            else
+            {
+                foreach (Library item in libraryRepository.GetAllDvds())
+                {
+                    filteredItems.Remove(item);
+                }
+            }
+            if (CDFilter.IsChecked==false &&  DVDFilter.IsChecked == false && BookFilter.IsChecked == false )
+            {
+                 filteredItems = libraryRepository.GetAllLibraryItems();
+            }
+        
+          Listbox.ItemsSource = filteredItems;
         }
     }
 }

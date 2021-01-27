@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using WPF_Schoolbib.Models;
 
 namespace WPF_Schoolbib
@@ -6,77 +7,60 @@ namespace WPF_Schoolbib
 
     public class Students
     {
-        LoansRepository loansRepository = new LoansRepository();
-        private int id;
-        private string firstName;
-        private string lastName;
-        private string study;
-        private string sex;
-        private int studyindex;
-        private int sexIndex;
-
 
         public Students()
         {
 
         }
-        public Students(string firstName, string lastName, int studyIndex, int sexIndex)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.sexIndex = sexIndex;
-            this.studyindex = studyIndex;
-            GetTheStudyChoiceName();
-            GetSex();
-        }
 
         [Key]
-        public int Id { get => id; set => id = value; }
-        public string FirstName { get => firstName; set => firstName = value; }
-        public string LastName { get => lastName; set => lastName = value; }
-        public string Study { get => study; set => study = value; }
-        public string Sex { get => sex; set => sex = value; }
-        public int Studyindex { get => studyindex; set => studyindex = value; }
-        public int SexIndex { get => sexIndex; set => sexIndex = value; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        public void GetSex()
+        public int Studyindex { get; set; }
+        public int SexIndex { get; set; }
+        [NotMapped]
+        public string Study { get => GetTheStudyChoiceName(); }
+       
+        [NotMapped]
+        public string Sex { get => GetSex(); }
+
+        private string GetSex()
         {
-            switch (sexIndex)
+            string sex = "";
+            switch (SexIndex)
             {
                 case 0: sex = SexEnum.Vrouw.ToString(); break;
                 case 1: sex = SexEnum.Man.ToString(); break;
-                case 2: sex = SexEnum.None.ToString(); break;
             }
+            return sex;
         }
 
-        public void GetTheStudyChoiceName()
+        private string GetTheStudyChoiceName()
         {
-            switch (studyindex)
+            switch (Studyindex)
             {
                 case 0:
-                    study = Studychoices.Informatica.ToString();
-                    break;
+                    return Studychoices.Informatica.ToString();
                 case 1:
-                    study = Studychoices.Othopedagogie.ToString();
-                    break;
+                    return Studychoices.Othopedagogie.ToString();
                 case 2:
-                    study = Studychoices.Ergotherapie.ToString();
-                    break;
+                    return Studychoices.Ergotherapie.ToString();
                 case 3:
-                    study = Studychoices.Logopedie.ToString();
-                    break;
+                    return Studychoices.Logopedie.ToString();
                 case 4:
-                    study = Studychoices.Electronica.ToString();
-                    break;
+                    return Studychoices.Electronica.ToString();
                 case 5:
-                    study = Studychoices.Verpleegkunde.ToString();
-                    break;
+                    return Studychoices.Verpleegkunde.ToString();
+                default: return "";
             }
+
         }
 
         public override string ToString()
         {
-            return $"{lastName} {firstName} - {sex} - {study}";
+            return $"{LastName} {FirstName}";
         }
 
     }

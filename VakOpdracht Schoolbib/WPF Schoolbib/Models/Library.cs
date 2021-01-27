@@ -11,8 +11,6 @@ namespace WPF_Schoolbib.Models
         private string title;
         private string creator;
         private long productNumber;
-        //private DateTime loanDate;
-        //private DateTime returnDate;
         private Students loaner;
         private AvailabilityItem availability;
 
@@ -26,20 +24,17 @@ namespace WPF_Schoolbib.Models
             this.creator = creator;
             this.productNumber = productnumber;
             this.availability = availability;
-            //this.loanDate = DateTime.Today;
+
         }
         [Key]
         public int LibraryId { get => libraryId; set => libraryId = value; }
         public string Title { get => title; set => title = value; }
         public string Creator { get => creator; set => creator = value; }
         public long ProductNumber { get => productNumber; set => productNumber = value; }
-
+        public int ReserveStudentID { get; set; }
         public Students Loaner { get => loaner; set => loaner = value; }
         public AvailabilityItem Availability { get => availability; set => availability = value; }
-        // public DateTime LoanDate { get => loanDate; set => loanDate = value; }
-
-
-        //public DateTime ReturnDate { get => returnDate; set => returnDate = value; }
+    
 
 
 

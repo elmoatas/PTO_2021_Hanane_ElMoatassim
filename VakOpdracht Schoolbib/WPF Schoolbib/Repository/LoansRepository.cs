@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace WPF_Schoolbib.Models
@@ -9,7 +10,6 @@ namespace WPF_Schoolbib.Models
         SchoolbibDBContext dbContext = new SchoolbibDBContext();
         public LoansRepository()
         {
-            // dbContext.Database.CreateIfNotExists();
         }
         //CREATE == insert 
         public void CreateLoan(Loans loan)
@@ -20,25 +20,24 @@ namespace WPF_Schoolbib.Models
             dbContext.Loans.Add(loan);
             dbContext.SaveChanges();
         }
-        //Read ==Select 
-        public List<Loans> GetLoansOfStudent(Students selectedStudent)
+        //Read 
+        public List<Loans> GetLoansOfStudent(int selectedStudentID)
         {
-            List<Loans> allLoansOfSelectedStudent = dbContext.Loans.Where((l) => l.StudentId == selectedStudent.Id).ToList();
-            //list van loans waarvij student id = aan selectedstudent id
+            List<Loans> allLoansOfSelectedStudent = dbContext.Loans.Where((l) => l.StudentId == selectedStudentID).ToList();
             return allLoansOfSelectedStudent;
         }
-        public List<Loans> GetOnlyLentLoans(Students selectedStudent)
-        {   
-            List<Loans> onlyLentLoans = new List<Loans>();
-            onlyLentLoans.Clear();
-            foreach (Loans loan in GetLoansOfStudent(selectedStudent))
+        public List<Loans> GetOnlyLentLoans(int selectedStudentID)
+        {
+            List<Loans> allLoansOfSelectedStudent = dbContext.Loans.Where((l) => l.StudentId == selectedStudentID).ToList();
+            allLoansOfSelectedStudent.Clear();
+            foreach (Loans loan in allLoansOfSelectedStudent)
             {
-                if(loan.ItemAvailibility== AvailabilityItem.Uitgeleend) 
+                if (loan.ItemAvailibility == AvailabilityItem.Aanwezig || loan.ItemAvailibility == AvailabilityItem.GereserveerdAanwezig) 
                 {
-                    onlyLentLoans.Add(loan);
+                    allLoansOfSelectedStudent.Remove(loan);
                 }
             }
-            return onlyLentLoans;
+            return allLoansOfSelectedStudent;
         }
         public Loans GetLoanWith(int loanID)
         {
@@ -49,10 +48,10 @@ namespace WPF_Schoolbib.Models
         //Update
         public void UpdateLoan(Loans loan)
         {
-            dbContext.Entry<Library>(library).State = EntityState.Modified;
+            dbContext.Entry<Loans>(loan).State = EntityState.Modified;
             dbContext.SaveChanges();
         }
-      
+
 
     }
 }

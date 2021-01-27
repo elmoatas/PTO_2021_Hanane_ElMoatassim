@@ -67,6 +67,7 @@ namespace WPF_Schoolbib
                     int genreIndex = BookGenreComboBox.SelectedIndex;
                     string publisher = BookPublishertextbox.Text;
                     Library newBook = new Books(title, Author, ISBNCode, AvailabilityItem.Aanwezig, genreIndex, languageIndex, pages, publisher);
+                    newBook.ReserveStudentID = -1;
                     libraryRepository.CreateLibraryItem(newBook);
                 }
             }
@@ -80,6 +81,7 @@ namespace WPF_Schoolbib
                     int duration = Convert.ToInt32(CdDurationTextbox.Text);
                     int genreIndex = CdGenreComboBox.SelectedIndex;
                     Library newCD = new CD(title, creator, productNumber, AvailabilityItem.Aanwezig, genreIndex, duration);
+                    newCD.ReserveStudentID = -1;
                     libraryRepository.CreateLibraryItem(newCD);
                 }
             }
@@ -94,6 +96,7 @@ namespace WPF_Schoolbib
                     int duration = Convert.ToInt32(DvdDurationTextbox.Text);
                     int genreIndex = DvdGenreComboBox.SelectedIndex;
                     Library newDVD = new DVD(title, creator, productNumber, AvailabilityItem.Aanwezig, genreIndex, languagIndex, duration);
+                    newDVD.ReserveStudentID = -1;
                     libraryRepository.CreateLibraryItem(newDVD);
 
                 }

@@ -18,7 +18,11 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White">Item bewerken</Label>
         <GroupBox Header=" Filter op" Grid.Row="1" Grid.Column="0" Margin="5" BorderBrush="#FF1A588B">
-
+            <StackPanel Margin="5">
+                <CheckBox x:Name="BookFilter" Margin="5" Click="Filter_Checked">Boek</CheckBox>
+                <CheckBox x:Name="CDFilter" Margin="5" Click="Filter_Checked">CD</CheckBox>
+                <CheckBox x:Name="DVDFilter" Margin="5" Click="Filter_Checked">DVD</CheckBox>
+            </StackPanel>
         </GroupBox>
         <GroupBox Header="kies Een item " Grid.Row="1" Grid.Column="1" Margin="5" BorderBrush="#FF1A588B">
             <ListBox x:Name="Listbox" Margin="5" SelectionChanged="Listbox_SelectionChanged"/>
@@ -26,33 +30,33 @@
         <GroupBox Visibility="Hidden" x:Name="BookGroupBox" Header="Beheer Item" Grid.Row="1" Grid.Column="2" Margin="5" BorderBrush="#FF1A588B">
             <Grid>
                 <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label x:Name="ISBN" Grid.Row="0" Margin=" 5" Grid.Column="0">ISBN</Label>
-            <Label x:Name="Title" Grid.Row="1"  Margin=" 5" Grid.Column="0" >Titel</Label>
-            <Label x:Name="Author" Grid.Row="2" Margin=" 5"  Grid.Column="0">Autheur</Label>
-            <Label x:Name="Language" Grid.Row="3" Margin=" 5"  Grid.Column="0">Taal</Label>
-            <Label x:Name="Pages" Grid.Row="4" Margin=" 5"  Grid.Column="0">Paginas</Label>
-            <Label x:Name="Genre" Grid.Row="5" Margin=" 5"  Grid.Column="0">Genre</Label>
-            <Label x:Name="Publisher" Grid.Row="6" Margin=" 5"  Grid.Column="0">Uitgeverij</Label>
-            <TextBox x:Name="BookISBNtextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
-            <TextBox x:Name="BookTitletextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
-            <TextBox x:Name="BookAuthortextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
-            <ComboBox x:Name="BookLanguageComboBox" Grid.Row="3" Margin="5" Grid.Column="1"/>
-            <TextBox x:Name="BookPagestextbox" Grid.Row="4" Margin="5" Grid.Column="1"/>
-            <ComboBox x:Name="BookGenreComboBox" Grid.Row="5" Margin="5" Grid.Column="1"/>
-            <TextBox x:Name="BookPublishertextbox" Grid.Row="6" Margin="5" Grid.Column="1"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="ISBN" Grid.Row="0" Margin=" 5" Grid.Column="0">ISBN</Label>
+                <Label x:Name="Title" Grid.Row="1"  Margin=" 5" Grid.Column="0" >Titel</Label>
+                <Label x:Name="Author" Grid.Row="2" Margin=" 5"  Grid.Column="0">Autheur</Label>
+                <Label x:Name="Language" Grid.Row="3" Margin=" 5"  Grid.Column="0">Taal</Label>
+                <Label x:Name="Pages" Grid.Row="4" Margin=" 5"  Grid.Column="0">Paginas</Label>
+                <Label x:Name="Genre" Grid.Row="5" Margin=" 5"  Grid.Column="0">Genre</Label>
+                <Label x:Name="Publisher" Grid.Row="6" Margin=" 5"  Grid.Column="0">Uitgeverij</Label>
+                <TextBox x:Name="BookISBNtextbox" Grid.Row="0" Margin="5" Grid.Column="1" />
+                <TextBox x:Name="BookTitletextbox" Grid.Row="1" Margin="5" Grid.Column="1"/>
+                <TextBox x:Name="BookAuthortextbox" Grid.Row="2" Margin="5" Grid.Column="1"/>
+                <ComboBox x:Name="BookLanguageComboBox" Grid.Row="3" Margin="5" Grid.Column="1"/>
+                <TextBox x:Name="BookPagestextbox" Grid.Row="4" Margin="5" Grid.Column="1"/>
+                <ComboBox x:Name="BookGenreComboBox" Grid.Row="5" Margin="5" Grid.Column="1"/>
+                <TextBox x:Name="BookPublishertextbox" Grid.Row="6" Margin="5" Grid.Column="1"/>
                 <Button x:Name="BOOKModifyButton" Grid.Row="7" Margin="5"  Grid.Column="1" Click="ModifyButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC" >bewerken</Button>
                 <Button x:Name="BOOKEraseButton" Grid.Row="7" Margin="5"  Grid.Column="0" Click="EraseButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC" >Verwijderen</Button>
             </Grid>
@@ -102,7 +106,6 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Margin=" 5" Grid.Column="0">EAN</Label>
@@ -116,7 +119,7 @@
                 <TextBox x:Name="CdDurationTextbox" Grid.Row="3" Margin="5" Grid.Column="1"/>
                 <ComboBox x:Name="CdGenreComboBox" Grid.Row="4" Margin="5" Grid.Column="1"/>
                 <Button x:Name="CDModifyButton" Grid.Row="5" Margin="5"  Grid.Column="1" Click="ModifyButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC" >bewerken</Button>
-                <Button x:Name="CDEraseButton" Grid.Row="6" Margin="5"  Grid.Column="0" Click="EraseButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC" >Verwijderen</Button>
+                <Button x:Name="CDEraseButton" Grid.Row="5" Margin="5"  Grid.Column="0" Click="EraseButton_Click" Background="#FF1A588B" Foreground="#FFFCFCFC" >Verwijderen</Button>
             </Grid>
         </GroupBox>
     </Grid>

@@ -5,35 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Schoolbib"
         mc:Ignorable="d"
-        Title="WindowModifyStudent" Height="450" Width="800">
+        Title="WindowModifyStudent" Height="317" Width="784">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Content="Studenten bewerken" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
-        <GroupBox Header="Selecteer een student:" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#FF1A588B">
+        <GroupBox  Header="Filter op: " Grid.Row="1" Grid.Column="0" BorderBrush="#FF1A588B">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0">ID</Label>
+                <TextBox x:Name="FilterIDTextbox" Grid.Column="1" Grid.Row="0" Margin="5" />
+                <Label Grid.Column="0" Grid.Row="1">Voornaam</Label>
+                <TextBox x:Name="FilterFirstNameTextbox" Grid.Column="1" Grid.Row="1" Margin="5"/>
+                <Label Grid.Column="0" Grid.Row="2">Achternaam</Label>
+                <TextBox x:Name="FilterLastNameTextbox" Grid.Column="1" Grid.Row="2" Margin="5"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="5" Grid.ColumnSpan="2" >
+                    <CheckBox x:Name="FilterFemaleCheckBox"  Margin="5">Vrouw</CheckBox>
+                    <CheckBox x:Name="FilterMaleCheckBox" Margin="5">Man</CheckBox>
+                </StackPanel>
+                <Button x:Name="FilterButton" Grid.Row="4" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5" Click="FilterButton_Click">Filter</Button>
+            </Grid>
+        </GroupBox>
+        <Label Content="Studenten bewerken" Grid.Row="0" Grid.ColumnSpan="4" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
+        <GroupBox Header="Selecteer een student:" Grid.Column="1" Grid.Row="1"  BorderBrush="#FF1A588B">
             <ListBox x:Name="StudentListbox"  Grid.Column="0" SelectionChanged="AllStudentListbox_SelectionChanged" />
         </GroupBox>
-        <GroupBox Header="Leningen" Grid.Column="1" Grid.Row="3" BorderBrush="#FF1A588B">
-            <DockPanel>
-                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top"  DockPanel.Dock="Top">
-                    <Button x:Name="PastloansButton" Content="Oude leningen " Margin="10" />
-                    <Button x:Name="CurrentloansButton" Content="Huidige leningen " Margin="10" />
-                </StackPanel>
-                <ListBox x:Name="LoansOfSelectedStudentListbox" SelectionChanged="LoansOfSelectedStudentListbox_SelectionChanged" />
-            </DockPanel>
-        </GroupBox>
-        <GroupBox Header="Beheer student" Grid.Row="1" Grid.Column="1" BorderBrush="#FF1A588B" >
+
+
+        <GroupBox Header="Beheer student" Grid.Row="2" Grid.Column="2" BorderBrush="#FF1A588B" >
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -53,8 +73,11 @@
                 <TextBox x:Name="LastNameTextBox" Grid.Row="2" Grid.Column="1" Margin="5" />
                 <ComboBox x:Name="StudyCombobox" Grid.Row="3" Grid.Column="1" Margin="5" />
                 <ComboBox x:Name="SexComboBox" Grid.Row="4" Grid.Column="1" Margin="5"/>
-                <Button x:Name="EditButton" Content="Aanpassen" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5.4,5.2,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Click="EditButton_Click" Height="23" VerticalAlignment="Top"/>
-                <Button x:Name="EraseButton" Content="verwijderen" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5.4,5.2,0,0" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" Click="EraseButton_Click" Height="23" VerticalAlignment="Top"/>
+                <StackPanel Orientation="Horizontal" Margin="5" Grid.Column="1" Grid.Row="6">
+                    <Button x:Name="EraseButton" Content="verwijderen" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5"  Click="EraseButton_Click" Height="23" />
+                    <Button x:Name="EditButton" Content="Aanpassen" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5"  Click="EditButton_Click" />
+                    <Button x:Name="ShowLoansButton" Content="Toon Leningen "  Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5" Click="ShowLoansButton_Click"  />
+                </StackPanel>
             </Grid>
         </GroupBox>
     </Grid>

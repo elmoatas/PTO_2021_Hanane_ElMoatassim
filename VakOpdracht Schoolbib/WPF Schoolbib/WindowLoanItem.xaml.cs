@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using WPF_Schoolbib.Models;
@@ -26,8 +27,20 @@ namespace WPF_Schoolbib
         }
         private void ShowLibraryInListbox()
         {
-            CatalogusListbox.ItemsSource = null;
-            CatalogusListbox.ItemsSource = libraryRepository.GetItemsBasedOnAvailability(AvailabilityItem.Aanwezig);
+            Students selectedStudent = (Students)StudentListbox.SelectedItem;
+          
+            List <Library> availableItems= libraryRepository.GetItemsBasedOnAvailability(AvailabilityItem.Aanwezig);
+            List <Library> reservedItems = libraryRepository.GetItemsBasedOnAvailability(AvailabilityItem.GereserveerdAanwezig);
+            if (StudentListbox.SelectedItem!=null)
+            foreach (Library item in reservedItems)
+            {
+                if(item.ReserveStudentID == selectedStudent.Id)
+                {
+                    availableItems.Add(item);
+                }
+            }
+           CatalogusListbox.ItemsSource = availableItems;
+            
         }
         private void ShowBooksInListbox()
         {
@@ -76,23 +89,29 @@ namespace WPF_Schoolbib
         private void StudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FillInChoice();
+            ShowLibraryInListbox();
         }
 
         private void loanButton_Click(object sender, RoutedEventArgs e)
         {
             Library selectedItemCatalogus = (Library)CatalogusListbox.SelectedItem;
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            
-            Loans newLoan = new Loans();
-            newLoan.StudentId = selectedStudent.Id;        
-            newLoan.LoanDate = DateTime.UtcNow;
-            newLoan.itemId = selectedItemCatalogus.LibraryId;
-          
-            loansRepository.CreateLoan(newLoan);
+            if (CatalogusListbox.SelectedItem != null && StudentListbox.SelectedItem != null)
+            {
+                Loans newLoan = new Loans();
+                newLoan.StudentId = selectedStudent.Id;
+                newLoan.LoanDate = DateTime.UtcNow;
+                newLoan.itemId = selectedItemCatalogus.LibraryId;
+                selectedItemCatalogus.ReserveStudentID = -1;
 
-            selectedItemCatalogus.Availability = AvailabilityItem.Uitgeleend;
-            libraryRepository.UpdateLibraryItems(selectedItemCatalogus);
-                    
+                loansRepository.CreateLoan(newLoan);
+
+                selectedItemCatalogus.Availability = AvailabilityItem.Uitgeleend;
+                libraryRepository.UpdateLibraryItems(selectedItemCatalogus);
+
+                MessageBox.Show($"{selectedStudent.FirstName} {selectedStudent.LastName}  heeft volgend item uitgeleend: {selectedItemCatalogus.Title} ");
+            }
+            
             ShowLibraryInListbox();
 
         }

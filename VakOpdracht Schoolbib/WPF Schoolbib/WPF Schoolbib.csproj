@@ -67,23 +67,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\202101261839248_InitialCreate.cs" />
-    <Compile Include="Migrations\202101261839248_InitialCreate.designer.cs">
-      <DependentUpon>202101261839248_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101261855382_loan.cs" />
-    <Compile Include="Migrations\202101261855382_loan.designer.cs">
-      <DependentUpon>202101261855382_loan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101261911449_loan1.cs" />
-    <Compile Include="Migrations\202101261911449_loan1.designer.cs">
-      <DependentUpon>202101261911449_loan1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101261913529_loan2.cs" />
-    <Compile Include="Migrations\202101261913529_loan2.designer.cs">
-      <DependentUpon>202101261913529_loan2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Books.cs" />
     <Compile Include="Models\CD.cs" />
     <Compile Include="Models\DVD.cs" />
@@ -115,6 +98,9 @@
     </Compile>
     <Compile Include="WindowModifyStudent.xaml.cs">
       <DependentUpon>WindowModifyStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowShowStudentLoans.xaml.cs">
+      <DependentUpon>WindowShowStudentLoans.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +142,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowShowStudentLoans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -171,18 +161,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202101261839248_InitialCreate.resx">
-      <DependentUpon>202101261839248_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101261855382_loan.resx">
-      <DependentUpon>202101261855382_loan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101261911449_loan1.resx">
-      <DependentUpon>202101261911449_loan1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101261913529_loan2.resx">
-      <DependentUpon>202101261913529_loan2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

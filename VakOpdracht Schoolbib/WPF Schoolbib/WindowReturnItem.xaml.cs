@@ -26,9 +26,9 @@ namespace WPF_Schoolbib
 
         private void ShowLoanedItems()
         {
-            Students selected = (Students)StudentListbox.SelectedItem;
+            Students selectedStudent = (Students)StudentListbox.SelectedItem;
             LoansListbox.ItemsSource = null;
-            LoansListbox.ItemsSource = loansRepository.GetOnlyLentLoans(selected); 
+            LoansListbox.ItemsSource = loansRepository.GetLoansOfStudent(selectedStudent.Id); 
         }
         private void FillInChoice()
         {
@@ -44,8 +44,17 @@ namespace WPF_Schoolbib
             selectedloan.ReturnDate = DateTime.Now;
             loansRepository.UpdateLoan(selectedloan);
             Library libraryItem = libraryRepository.GetLibraryItemWithID(selectedloan.itemId);
-            libraryItem.Availability = AvailabilityItem.Aanwezig;
+            if(libraryItem.ReserveStudentID != -1)
+            {
+                libraryItem.Availability = AvailabilityItem.GereserveerdAanwezig;
+            }
+            else
+            {
+                libraryItem.Availability = AvailabilityItem.Aanwezig;
+            }
+          
             libraryRepository.UpdateLibraryItems(libraryItem);
+            MessageBox.Show($"{selectedStudent.FirstName} {selectedStudent.LastName} heeft volgend item teruggebracht: {libraryItem.Title}.");
         }
 
         private void StudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)

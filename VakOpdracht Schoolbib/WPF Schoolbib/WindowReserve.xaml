@@ -5,26 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Schoolbib"
         mc:Ignorable="d"
-        Title="WindowReserve" Height="450" Width="800">
+        Title="WindowReserve" Height="332" Width="1034">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Item Reserveren" Grid.Row="0" Grid.ColumnSpan="3" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
-        <GroupBox Header="Selecteer een item:" Grid.Row="1" Grid.Column="0" BorderBrush="#FF1A588B" >
+        <Label Content="Item Reserveren" Grid.Row="0" Grid.ColumnSpan="4" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" Background="#FF1A588B" Foreground="White" />
+        <GroupBox Header="Selecteer een item:" Grid.Row="1" Grid.Column="1" BorderBrush="#FF1A588B" >
             <ListBox x:Name="LoansListbox" Grid.Row="1" Grid.Column="0" SelectionChanged="LoansListbox_SelectionChanged" />
         </GroupBox>
-        <GroupBox Header="Selecteer een student:" Grid.Row="2" Grid.Column="0" BorderBrush="#FF1A588B" >
+        <GroupBox Header="Selecteer een student:" Grid.Row="1" Grid.Column="2" BorderBrush="#FF1A588B" >
             <ListBox x:Name="StudentsListbox" Grid.Row="1" Grid.Column="1" SelectionChanged="StudentsListbox_SelectionChanged" />
         </GroupBox>
-        <GroupBox Header="Dit is je keuze: " Grid.Column="1" Grid.Row="2" BorderBrush="#FF1A588B" >
+        <GroupBox Header="Dit is je keuze: " Grid.Column="3" Grid.Row="1" BorderBrush="#FF1A588B" >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -34,18 +34,18 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5" >Item: </Label>
-                <Label Grid.Column="0" Grid.Row="1" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5" >uitgeleend tot: </Label>
-                <Label Grid.Column="0" Grid.Row="2" Background="#FF1A588B" Foreground="#FFFCFCFC" Margin="5" >Geselecteerde Student:</Label>
-                <Label x:Name="ItemLabel" Grid.Column="1" Grid.Row="0" Margin="5" >Item</Label>
-                <Label x:Name="ReturnDateLabel" Grid.Column="1" Grid.Row="1" Margin="5" >uitgeleend tot</Label>
-                <Label x:Name="StudentLabel" Grid.Column="1" Grid.Row="2" Margin="5" >Geselecteerde Student</Label>
-                <Button x:Name="ReserveButton" Content="Item Reserveren" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Margin="5" Background="#FF1A588B" Foreground="#FFFCFCFC" FontSize="18"  />
+                <Label Grid.Column="0" Grid.Row="0"  Margin="5" >Item: </Label>
+                <Label Grid.Column="0" Grid.Row="1" Margin="5" >Uitgeleend tot: </Label>
+                <Label Grid.Column="0" Grid.Row="2"  Margin="5" >Student:</Label>
+                <Label x:Name="ItemLabel" Grid.Column="1" Grid.Row="0" Margin="5" ></Label>
+                <Label x:Name="ReturnDateLabel" Grid.Column="1" Grid.Row="1" Margin="5"> </Label>
+                <Label x:Name="StudentLabel" Grid.Column="1" Grid.Row="2" Margin="5" > </Label>
+                <Button x:Name="ReserveButton" Content="Item Reserveren" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Margin="5" Background="#FF1A588B" Foreground="#FFFCFCFC" FontSize="18" Click="ReserveButton_Click"  />
             </Grid>
         </GroupBox>
-        <GroupBox Header="Filter " Grid.Column="1" Grid.Row="1" BorderBrush="#FF1A588B">
+        <GroupBox Header="Filter " Grid.Column="0" Grid.Row="1" BorderBrush="#FF1A588B">
             <StackPanel>
                 <RadioButton x:Name="CDRadiobutton" Margin="5" GroupName="ItemChoice" Checked="CDRadiobutton_Checked" >CD</RadioButton>
                 <RadioButton x:Name="DvdRadiobutton" Margin=" 5" GroupName="ItemChoice" Checked="DvdRadiobutton_Checked" >DVD</RadioButton>

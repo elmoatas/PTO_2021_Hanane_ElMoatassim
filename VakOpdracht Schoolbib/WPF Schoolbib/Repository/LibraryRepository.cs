@@ -14,6 +14,10 @@ namespace WPF_Schoolbib.Models
         //CREATE == insert 
         public void CreateLibraryItem(Library library)
         {
+         //dbContext.Students.Attach((from Students in dbContext.Students
+         //                              where Students.Id == library.ReserveStudentID
+         //                              select Students).First());
+
             switch (library)
             {
                 case Books book:
@@ -62,12 +66,18 @@ namespace WPF_Schoolbib.Models
         }
         public List<Library> GetItemsBasedOnAvailability(AvailabilityItem availability)
         {
+
             return dbContext.LibraryItems.Where((L) => L.Availability == availability).ToList();
+        }
+        public Library GetLibraryItemReservedBy(Students selectedStudent)
+        {                
+            return (from Library in dbContext.LibraryItems
+                        where Library.ReserveStudentID == selectedStudent.Id
+                        select Library).First();
         }
         //Update
         public void UpdateLibraryItems(Library library)
         {
-
             dbContext.Entry<Library>(library).State = EntityState.Modified;
             dbContext.SaveChanges();
         }

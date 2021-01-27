@@ -31,7 +31,6 @@ namespace WPF_Schoolbib
 
         private void ShowLoanedItems()
         {
-            Students selected = (Students)LoansListbox.SelectedItem;
             LoansListbox.ItemsSource = null;
             LoansListbox.ItemsSource = libraryRepository.GetItemsBasedOnAvailability( AvailabilityItem.Uitgeleend);
         }
@@ -70,7 +69,19 @@ namespace WPF_Schoolbib
 
         private void StudentsListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+          
             FillInChoice();
+        }
+
+        private void ReserveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Library selectedItemCatalogus = (Library)LoansListbox.SelectedItem;
+            Students selectedStudent = (Students)StudentsListbox.SelectedItem;
+            selectedItemCatalogus.ReserveStudentID = selectedStudent.Id;
+            selectedItemCatalogus.Availability = AvailabilityItem.Gereserveerduitgeleend;
+            libraryRepository.UpdateLibraryItems(selectedItemCatalogus);
+            MessageBox.Show($" {selectedStudent.FirstName} {selectedStudent.LastName} heeft volgende item gereserveerd: {selectedItemCatalogus.Title}");
+            ShowLoanedItems();
         }
     }
 }
