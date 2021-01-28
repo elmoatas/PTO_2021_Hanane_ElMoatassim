@@ -28,25 +28,30 @@ namespace WPF_Schoolbib
         {
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
             LoansListbox.ItemsSource = null;
-            LoansListbox.ItemsSource = libraryRepository.GetbookItemsLoanedBy(selectedStudent);
+            LoansListbox.ItemsSource = loansRepository.GetOnlyLentLoans(selectedStudent.Id);
         }
         private void FillInChoice()
         {
             Loans selectedLoan = (Loans)LoansListbox.SelectedItem;
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            if (LoansListbox.SelectedItem != null) { ItemLabel.Content = selectedLoan.ItemTitle; }
+            if (LoansListbox.SelectedItem != null)
+            {
+                ItemLabel.Content = selectedLoan.availabiltyItemString;
+            }
             if (StudentListbox.SelectedItem != null) { StudentLabel.Content = $" {selectedStudent.LastName} {selectedStudent.FirstName}"; }
+
         }
         private void BringBackLoanedBook()
         {
             Loans selectedloan = (Loans)LoansListbox.SelectedItem;
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
+            Library libraryItem = libraryRepository.GetLibraryItemWithID(selectedloan.itemId);
 
             selectedloan.ReturnDateString = DateTime.UtcNow.ToShortDateString();
             loansRepository.UpdateLoan(selectedloan);
 
-            Library libraryItem = libraryRepository.GetLibraryItemWithID(selectedloan.itemId);
-            if(libraryItem.ReserveStudentID != -1)
+
+            if (libraryItem.ReserveStudentID != -1)
             {
                 libraryItem.Availability = AvailabilityItem.GereserveerdAanwezig;
             }
@@ -54,15 +59,15 @@ namespace WPF_Schoolbib
             {
                 libraryItem.Availability = AvailabilityItem.Aanwezig;
             }
-            libraryItem.LoanerID = 0; 
+            libraryItem.LoanerID = 0;
 
             libraryRepository.UpdateLibraryItems(libraryItem);
             MessageBox.Show($"{selectedStudent.FirstName} {selectedStudent.LastName} heeft volgend item teruggebracht: {libraryItem.Title}."
-                + Environment.NewLine + ShowFine());
+                + Environment.NewLine + ShowFine(selectedloan));
         }
-        private string ShowFine()
+        private string ShowFine(Loans selectedloan)
         {
-            Loans selectedloan = (Loans)LoansListbox.SelectedItem;
+
             string text = "";
             if (selectedloan.Fine > 0)
             {

@@ -30,22 +30,23 @@ namespace WPF_Schoolbib.Models
      
         public List<Loans> GetOnlyLentLoans(int selectedStudentID)
         {
-            List<Loans> allLoansOfSelectedStudent = dbContext.Loans.Where((l) => l.StudentId == selectedStudentID).ToList();
-            foreach (Loans loan in allLoansOfSelectedStudent)
-            {
-                if (loan.ReturnDateString != DateTime.MinValue.ToString()) 
-                {
-                    allLoansOfSelectedStudent.Remove(loan);
-                }
-            }
-            return allLoansOfSelectedStudent;
+            //List<Loans> allLoansOfSelectedStudent = new List<Loans>();
+           return dbContext.Loans.Where((l) => l.StudentId == selectedStudentID && l.ReturnDateString != "").ToList();
+            //foreach (Loans loan in GetLoansOfStudent(selectedStudentID))
+            //{
+            //    if (loan.ReturnDateString !="") 
+            //    {
+            //        allLoansOfSelectedStudent.Remove(loan);
+            //    }
+            //}
+            //return allLoansOfSelectedStudent;
         }
-        public Loans GetLoanWith(int loanID, int itemID)
+        public Loans GetLoanWith(int itemId, int loanerId)
         {
-            return(from Loans in dbContext.Loans
-                  where Loans.ID == loanID &&
-                  Loans.itemId == itemID 
-                  select Loans).First();
+           return dbContext.Loans.Where((Loans) => Loans.StudentId == loanerId &&
+                  Loans.itemId == itemId
+                  && Loans.availabiltyItemString == AvailabilityItem.Uitgeleend.ToString()).FirstOrDefault();
+           
         }
         public Loans GetLoanWithLoanID(int loanID)
         {

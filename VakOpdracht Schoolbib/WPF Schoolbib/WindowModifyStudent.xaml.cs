@@ -95,28 +95,34 @@ namespace WPF_Schoolbib
         private void EraseButton_Click(object sender, RoutedEventArgs e)
         {
             Students selected = (Students)StudentListbox.SelectedItem;
-          
+            bool erase= true;
+            //zijn er nog loans ide uitgeleend zijn van deze student
             foreach (Loans loan in loansRepository.GetLoansOfStudent(selected.Id))
             {
                 if (loan.ItemAvailibility == AvailabilityItem.Uitgeleend)
                 {
-                    MessageBox.Show("Kan student niet verwijderen! Student heeft nog items die uitgeleend zijn. Gelieve de Items eerst terug te brengen");
+                    erase = false;//ZOJA MAG NIET VERWIJDEREN
+ 
                 }
-                else
+ 
+            }
+        if (erase == false)
+            {
+                MessageBox.Show("Kan student niet verwijderen! Student heeft nog items die uitgeleend zijn. Gelieve de Items eerst terug te brengen");
+            }
+        else
+            {
+                foreach (Library item in libraryRepository.GetListItemReservedBy(selected))
                 {
-
-                    foreach (Library item in libraryRepository.GetListItemReservedBy(selected))
-                    {
-                        item.ReserveStudentID = -1;
-                        item.Availability = AvailabilityItem.Aanwezig;
-                        libraryRepository.UpdateLibraryItems(item);
-                    }
-               
-                    studentRepository.DeleteStudent(selected);
-                    ShowStudentsInListbox();
-                    MakeAllFieldsEmpty();
+                    item.ReserveStudentID = -1;
+                    item.Availability = AvailabilityItem.Aanwezig;
+                    libraryRepository.UpdateLibraryItems(item);
                 }
-             
+
+                studentRepository.DeleteStudent(selected);
+                ShowStudentsInListbox();
+                MakeAllFieldsEmpty();
+
             }
 
         }

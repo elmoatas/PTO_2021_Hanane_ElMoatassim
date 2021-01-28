@@ -22,6 +22,7 @@ namespace WPF_Schoolbib.Models
         public string ReturnDateString { get; set; }
         public double Fine { get => 0.50 * Timespan; }
         public bool FinePayed { get; set; }
+        public string availabiltyItemString { get => libraryRepository.GetLibraryItemWithID(itemId).Availability.ToString(); }
 
         //Info over student 
         public int StudentId { get; set; }
@@ -38,7 +39,7 @@ namespace WPF_Schoolbib.Models
 
         [NotMapped]
         public DateTime ExpectedReturndate { get => LoanDate.AddDays(30); }
-
+       
         [NotMapped]
         public AvailabilityItem ItemAvailibility { get => libraryRepository.GetLibraryItemWithID(itemId).Availability; }
 
@@ -75,10 +76,10 @@ namespace WPF_Schoolbib.Models
         }
         private int GetTimeSpan()
         {
-            int timespan = (ExpectedReturndate - ReturnDate).Days;
+            int timespan = (ReturnDate- ExpectedReturndate ).Days;
             if (timespan > 0)
             {
-                timespan = (ExpectedReturndate - ReturnDate).Days;
+                timespan = (ReturnDate - ExpectedReturndate).Days;
             }
             else
             {

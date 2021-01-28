@@ -11,6 +11,7 @@ namespace WPF_Schoolbib
     {
         StudentRepository studentRepository = new StudentRepository();
         LibraryRepository libraryRepository = new LibraryRepository();
+        LoansRepository loansRepository = new LoansRepository();
         public WindowReserve()
         {
             InitializeComponent();
@@ -34,8 +35,13 @@ namespace WPF_Schoolbib
         {
             Library selectedItemCatalogus = (Library)LoansListbox.SelectedItem;
             Students selectedStudent = (Students)StudentsListbox.SelectedItem;
-            if (LoansListbox.SelectedItem != null) { ItemLabel.Content = selectedItemCatalogus.Title; }
+       
+            if (LoansListbox.SelectedItem != null) 
+            {
+                ItemLabel.Content = selectedItemCatalogus.Title;
+            }
             if (StudentsListbox.SelectedItem != null) { StudentLabel.Content = $" {selectedStudent.LastName} {selectedStudent.FirstName}"; }
+            
         }
 
         private void CDRadiobutton_Checked(object sender, RoutedEventArgs e)
