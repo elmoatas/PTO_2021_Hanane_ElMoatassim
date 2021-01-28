@@ -19,14 +19,15 @@ namespace WPF_Schoolbib.Models
         [Key]
         public int ID { get; set; }
         public DateTime LoanDate { get; set; }
-        public string ReturnDateString { get => GetReturnDate(); }
-        public double Fine { get; set; }
+        public string ReturnDateString { get; set; }
+        public double Fine { get => 0.50 * Timespan; }
+        public bool FinePayed { get; set; }
 
         //Info over student 
         public int StudentId { get; set; }
         public string StudentFirstName { get; set; }
         public string StudentLastName { get; set; }
-        
+
 
 
         //Info over Item
@@ -42,28 +43,50 @@ namespace WPF_Schoolbib.Models
         public AvailabilityItem ItemAvailibility { get => libraryRepository.GetLibraryItemWithID(itemId).Availability; }
 
         [NotMapped]
-        public DateTime ReturnDate { get; set; }
+        public DateTime ReturnDate { get => DateTime.Parse(ReturnDateString); }
+        [NotMapped]
+        public bool ReturnedOnTime { get => IsItReturnedOnTime(); }
+        [NotMapped]
+        public int Timespan { get => GetTimeSpan(); }
 
-        private string GetReturnDate()
+        public string GetReturnDate()
         {
-            if (ReturnDate == DateTime.MinValue)
+            if (ReturnDateString == "")
             {
                 return $"Verwachte inleverdatum: {ExpectedReturndate}";
             }
             else
             {
-                return $"Inleverdatum: {ReturnDate.ToShortDateString()}";
+                return $"Inleverdatum: {ReturnDateString}";
             }
         }
-        public void CalculateFine()
+        private bool IsItReturnedOnTime()
         {
+            bool onTime = false;
             if (ExpectedReturndate < ReturnDate)
             {
-                int timespan = (ExpectedReturndate - ReturnDate).Days;
-                fine = 0.50 * timespan;
+                onTime = false;
             }
+            else
+            {
+                onTime = true;
+            }
+            return onTime;
         }
-        // - Uitleendatum: {LoanDate.ToShortDateString()
+        private int GetTimeSpan()
+        {
+            int timespan = (ExpectedReturndate - ReturnDate).Days;
+            if (timespan > 0)
+            {
+                timespan = (ExpectedReturndate - ReturnDate).Days;
+            }
+            else
+            {
+                timespan = 0;
+            }
+            return timespan;
+        }
+
 
         public override string ToString()
         {

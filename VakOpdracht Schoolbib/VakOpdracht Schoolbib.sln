@@ -8,7 +8,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console Studenten selfserviceApp", "Console Studenten selfserviceApp\Console Studenten selfserviceApp.csproj", "{7D23B2A3-7F30-400A-99CD-676253F0FE69}"
 	ProjectSection(ProjectDependencies) = postProject
 		{BD2ED28F-B199-493C-8221-63F2D063D3AA} = {BD2ED28F-B199-493C-8221-63F2D063D3AA}
+		{689CBFD3-DF39-481D-B786-665C26AC3BE5} = {689CBFD3-DF39-481D-B786-665C26AC3BE5}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsEnReferencesLibrary", "ModelsEnReferencesLibrary\ModelsEnReferencesLibrary.csproj", "{689CBFD3-DF39-481D-B786-665C26AC3BE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +27,10 @@ Global
 		{7D23B2A3-7F30-400A-99CD-676253F0FE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D23B2A3-7F30-400A-99CD-676253F0FE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D23B2A3-7F30-400A-99CD-676253F0FE69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{689CBFD3-DF39-481D-B786-665C26AC3BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{689CBFD3-DF39-481D-B786-665C26AC3BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{689CBFD3-DF39-481D-B786-665C26AC3BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{689CBFD3-DF39-481D-B786-665C26AC3BE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D23B2A3-7F30-400A-99CD-676253F0FE69}</ProjectGuid>
+    <ProjectGuid>{E9144A67-EF73-4A69-8B07-A90B77DDFD65}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Console_Studenten_selfserviceApp</RootNamespace>
-    <AssemblyName>Console Studenten selfserviceApp</AssemblyName>
+    <RootNamespace>Library</RootNamespace>
+    <AssemblyName>Library</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -53,24 +53,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interface\AllLoans.cs" />
-    <Compile Include="Interface\LoanBookInterface.cs" />
-    <Compile Include="Interface\LoginInterface.cs" />
-    <Compile Include="Interface\PayFines.cs" />
-    <Compile Include="Interface\ReturnInterface.cs" />
-    <Compile Include="Interface\SelfServiceInterface.cs" />
+    <Compile Include="Models\Books.cs" />
+    <Compile Include="Models\CD.cs" />
+    <Compile Include="Models\DVD.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\Library.cs" />
+    <Compile Include="Models\Loans.cs" />
+    <Compile Include="Models\SchoolbibDBContext.cs" />
+    <Compile Include="Models\Students.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\LibraryRepository.cs" />
+    <Compile Include="Repository\LoansRepository.cs" />
+    <Compile Include="Repository\StudentRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ModelsEnReferencesLibrary\ModelsEnReferencesLibrary.csproj">
-      <Project>{689cbfd3-df39-481d-b786-665c26ac3be5}</Project>
-      <Name>ModelsEnReferencesLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

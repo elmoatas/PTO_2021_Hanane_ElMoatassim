@@ -104,13 +104,14 @@ namespace WPF_Schoolbib
                 }
                 else
                 {
-                    if (libraryRepository.GetLibraryItemReservedBy(selected) != null)
+
+                    foreach (Library item in libraryRepository.GetListItemReservedBy(selected))
                     {
-                        Library item = libraryRepository.GetLibraryItemReservedBy(selected);
                         item.ReserveStudentID = -1;
                         item.Availability = AvailabilityItem.Aanwezig;
                         libraryRepository.UpdateLibraryItems(item);
                     }
+               
                     studentRepository.DeleteStudent(selected);
                     ShowStudentsInListbox();
                     MakeAllFieldsEmpty();

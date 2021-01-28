@@ -1,4 +1,5 @@
 ﻿using Console_Schoolbib;
+using Console_Studenten_selfserviceApp.Interface;
 using System;
 using WPF_Schoolbib;
 using WPF_Schoolbib.Models;
@@ -23,14 +24,13 @@ De student moet zijn boete kunnen betalen aan de terminal. De volledige betaling
 implementeren.Implementeer wel een manier om aan te geven dat de student betaald heeft.*/
     class Program
     {
-        StudentRepository studentRepository = new StudentRepository();
-        SchoolbibDBContext schoolbibDBContext = new SchoolbibDBContext();
+
         static void Main(string[] args)
         {
             StudentRepository studentRepository = new StudentRepository();
             LibraryRepository libraryRepository = new LibraryRepository();
             LoansRepository loansRepository = new LoansRepository();
-
+           
             Console.WriteLine("################");
             Console.WriteLine("# de schoolbib #");
             Console.WriteLine("################");
@@ -38,30 +38,44 @@ implementeren.Implementeer wel een manier om aan te geven dat de student betaald
             Console.WriteLine("Druk op toets om door te gaan.");
             Console.ReadKey();
 
+
             LoginInterface login = new LoginInterface();
+            //Open login interface
             login.ShowLoginInterface();
-
-            SelfServiceInterface selfService = new SelfServiceInterface();
-            selfService.ShowSelfService();
-
-            
-           //"a. Boek Lenen"
-           //"b. Boek Inleveren "
-           //"c. Overzicht van ontlening bekijken"
-           //"d. Ontlening verlengen"
-           //"e. Boetes betalen"
-            char choice = Convert.ToChar(Console.ReadLine().ToLower());
+             
+            //openselfservice
+            LoanBookInterface loanBookInterface = new LoanBookInterface(login.LoggedStudent);
+            ReturnInterface returnInterface = new ReturnInterface(login.LoggedStudent);
+            AllLoans allLoans = new AllLoans(login.LoggedStudent);
+            PayFines payFines = new PayFines(login.LoggedStudent);
+            char choice;
+           
             do
             {
-            switch (choice)
-            {
-                case 'a': selfService.LoanBook(login.LoggedStudent);break;
-                case 'b': selfService.ReturnBook(); break;
-                case 'c': selfService.getLoans(); break;
-                case 'd': selfService.ExtendLoan(); break;
-                case 'e': selfService.PayFine(); break;
-                
-            }
+            Console.Clear();
+            Console.WriteLine("###############");
+            Console.WriteLine("# Selfservice #");
+            Console.WriteLine("###############" + Environment.NewLine);
+            Console.WriteLine($"Welcome {login.LoggedStudent.FirstName} {login.LoggedStudent.LastName}!");
+            Console.WriteLine("a. Boek Lenen");
+            Console.WriteLine("b. Boek Inleveren ");
+            Console.WriteLine("c. Overzicht van ontlening bekijken");
+            Console.WriteLine("d. Ontlening verlengen");
+            Console.WriteLine("e. Boetes betalen");
+            Console.WriteLine("x. exit");
+            Console.Write("Maak je keuze:");
+
+            choice = Convert.ToChar(Console.ReadLine().ToLower());
+           
+                switch (choice)
+                {
+                    case 'a': loanBookInterface.ShowLoanBookInterface(); break;
+                    case 'b': returnInterface.ReturnBook(); break;
+                    case 'c': allLoans.GetLoans(); break;
+                    //case 'd': .ExtendLoan(); break;
+                    case 'e': payFines.ShowFines(); break;
+
+                }
             } while (choice != 'x');
 
 
@@ -71,5 +85,6 @@ implementeren.Implementeer wel een manier om aan te geven dat de student betaald
 
             Console.ReadKey();
         }
+  
     }
 }

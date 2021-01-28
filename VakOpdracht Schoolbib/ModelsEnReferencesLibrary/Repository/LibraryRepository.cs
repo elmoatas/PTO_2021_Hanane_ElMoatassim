@@ -14,9 +14,9 @@ namespace WPF_Schoolbib.Models
         //CREATE == insert 
         public void CreateLibraryItem(Library library)
         {
-         //dbContext.Students.Attach((from Students in dbContext.Students
-         //                              where Students.Id == library.ReserveStudentID
-         //                              select Students).First());
+            //dbContext.Students.Attach((from Students in dbContext.Students
+            //                              where Students.Id == library.ReserveStudentID
+            //                              select Students).First());
 
             switch (library)
             {
@@ -53,11 +53,11 @@ namespace WPF_Schoolbib.Models
         {
             return dbContext.CDs.ToList();
         }
-        public Books GetBookWithISBN(long ISBN)
+        public Library GetItemWith(int id)
         {
-            return (from Books in dbContext.Books
-                    where Books.ProductNumber == ISBN
-                    select Books).First();
+            return (from Library in dbContext.LibraryItems
+                    where Library.LibraryId == id
+                    select Library).First();
         }
         public Library GetLibraryItemWithID(long id)
         {
@@ -70,13 +70,23 @@ namespace WPF_Schoolbib.Models
 
             return dbContext.LibraryItems.Where((L) => L.Availability == availability).ToList();
         }
-        public Library GetLibraryItemReservedBy(Students selectedStudent)
-        {                
-            return (from Library in dbContext.LibraryItems
-                        where Library.ReserveStudentID == selectedStudent.Id
-                        select Library).First();
+
+        public List<Library> GetBooksBasedOnAvailability(AvailabilityItem availability)
+        {
+            return dbContext.LibraryItems.Where((L) => L.Availability == availability && L is Books).ToList();
         }
 
+        public List<Library> GetListItemReservedBy(Students student)
+        {
+            List<Library> reserved = dbContext.LibraryItems.Where((st) => st.ReserveStudentID == student.Id).ToList();
+            return reserved;
+        }
+        public List<Library> GetbookItemsLoanedBy(Students student)
+        {
+            return dbContext.LibraryItems.Where(
+                (L) => L.LoanerID == student.Id &&
+                (L.Availability == AvailabilityItem.Gereserveerduitgeleend || L.Availability == AvailabilityItem.Uitgeleend)).ToList();
+        }
         //Update
         public void UpdateLibraryItems(Library library)
         {

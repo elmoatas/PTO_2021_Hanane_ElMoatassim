@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace WPF_Schoolbib.Models
+namespace LibraryModels.Models
 {
 
     public class LoansRepository

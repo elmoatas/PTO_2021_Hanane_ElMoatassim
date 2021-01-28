@@ -28,7 +28,7 @@ namespace WPF_Schoolbib
         {
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
             LoansListbox.ItemsSource = null;
-            LoansListbox.ItemsSource = loansRepository.GetLoansOfStudent(selectedStudent.Id); 
+            LoansListbox.ItemsSource = libraryRepository.GetbookItemsLoanedBy(selectedStudent);
         }
         private void FillInChoice()
         {
@@ -41,8 +41,10 @@ namespace WPF_Schoolbib
         {
             Loans selectedloan = (Loans)LoansListbox.SelectedItem;
             Students selectedStudent = (Students)StudentListbox.SelectedItem;
-            selectedloan.ReturnDate = DateTime.UtcNow;
+
+            selectedloan.ReturnDateString = DateTime.UtcNow.ToShortDateString();
             loansRepository.UpdateLoan(selectedloan);
+
             Library libraryItem = libraryRepository.GetLibraryItemWithID(selectedloan.itemId);
             if(libraryItem.ReserveStudentID != -1)
             {
@@ -52,11 +54,26 @@ namespace WPF_Schoolbib
             {
                 libraryItem.Availability = AvailabilityItem.Aanwezig;
             }
-          
-            libraryRepository.UpdateLibraryItems(libraryItem);
-            MessageBox.Show($"{selectedStudent.FirstName} {selectedStudent.LastName} heeft volgend item teruggebracht: {libraryItem.Title}.");
-        }
+            libraryItem.LoanerID = 0; 
 
+            libraryRepository.UpdateLibraryItems(libraryItem);
+            MessageBox.Show($"{selectedStudent.FirstName} {selectedStudent.LastName} heeft volgend item teruggebracht: {libraryItem.Title}."
+                + Environment.NewLine + ShowFine());
+        }
+        private string ShowFine()
+        {
+            Loans selectedloan = (Loans)LoansListbox.SelectedItem;
+            string text = "";
+            if (selectedloan.Fine > 0)
+            {
+                text = $"Je hebt een boete van {selectedloan.Fine} EURO.";
+            }
+            else
+            {
+                text = "";
+            }
+            return text;
+        }
         private void StudentListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowLoanedItems();

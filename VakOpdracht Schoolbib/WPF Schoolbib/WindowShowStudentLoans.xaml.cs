@@ -39,7 +39,7 @@ namespace WPF_Schoolbib
             string creator = selected.ItemCreator;
             long productnumber = selected.ItemProductNumber;
             string loandate = selected.LoanDate.ToShortDateString();
-            string returnDate = selected.ReturnDateString;
+            string returnDate = selected.GetReturnDate();
             LoanInfoTextBlock.Text = $"EXTRA INFORMATIE:" +
                                      $"{Environment.NewLine}" +
                                      $"{Environment.NewLine}" +

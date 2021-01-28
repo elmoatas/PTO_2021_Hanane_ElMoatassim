@@ -107,12 +107,15 @@ namespace WPF_Schoolbib
                 newLoan.ItemProductNumber = selectedItemCatalogus.ProductNumber;
                 newLoan.StudentFirstName = selectedStudent.FirstName;
                 newLoan.StudentLastName = selectedStudent.LastName;
+                newLoan.ReturnDateString = "";
+                newLoan.FinePayed = true;
 
                 selectedItemCatalogus.ReserveStudentID = -1;
 
                 loansRepository.CreateLoan(newLoan);
 
                 selectedItemCatalogus.Availability = AvailabilityItem.Uitgeleend;
+                selectedItemCatalogus.LoanerID = selectedStudent.Id;
                 libraryRepository.UpdateLibraryItems(selectedItemCatalogus);
 
                 MessageBox.Show($"{selectedStudent.FirstName} {selectedStudent.LastName}  heeft volgend item uitgeleend: {selectedItemCatalogus.Title} ");
